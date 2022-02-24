@@ -1,10 +1,25 @@
 import * as React from "react";
 import { io } from "socket.io-client";
 
+interface myInfoType {
+    myID: string;
+    myName: string;
+}
+
+export interface playReadyType {
+    name: string;
+    socketId: string;
+}
+
 const SocketIO = () => {
     const [connect, setConnect] = React.useState<boolean>(false);
-    const [myID, setMyID] = React.useState<string>("");
-    const [playersReady, setPlayersReady] = React.useState<string[]>([]);
+    const [myInfo, setMyInfo] = React.useState<myInfoType>({
+        myID: "",
+        myName: "",
+    });
+    const [playersReady, setPlayersReady] = React.useState<playReadyType[]>([
+        { name: "", socketId: "" },
+    ]);
 
     interface ServerToClientEvents {
         noArg: () => void;
@@ -28,10 +43,13 @@ const SocketIO = () => {
 
             // client-side
             socket.current.on("connect", () => {
-                setMyID(socket.current.id);
+                setMyInfo({
+                    myID: socket.current.id,
+                    myName: myInfo.myName,
+                });
             });
 
-            socket.current.on("allPlayableUsers", (arg: string[]) => {
+            socket.current.on("allPlayableUsers", (arg: playReadyType[]) => {
                 setPlayersReady(arg);
             });
         } else {
@@ -44,7 +62,18 @@ const SocketIO = () => {
         }
     }, [connect]);
 
-    return { myID, setMyID, playersReady, setConnect };
+    const HandleSetName = (myNewName: string) => {
+        setMyInfo({
+            myID: myInfo.myID,
+            myName: myNewName,
+        });
+    };
+
+    const handleSendName = () => {
+        socket.current.emit("sendMyName", myInfo.myName);
+    };
+
+    return { myInfo, playersReady, setConnect, HandleSetName, handleSendName };
 };
 
 export default SocketIO;

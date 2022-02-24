@@ -9,7 +9,7 @@ const Menu: NextPage = () => {
     const [startGame, setStartGame] = React.useState<boolean>(false);
     return (
         <SocketInfo.Consumer>
-            {({ playersReady, setConnect }) => (
+            {({ myInfo, playersReady, setConnect, HandleSetName }) => (
                 <main className="flex h-screen">
                     <div className="m-auto">
                         <div className="p-8 px-16 mb-64 prose rounded-lg shadow-inner prose-h1:m-0 dark:prose-invert h-fit dark:shadow-none ">
