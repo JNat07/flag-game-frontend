@@ -1,4 +1,4 @@
-# The Flag Game
+# The Flag Game (Frontend)
 
 ## Info
 
