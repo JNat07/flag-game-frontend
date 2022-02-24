@@ -1,7 +1,11 @@
 import * as React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-import { GlobeIcon, HomeIcon as HomeOutline } from "@heroicons/react/outline";
+import {
+    GlobeIcon,
+    HomeIcon as HomeOutline,
+    WifiIcon,
+} from "@heroicons/react/outline";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { SocketInfo, ThemeContext } from "../pages/_app";
