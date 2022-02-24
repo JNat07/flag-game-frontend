@@ -1,0 +1,67 @@
+import * as React from "react";
+import type { NextPage } from "next";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { FlagIcon } from "@heroicons/react/outline";
+import { SocketInfo } from "../../pages/_app";
+
+const Menu: NextPage = () => {
+    const [startGame, setStartGame] = React.useState<boolean>(false);
+    return (
+        <SocketInfo.Consumer>
+            {({ playersReady, setConnect }) => (
+                <main className="flex h-screen">
+                    <div className="m-auto">
+                        <div className="p-8 px-16 mb-64 prose rounded-lg shadow-inner prose-h1:m-0 dark:prose-invert h-fit dark:shadow-none ">
+                            <div className="flex items-center space-x-2">
+                                <h1 className="text-2xl text-center">
+                                    The Flag Game
+                                </h1>
+                                <FlagIcon className="w-6 h-6 " />
+                            </div>
+                            <div className="mt-24 space-y-5">
+                                <div className="flex justify-center">
+                                    <Link
+                                        href={"/singlePlayer"}
+                                        passHref
+                                        as="/singleplayer"
+                                    >
+                                        <motion.a
+                                            whileHover={{ scale: 0.98 }}
+                                            whileTap={{ scale: 0.95 }}
+                                            className="w-full text-center no-underline rounded-md shadow-md ring-2 ring-blue-500/30 hover:ring-blue-500/50 dark:ring-gray-50 dark:hover:ring-white/70"
+                                            onClick={() => setStartGame(true)}
+                                        >
+                                            Single Payer
+                                        </motion.a>
+                                    </Link>
+                                </div>
+                                <div className="flex justify-center">
+                                    <Link
+                                        href={"/multiPlayer"}
+                                        as="/multiplayer"
+                                        passHref
+                                    >
+                                        <motion.a
+                                            whileHover={{ scale: 0.98 }}
+                                            whileTap={{ scale: 0.95 }}
+                                            className="w-full text-center no-underline rounded-md shadow-md ring-2 ring-blue-500/30 hover:ring-blue-500/50 dark:ring-gray-50 dark:hover:ring-white/70"
+                                            onClick={() => {
+                                                setConnect(true);
+                                                setStartGame(true);
+                                            }}
+                                        >
+                                            Multi-player
+                                        </motion.a>
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            )}
+        </SocketInfo.Consumer>
+    );
+};
+
+export default Menu;
