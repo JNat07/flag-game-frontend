@@ -21,6 +21,8 @@ const SocketIO = () => {
         { name: "", socketId: "" },
     ]);
 
+    const [whoWantsToPlay, setWhoWantsToPlay] = React.useState<string>("");
+
     interface ServerToClientEvents {
         noArg: () => void;
         basicEmit: (a: number, b: string, c: Buffer) => void;
@@ -52,13 +54,15 @@ const SocketIO = () => {
             socket.current.on("allPlayableUsers", (arg: playReadyType[]) => {
                 setPlayersReady(arg);
             });
+
+            socket.current.on("requestOpponentResp", (arg: string) => {
+                console.log(arg);
+            });
         } else {
             // else disconnect as to not use resources
             // protection against being run prior to socket being set
-            if (typeof socket.current === "undefined") {
-            } else {
+            if (typeof socket.current !== "undefined")
                 socket.current.emit("requestDisconnect");
-            }
         }
     }, [connect]);
 
@@ -73,7 +77,24 @@ const SocketIO = () => {
         socket.current.emit("sendMyName", myInfo.myName);
     };
 
-    return { myInfo, playersReady, setConnect, HandleSetName, handleSendName };
+    const opponentHandler = (opponentID: string) => {
+        if (whoWantsToPlay === opponentID) {
+            setWhoWantsToPlay("");
+        } else {
+            socket.current.emit("requestOpponent", opponentID);
+            setWhoWantsToPlay(opponentID);
+        }
+    };
+
+    return {
+        myInfo,
+        playersReady,
+        setConnect,
+        HandleSetName,
+        handleSendName,
+        opponentHandler,
+        whoWantsToPlay,
+    };
 };
 
 export default SocketIO;

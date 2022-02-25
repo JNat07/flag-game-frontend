@@ -7,13 +7,7 @@ const MultiPlayer: React.FC = () => {
     const [hasChoosenName, setHasChooseName] = React.useState<boolean>(false);
     return (
         <SocketInfo.Consumer>
-            {({
-                myInfo,
-                playersReady,
-                setConnect,
-                HandleSetName,
-                handleSendName,
-            }) => (
+            {({ myInfo, playersReady, HandleSetName, handleSendName }) => (
                 <>
                     {!hasChoosenName ? (
                         <ChooseName
@@ -25,7 +19,6 @@ const MultiPlayer: React.FC = () => {
                     ) : (
                         <ChoosePlayer
                             playersReady={playersReady}
-                            setConnect={setConnect}
                             myInfo={myInfo}
                         />
                     )}

@@ -17,12 +17,19 @@ export const ThemeContext = React.createContext({
     setTheme: (string: string) => {},
 });
 
+export const GameContext = React.createContext({
+    opponentHandler: (value: string) => {},
+    whoWantsToPlay: "",
+});
+
 interface Props {
     myInfo: { myID: string; myName: string };
     playersReady: playReadyType[];
     setConnect(value: boolean): void;
     HandleSetName(value: string): void;
     handleSendName(): void;
+    opponentHandler(value: string): void;
+    whoWantsToPlay: string;
 }
 function MyApp({ Component, pageProps }: AppProps) {
     const {
@@ -31,7 +38,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         setConnect,
         HandleSetName,
         handleSendName,
+        opponentHandler,
+        whoWantsToPlay,
     }: Props = SocketIO();
+
     const { theme, setTheme } = DarkMode();
 
     return (
@@ -45,10 +55,17 @@ function MyApp({ Component, pageProps }: AppProps) {
                     handleSendName,
                 }}
             >
-                <div className="min-h-screen bg-white dark:bg-black">
-                    <Header />
-                    <Component {...pageProps} />
-                </div>
+                <GameContext.Provider
+                    value={{
+                        opponentHandler,
+                        whoWantsToPlay,
+                    }}
+                >
+                    <div className="min-h-screen bg-white dark:bg-black">
+                        <Header />
+                        <Component {...pageProps} />
+                    </div>
+                </GameContext.Provider>
             </SocketInfo.Provider>
         </ThemeContext.Provider>
     );
