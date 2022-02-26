@@ -21,7 +21,9 @@ const SocketIO = () => {
         { name: "", socketId: "" },
     ]);
 
-    const [whoWantsToPlay, setWhoWantsToPlay] = React.useState<string>("");
+    const [whoIwantToPlay, setWhoIwantToPlay] = React.useState<string>("");
+
+    const [whoRequestMe, setWhoRequestMe] = React.useState<string[]>([]);
 
     interface ServerToClientEvents {
         noArg: () => void;
@@ -55,8 +57,8 @@ const SocketIO = () => {
                 setPlayersReady(arg);
             });
 
-            socket.current.on("requestOpponentResp", (arg: string) => {
-                console.log(arg);
+            socket.current.on("inform-opponent-ofPlayer", (arg: string[]) => {
+                setWhoRequestMe(arg);
             });
         } else {
             // else disconnect as to not use resources
@@ -77,12 +79,23 @@ const SocketIO = () => {
         socket.current.emit("sendMyName", myInfo.myName);
     };
 
-    const opponentHandler = (opponentID: string) => {
-        if (whoWantsToPlay === opponentID) {
-            setWhoWantsToPlay("");
+    const opponentHandler = (opponentID: string, myID: string) => {
+        if (whoIwantToPlay === "") {
+            //no selection
+            socket.current.emit("request-Opponent", { opponentID, myID });
+            setWhoIwantToPlay(opponentID);
+        } else if (whoIwantToPlay === opponentID) {
+            // unselect by clicking on same person
+            socket.current.emit("remove-Opponent", { opponentID, myID });
+            setWhoIwantToPlay("");
         } else {
-            socket.current.emit("requestOpponent", opponentID);
-            setWhoWantsToPlay(opponentID);
+            // has person selected, but select someone else
+            socket.current.emit("both-Opponent", {
+                opponentID,
+                whoIwantToPlay,
+                myID,
+            });
+            setWhoIwantToPlay(opponentID);
         }
     };
 
@@ -93,7 +106,8 @@ const SocketIO = () => {
         HandleSetName,
         handleSendName,
         opponentHandler,
-        whoWantsToPlay,
+        whoIwantToPlay,
+        whoRequestMe,
     };
 };
 
