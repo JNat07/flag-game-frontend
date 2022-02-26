@@ -21,7 +21,7 @@ const ChoosePlayer: React.FC<Props> = ({ playersReady, myInfo }) => {
 
     return (
         <GameContext.Consumer>
-            {({ opponentHandler, whoWantsToPlay }) => (
+            {({ opponentHandler, whoIwantToPlay, whoRequestMe }) => (
                 <div className="px-2 prose dark:prose-invert prose-p:m-0 prose-h3:m-0">
                     <h2 className="text-center underline">
                         {playersReady.length >= 1
@@ -32,11 +32,15 @@ const ChoosePlayer: React.FC<Props> = ({ playersReady, myInfo }) => {
                         {playersReady.length >= 1
                             ? playersReady.map((elem, index) => {
                                   const { name, socketId } = elem;
+
                                   if (myInfo.myID !== socketId)
                                       return (
                                           <div
                                               onClick={() =>
-                                                  opponentHandler(socketId)
+                                                  opponentHandler(
+                                                      socketId,
+                                                      myInfo.myID
+                                                  )
                                               }
                                               key={index}
                                               className="rounded-md ring-1 ring-black dark:ring-gray-400"
@@ -49,7 +53,7 @@ const ChoosePlayer: React.FC<Props> = ({ playersReady, myInfo }) => {
                                               >
                                                   <div className="bg-gray-500 rounded-t-md selection:bg-transparent dark:bg-gray-800">
                                                       <AnimatePresence>
-                                                          {whoWantsToPlay ===
+                                                          {whoIwantToPlay ===
                                                               socketId && (
                                                               <motion.div
                                                                   animate={{
@@ -72,6 +76,34 @@ const ChoosePlayer: React.FC<Props> = ({ playersReady, myInfo }) => {
                                                               </motion.div>
                                                           )}
                                                       </AnimatePresence>
+
+                                                      <AnimatePresence>
+                                                          {whoRequestMe.includes(
+                                                              socketId
+                                                          ) && (
+                                                              <motion.div
+                                                                  animate={{
+                                                                      height: "auto",
+                                                                      opacity: 1,
+                                                                  }}
+                                                                  initial={{
+                                                                      height: 0,
+                                                                      opacity: 0,
+                                                                  }}
+                                                                  exit={{
+                                                                      height: 0,
+                                                                      opacity: 0,
+                                                                  }}
+                                                                  className="pl-1 overflow-hidden bg-green-600 rounded-t-md "
+                                                              >
+                                                                  <p className="text-base text-center text-white">
+                                                                      Requesting
+                                                                      You
+                                                                  </p>
+                                                              </motion.div>
+                                                          )}
+                                                      </AnimatePresence>
+
                                                       <div className="flex justify-center">
                                                           <Image
                                                               className=""
