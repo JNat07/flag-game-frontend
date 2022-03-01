@@ -37,7 +37,7 @@ const ChooseName: React.FC<Props> = ({
         "James",
         "Charles",
     ];
-    const handler = () => {
+    const handler = (): void => {
         if (myInfo.myName.length === 0) return;
         handleSendName();
         setHasChooseName(true);
@@ -48,7 +48,7 @@ const ChooseName: React.FC<Props> = ({
         HandleSetName(newName);
     };
 
-    const src = (elem: string) => {
+    const src = (elem: string): string => {
         return createAvatar(style, {
             dataUri: true,
             seed: elem,
