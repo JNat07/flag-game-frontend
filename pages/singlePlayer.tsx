@@ -1,7 +1,6 @@
 import * as React from "react";
 import type { NextPage } from "next";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { useRouter } from "next/router";
 
 const Game: NextPage = () => {
@@ -309,35 +308,36 @@ const Game: NextPage = () => {
     }, [score]);
 
     return (
-        <div className="prose bg-white dark:prose-invert prose-h2:m-0 dark:bg-black">
-            <div className="px-2 py-1 mx-1 mt-16 rounded-lg ">
+        <div className="prose bg-white e-invert prose-h2:m-0 dark:bg-black">
+            <div className="px-3 py-1 rounded-lg py-13 bg-slate-300">
                 {/* get name from code */}
                 <h3 className="text-center">
                     Which is flag is {countries[question]}?
                 </h3>
                 <div className="grid grid-cols-2 place-items-center gap-x-2 ">
-                    <Image
-                        className="p-2 rounded-lg shadow-xl"
-                        src={`/flags/${current[0]}.svg`}
-                        width={500}
-                        height={500}
-                        onClick={() => scoreHandler(current[0])}
-                        alt="Country_Flag_1"
-                    />
-
-                    <Image
-                        className="p-2 rounded-lg shadow-xl"
-                        width={500}
-                        height={500}
-                        src={`/flags/${current[1]}.svg`}
-                        onClick={() => scoreHandler(current[1])}
-                        alt="Country_Flag_2"
-                    />
+                    <motion.div whileTap={{ scale: 0.96 }} className="">
+                        {/* not using next images to allow for auto sizing */}
+                        <img
+                            src={`/flags/${current[0]}.png`}
+                            className="rounded-md shadow-md"
+                            onClick={() => scoreHandler(current[0])}
+                            alt="Country_Flag_1"
+                        />
+                    </motion.div>
+                    <motion.div whileTap={{ scale: 0.96 }} className="">
+                        <img
+                            className="rounded-md shadow-md"
+                            src={`/flags/${current[1]}.png`}
+                            onClick={() => scoreHandler(current[1])}
+                            alt="Country_Flag_2"
+                        />
+                    </motion.div>
                 </div>
-            </div>
-            <div className="px-2 ">
-                <h2>Score: {score}</h2>
-                <h2>Time: {time}</h2>
+
+                <div className="px-2 ">
+                    <h2>Score: {score}</h2>
+                    <h2>Time: {time}</h2>
+                </div>
             </div>
         </div>
     );
