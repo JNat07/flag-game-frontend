@@ -1,6 +1,6 @@
 import * as React from "react";
 import type { NextPage } from "next";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
 
 const Game: NextPage = () => {
@@ -10,6 +10,7 @@ const Game: NextPage = () => {
     const [question, setQuestion] = React.useState("");
     const [time, setTime] = React.useState("");
     const [start, setStart] = React.useState(new Date());
+    const [recentWrong, setRecentWrong] = React.useState<boolean>(false);
 
     React.useEffect(() => {
         setInterval(() => {
@@ -287,9 +288,14 @@ const Game: NextPage = () => {
         ZW: "Zimbabwe",
     };
 
-    const scoreHandler = (item: string) =>
-        // send back to main page when guessed wrong
-        item === question ? setScore(score + 1) : router.push("/");
+    const scoreHandler = (item: string): void | Promise<boolean> => {
+        if (item === question) {
+            setRecentWrong(false);
+            setScore(score + 1);
+        } else {
+            setRecentWrong(true);
+        }
+    };
 
     React.useEffect(() => {
         const countryA =
@@ -308,30 +314,45 @@ const Game: NextPage = () => {
     }, [score]);
 
     return (
-        <div className="prose bg-white e-invert prose-h2:m-0 dark:bg-black">
-            <div className="px-3 py-1 rounded-lg py-13 bg-slate-300">
+        <div className="prose dark:prose-invert prose-h3:m-0 prose-h4:m-0 mx-2 mt-[15%] rounded-md bg-white shadow-inner dark:bg-black">
+            <AnimatePresence>
+                {recentWrong && (
+                    <div className="flex justify-center">
+                        <motion.div
+                            className="absolute w-5/6 px-5 mt-2 overflow-hidden bg-red-400 rounded-lg ring-1 ring-gray-800"
+                            exit={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            initial={{ height: 0, opacity: 0 }}
+                        >
+                            <h4 className="py-0.5 text-center text-gray-800">
+                                Incorrect!
+                            </h4>
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
+            <div className="px-3 py-12 rounded-lg ">
                 {/* get name from code */}
-                <h3 className="text-center">
-                    Which is flag is {countries[question]}?
-                </h3>
+                <h3 className="text-center">Which is {countries[question]}?</h3>
                 <div className="grid grid-cols-2 place-items-center gap-x-2 ">
-                    <motion.div whileTap={{ scale: 0.96 }} className="">
-                        {/* not using next images to allow for auto sizing */}
-                        <img
-                            src={`/flags/${current[0]}.png`}
-                            className="rounded-md shadow-md"
-                            onClick={() => scoreHandler(current[0])}
-                            alt="Country_Flag_1"
-                        />
-                    </motion.div>
-                    <motion.div whileTap={{ scale: 0.96 }} className="">
-                        <img
-                            className="rounded-md shadow-md"
-                            src={`/flags/${current[1]}.png`}
-                            onClick={() => scoreHandler(current[1])}
-                            alt="Country_Flag_2"
-                        />
-                    </motion.div>
+                    {/* not using next images to allow for auto sizing */}
+                    <motion.img
+                        whileTap={{ scale: 0.96 }}
+                        whileHover={{ scale: 0.96 }}
+                        src={`/flags/${current[0]}.png`}
+                        className="rounded-md shadow-md cursor-pointer hover:shadow-xl"
+                        onClick={() => scoreHandler(current[0])}
+                        alt="Country_Flag_1"
+                    />
+
+                    <motion.img
+                        whileTap={{ scale: 0.96 }}
+                        whileHover={{ scale: 0.96 }}
+                        className="rounded-md shadow-md cursor-pointer hover:shadow-xl"
+                        src={`/flags/${current[1]}.png`}
+                        onClick={() => scoreHandler(current[1])}
+                        alt="Country_Flag_2"
+                    />
                 </div>
 
                 <div className="px-2 ">
