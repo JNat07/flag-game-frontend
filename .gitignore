@@ -36,5 +36,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
-# don't include flag svgs
-*.svg
+# don't include flag pngs
+/public/flags
