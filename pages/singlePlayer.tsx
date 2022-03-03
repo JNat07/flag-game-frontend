@@ -338,40 +338,31 @@ const Game: NextPage = () => {
     }, [score]);
 
     return (
-        <div className="prose dark:prose-invert prose-h3:m-0 prose-h4:m-0 ">
-            <div className="mt-[10%]">
-                <FlagGameText />
-            </div>
+        <div className="prose dark:prose-invert prose-p:m-0 prose-h3:m-0 prose-h2:m-0 prose-h4:m-0 mx-2 mt-[10vh] rounded-md py-2">
+            <FlagGameText />
 
-            <div className="mx-2 mt-5 bg-white rounded-md shadow-inner dark:bg-black">
-                <AnimatePresence>
-                    {recentWrong && (
-                        <div className="flex justify-center">
-                            <motion.div
-                                className="absolute w-5/6 px-5 mt-2 overflow-hidden rounded-lg bg-red-400/70 ring-1 ring-gray-800"
-                                exit={{ height: 0, opacity: 0 }}
-                                animate={{ height: "auto", opacity: 1 }}
-                                initial={{ height: 0, opacity: 0 }}
-                            >
-                                <h4 className="py-0.5 text-center text-gray-800">
-                                    Incorrect!
-                                </h4>
-                            </motion.div>
-                        </div>
-                    )}
-                </AnimatePresence>
-                <div className="px-3 py-12 rounded-lg ">
-                    {/* get name from code */}
-                    <h3 className="text-center">
+            <div className="mt-5 bg-white dark:bg-black">
+                <div className="pb-5 rounded-lg ring-2 ring-gray-800 dark:ring-gray-200">
+                    {/* info */}
+                    <div className="grid grid-cols-3 rounded-t-lg bg-gray-200 py-0.5 px-4 dark:bg-gray-600">
+                        <h4 className="">Score: {score}</h4>
+
+                        <div />
+
+                        <p className="m-0 font-mono place-self-end dark:text-white ">
+                            {time ? time : "00:00"}
+                        </p>
+                    </div>
+                    <h3 className="pt-4 pb-2 text-center truncate">
                         Which is {countries[question]}?
                     </h3>
-                    <div className="grid grid-cols-2 place-items-center gap-x-2 ">
+                    <div className="grid  h-fit grid-cols-2 place-items-center gap-x-2  px-1.5">
                         {/* not using next images to allow for auto sizing */}
                         <motion.img
                             whileTap={{ scale: 0.96 }}
                             whileHover={{ scale: 0.96 }}
                             src={`/flags/${current[0]}.png`}
-                            className="rounded-md shadow-md cursor-pointer hover:shadow-xl"
+                            className="m-0 rounded-lg shadow-md cursor-pointer h-fit max-h-28 hover:shadow-xl"
                             onClick={() => scoreHandler(current[0])}
                             alt="Country_Flag_1"
                         />
@@ -379,17 +370,45 @@ const Game: NextPage = () => {
                         <motion.img
                             whileTap={{ scale: 0.96 }}
                             whileHover={{ scale: 0.96 }}
-                            className="rounded-md shadow-md cursor-pointer hover:shadow-xl"
+                            className="m-0 rounded-lg shadow-md cursor-pointer h-fit max-h-28 hover:shadow-xl"
                             src={`/flags/${current[1]}.png`}
                             onClick={() => scoreHandler(current[1])}
                             alt="Country_Flag_2"
                         />
                     </div>
+                    <div className="mt-4">
+                        <AnimatePresence>
+                            {recentWrong && (
+                                <motion.div
+                                    className="overflow-hidden"
+                                    exit={{ height: 0, opacity: 0 }}
+                                    animate={{ height: "auto", opacity: 1 }}
+                                    initial={{ height: 0, opacity: 0 }}
+                                >
+                                    <div className="grid grid-cols-2 place-items-center px-1.5">
+                                        <h3
+                                            className={
+                                                current[0] === question
+                                                    ? "text-green-500"
+                                                    : "text-red-400"
+                                            }
+                                        >
+                                            {countries[current[0]]}
+                                        </h3>
 
-                    <div className="px-2 ">
-                        <h2>Score: {score}</h2>
-                        <h2>Time: {time}</h2>
-                        <h2>Wrong score: {wrongScore.wrongNumber}</h2>
+                                        <h3
+                                            className={
+                                                current[1] === question
+                                                    ? "text-green-500"
+                                                    : "text-red-400"
+                                            }
+                                        >
+                                            {countries[current[1]]}
+                                        </h3>
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </div>
                 </div>
             </div>
