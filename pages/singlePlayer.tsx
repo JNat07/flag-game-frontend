@@ -1,14 +1,22 @@
 import * as React from "react";
 import type { NextPage } from "next";
 import { AnimatePresence, motion } from "framer-motion";
-import { useRouter } from "next/router";
+import FlagGameText from "../components/FlagGameText";
 
 const Game: NextPage = () => {
-    const router = useRouter();
+    interface WrongState {
+        wrongNumber: number;
+        currentQuestion: string;
+    }
+
     const [score, setScore] = React.useState<number>(0);
-    const [current, setCurrent] = React.useState([""]);
-    const [question, setQuestion] = React.useState("");
-    const [time, setTime] = React.useState("");
+    const [wrongScore, setWrongScore] = React.useState<WrongState>({
+        wrongNumber: 0,
+        currentQuestion: "",
+    });
+    const [current, setCurrent] = React.useState<string[]>([""]);
+    const [question, setQuestion] = React.useState<string>("");
+    const [time, setTime] = React.useState<string>("");
     const [start, setStart] = React.useState(new Date());
     const [recentWrong, setRecentWrong] = React.useState<boolean>(false);
 
@@ -288,25 +296,41 @@ const Game: NextPage = () => {
         ZW: "Zimbabwe",
     };
 
-    const scoreHandler = (item: string): void | Promise<boolean> => {
+    const scoreHandler = (item: string): void => {
         if (item === question) {
             setRecentWrong(false);
             setScore(score + 1);
         } else {
             setRecentWrong(true);
+            if (question === wrongScore.currentQuestion) return;
+            setWrongScore({
+                wrongNumber: wrongScore.wrongNumber + 1,
+                currentQuestion: question,
+            });
         }
     };
 
-    React.useEffect(() => {
-        const countryA =
-            Object.keys(countries)[
-                (Object.keys(countries).length * Math.random()) << 0
-            ];
+    const chooseCountry = (): string[] => {
+        var countryA, countryB;
 
-        const countryB =
-            Object.keys(countries)[
-                (Object.keys(countries).length * Math.random()) << 0
-            ];
+        // run at least once or as long as countries are same
+        do {
+            countryA =
+                Object.keys(countries)[
+                    (Object.keys(countries).length * Math.random()) << 0
+                ];
+
+            countryB =
+                Object.keys(countries)[
+                    (Object.keys(countries).length * Math.random()) << 0
+                ];
+        } while (countryA === countryB);
+
+        return [countryA, countryB];
+    };
+
+    React.useEffect(() => {
+        const [countryA, countryB] = chooseCountry();
 
         setQuestion(Math.random() > 0.5 ? countryA : countryB);
 
@@ -314,50 +338,59 @@ const Game: NextPage = () => {
     }, [score]);
 
     return (
-        <div className="prose dark:prose-invert prose-h3:m-0 prose-h4:m-0 mx-2 mt-[15%] rounded-md bg-white shadow-inner dark:bg-black">
-            <AnimatePresence>
-                {recentWrong && (
-                    <div className="flex justify-center">
-                        <motion.div
-                            className="absolute w-5/6 px-5 mt-2 overflow-hidden bg-red-400 rounded-lg ring-1 ring-gray-800"
-                            exit={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            initial={{ height: 0, opacity: 0 }}
-                        >
-                            <h4 className="py-0.5 text-center text-gray-800">
-                                Incorrect!
-                            </h4>
-                        </motion.div>
+        <div className="prose dark:prose-invert prose-h3:m-0 prose-h4:m-0 ">
+            <div className="mt-[10%]">
+                <FlagGameText />
+            </div>
+
+            <div className="mx-2 mt-5 bg-white rounded-md shadow-inner dark:bg-black">
+                <AnimatePresence>
+                    {recentWrong && (
+                        <div className="flex justify-center">
+                            <motion.div
+                                className="absolute w-5/6 px-5 mt-2 overflow-hidden rounded-lg bg-red-400/70 ring-1 ring-gray-800"
+                                exit={{ height: 0, opacity: 0 }}
+                                animate={{ height: "auto", opacity: 1 }}
+                                initial={{ height: 0, opacity: 0 }}
+                            >
+                                <h4 className="py-0.5 text-center text-gray-800">
+                                    Incorrect!
+                                </h4>
+                            </motion.div>
+                        </div>
+                    )}
+                </AnimatePresence>
+                <div className="px-3 py-12 rounded-lg ">
+                    {/* get name from code */}
+                    <h3 className="text-center">
+                        Which is {countries[question]}?
+                    </h3>
+                    <div className="grid grid-cols-2 place-items-center gap-x-2 ">
+                        {/* not using next images to allow for auto sizing */}
+                        <motion.img
+                            whileTap={{ scale: 0.96 }}
+                            whileHover={{ scale: 0.96 }}
+                            src={`/flags/${current[0]}.png`}
+                            className="rounded-md shadow-md cursor-pointer hover:shadow-xl"
+                            onClick={() => scoreHandler(current[0])}
+                            alt="Country_Flag_1"
+                        />
+
+                        <motion.img
+                            whileTap={{ scale: 0.96 }}
+                            whileHover={{ scale: 0.96 }}
+                            className="rounded-md shadow-md cursor-pointer hover:shadow-xl"
+                            src={`/flags/${current[1]}.png`}
+                            onClick={() => scoreHandler(current[1])}
+                            alt="Country_Flag_2"
+                        />
                     </div>
-                )}
-            </AnimatePresence>
-            <div className="px-3 py-12 rounded-lg ">
-                {/* get name from code */}
-                <h3 className="text-center">Which is {countries[question]}?</h3>
-                <div className="grid grid-cols-2 place-items-center gap-x-2 ">
-                    {/* not using next images to allow for auto sizing */}
-                    <motion.img
-                        whileTap={{ scale: 0.96 }}
-                        whileHover={{ scale: 0.96 }}
-                        src={`/flags/${current[0]}.png`}
-                        className="rounded-md shadow-md cursor-pointer hover:shadow-xl"
-                        onClick={() => scoreHandler(current[0])}
-                        alt="Country_Flag_1"
-                    />
 
-                    <motion.img
-                        whileTap={{ scale: 0.96 }}
-                        whileHover={{ scale: 0.96 }}
-                        className="rounded-md shadow-md cursor-pointer hover:shadow-xl"
-                        src={`/flags/${current[1]}.png`}
-                        onClick={() => scoreHandler(current[1])}
-                        alt="Country_Flag_2"
-                    />
-                </div>
-
-                <div className="px-2 ">
-                    <h2>Score: {score}</h2>
-                    <h2>Time: {time}</h2>
+                    <div className="px-2 ">
+                        <h2>Score: {score}</h2>
+                        <h2>Time: {time}</h2>
+                        <h2>Wrong score: {wrongScore.wrongNumber}</h2>
+                    </div>
                 </div>
             </div>
         </div>
