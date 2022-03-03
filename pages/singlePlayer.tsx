@@ -353,7 +353,7 @@ const Game: NextPage = () => {
                             {time ? time : "00:00"}
                         </p>
                     </div>
-                    <h3 className="pt-4 pb-2 text-center truncate">
+                    <h3 className="px-2 pt-4 pb-2 text-center break-words">
                         Which is {countries[question]}?
                     </h3>
                     <div className="grid  h-fit grid-cols-2 place-items-center gap-x-2  px-1.5">
@@ -389,8 +389,8 @@ const Game: NextPage = () => {
                                         <h3
                                             className={
                                                 current[0] === question
-                                                    ? "text-green-500"
-                                                    : "text-red-400"
+                                                    ? "text-center text-green-500 dark:text-green-600"
+                                                    : "text-center text-red-400 dark:text-red-600"
                                             }
                                         >
                                             {countries[current[0]]}
@@ -399,8 +399,8 @@ const Game: NextPage = () => {
                                         <h3
                                             className={
                                                 current[1] === question
-                                                    ? "text-green-500"
-                                                    : "text-red-400"
+                                                    ? "text-center text-green-500 dark:text-green-600"
+                                                    : "text-center text-red-400 dark:text-red-600"
                                             }
                                         >
                                             {countries[current[1]]}
