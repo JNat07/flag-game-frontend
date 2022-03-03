@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* remove blue highlight https://stackoverflow.com/a/45050338 */
+img,
 input,
 textarea,
 button,
