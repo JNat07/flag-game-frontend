@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { FlagIcon } from "@heroicons/react/outline";
 import { SocketInfo } from "../../pages/_app";
+import FlagGameText from "../FlagGameText";
 
 const Menu: NextPage = () => {
     const [startGame, setStartGame] = React.useState<boolean>(false);
@@ -13,13 +14,8 @@ const Menu: NextPage = () => {
                 <main className="flex h-screen">
                     <div className="m-auto">
                         <div className="p-8 px-16 mb-64 prose rounded-lg shadow-inner prose-h1:m-0 dark:prose-invert h-fit dark:shadow-none ">
-                            <div className="flex items-center space-x-2">
-                                <h1 className="text-2xl text-center">
-                                    The Flag Game
-                                </h1>
-                                <FlagIcon className="w-6 h-6 " />
-                            </div>
-                            <div className="mt-24 space-y-5">
+                            <FlagGameText />
+                            <div className="mt-12 space-y-5">
                                 <div className="flex justify-center">
                                     <Link
                                         href={"/singlePlayer"}
