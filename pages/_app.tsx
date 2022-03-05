@@ -3,8 +3,9 @@ import type { AppProps } from "next/app";
 import Header from "../components/header";
 import * as React from "react";
 import SocketIO, { playReadyType } from "../components/socketio/socketio";
-import DarkMode from "../components/DarkMode";
+import DarkMode from "../components/DarkMode/DarkMode";
 
+// socket info context
 export const SocketInfo = React.createContext({
     myInfo: { myID: "", myName: "" },
     playersReady: [{ name: "", socketId: "" }],
@@ -12,17 +13,21 @@ export const SocketInfo = React.createContext({
     HandleSetName: (value: string) => {},
     handleSendName: () => {},
 });
+
+// theme context
 export const ThemeContext = React.createContext({
     theme: "placeholder",
     setTheme: (string: string) => {},
 });
 
+// game context
 export const GameContext = React.createContext({
     opponentHandler: (value: string, myID: string) => {},
     whoIwantToPlay: "",
     whoRequestMe: [""],
 });
 
+// props passed down
 interface Props {
     myInfo: { myID: string; myName: string };
     playersReady: playReadyType[];
@@ -48,6 +53,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     const { theme, setTheme } = DarkMode();
 
     return (
+        // wrap everything inside of contexts to be used later
         <ThemeContext.Provider value={{ theme, setTheme }}>
             <SocketInfo.Provider
                 value={{
@@ -66,6 +72,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                     }}
                 >
                     <div className="min-h-screen bg-white dark:bg-black">
+                        {/* render header component and all other components */}
                         <Header />
                         <Component {...pageProps} />
                     </div>
