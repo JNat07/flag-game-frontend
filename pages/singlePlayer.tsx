@@ -1,27 +1,29 @@
 import * as React from "react";
 import type { NextPage } from "next";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import FlagGameText from "../components/FlagGameText";
 import { chooseCountry, countries } from "../components/FlagInfo/FlagInfo";
+import CorrectNames from "../components/SinglePlayer/correctNames";
 
 const Game: NextPage = () => {
-    const [score, setScore] = React.useState<number>(0);
-    const [wrongQuestion, setWrongQuestion] = React.useState<string>("");
-    const [current, setCurrent] = React.useState<string[]>([""]);
-    const [question, setQuestion] = React.useState<string>("AF");
-    const [time, setTime] = React.useState<string>("");
-    const [start, setStart] = React.useState<Date>(new Date());
-    const [recentWrong, setRecentWrong] = React.useState<boolean>(false);
-    const [nextQuestion, setNextQuestion] = React.useState<number>(0);
+    const [score, setScore] = React.useState<number>(0); // score (number correct)
+    const [wrongQuestion, setWrongQuestion] = React.useState<string>(""); // most recently wrong question
+    const [current, setCurrent] = React.useState<string[]>([""]); // the current countries
+    const [question, setQuestion] = React.useState<string>("AF"); // current question
+    const [time, setTime] = React.useState<string>(""); // current time
+    const [start, setStart] = React.useState<Date>(new Date()); // date object of when started
+    const [recentWrong, setRecentWrong] = React.useState<boolean>(false); // if most recent answer was wrong
+    const [nextQuestion, setNextQuestion] = React.useState<number>(0); // the question number
 
     // on first run, set date (start time to be calculated)
     React.useEffect(() => {
         setStart(new Date());
     }, []);
 
+    // timer (on page run)
     React.useEffect(() => {
         setInterval(() => {
-            // calculate time based on Date (more accurate than setInterval )
+            // calculate time elapsed based on Date (more accurate than setInterval )
             const dateObject = new Date(new Date().getTime() - start.getTime());
 
             // Calculate minutes, seconds, and configure string that's set
@@ -71,7 +73,7 @@ const Game: NextPage = () => {
         <div className="prose dark:prose-invert prose-p:m-0 prose-h3:m-0 prose-h2:m-0 prose-h4:m-0 mx-2 mt-[10vh] rounded-md py-2">
             <FlagGameText />
 
-            <div className="mt-5 bg-white dark:bg-black">
+            <div className="mt-5">
                 <div className="pb-5 rounded-lg ring-2 ring-gray-800 dark:ring-gray-200">
                     {/* info */}
                     <div className="grid grid-cols-3 rounded-t-lg bg-gray-200 py-0.5 px-4 dark:bg-gray-600">
@@ -80,14 +82,15 @@ const Game: NextPage = () => {
                         <div />
 
                         <p className="m-0 font-mono place-self-end dark:text-white ">
+                            {/* time not intialized, then set to 00:00 (page load not complete) */}
                             {time ? time : "00:00"}
                         </p>
                     </div>
                     <h3 className="px-2 pt-4 pb-2 text-center break-words">
                         Which is {countries[question].replace(/['"]+/g, "")}?
                     </h3>
-                    <div className="grid  h-fit grid-cols-2 place-items-center gap-x-2  px-1.5">
-                        {/* not using next images to allow for auto sizing */}
+                    <div className="grid h-fit grid-cols-2 place-items-center gap-x-2  px-1.5">
+                        {/* static page, not using next image */}
                         <motion.img
                             whileTap={{ scale: 0.96 }}
                             whileHover={{ scale: 0.96 }}
@@ -107,44 +110,11 @@ const Game: NextPage = () => {
                         />
                     </div>
                     <div className="mt-4">
-                        <AnimatePresence>
-                            {recentWrong && (
-                                <motion.div
-                                    className="overflow-hidden"
-                                    exit={{ height: 0, opacity: 0 }}
-                                    animate={{ height: "auto", opacity: 1 }}
-                                    initial={{ height: 0, opacity: 0 }}
-                                >
-                                    <div className="grid grid-cols-2 place-items-center px-1.5">
-                                        <h3
-                                            className={
-                                                current[0] === question
-                                                    ? "text-center text-green-500 dark:text-green-600"
-                                                    : "text-center text-red-400 dark:text-red-600"
-                                            }
-                                        >
-                                            {countries[current[0]].replace(
-                                                /['"]+/g,
-                                                ""
-                                            )}
-                                        </h3>
-
-                                        <h3
-                                            className={
-                                                current[1] === question
-                                                    ? "text-center text-green-500 dark:text-green-600"
-                                                    : "text-center text-red-400 dark:text-red-600"
-                                            }
-                                        >
-                                            {countries[current[1]].replace(
-                                                /['"]+/g,
-                                                ""
-                                            )}
-                                        </h3>
-                                    </div>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
+                        <CorrectNames
+                            recentWrong={recentWrong}
+                            question={question}
+                            current={current}
+                        />
                     </div>
                 </div>
             </div>
