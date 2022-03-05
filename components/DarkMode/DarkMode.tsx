@@ -1,12 +1,21 @@
 import * as React from "react";
 
-const DarkMode = () => {
+interface DMReturnType {
+    theme: string;
+    setTheme(value: string): void;
+}
+
+const DarkMode = (): DMReturnType => {
     // Hold theme state
     const [theme, setTheme] = React.useState<string>("");
 
     // only run when first loaded
     React.useEffect(() => {
-        themeHandler(theme);
+        // if theme is in localStorage, set to theme
+        if ("theme" in localStorage) {
+            setTheme(localStorage.theme);
+        }
+
         // add event listener for OS light/dark
         window
             .matchMedia("(prefers-color-scheme: dark)")
@@ -23,11 +32,15 @@ const DarkMode = () => {
     return { theme, setTheme };
 };
 
-const themeHandler = (theme: string) => {
+const themeHandler = (theme: string): void => {
     // if theme is set to dark, or there is no theme in local-storage and the OS is dark, add dark. Else, remove dark (light).
+
     theme === "dark"
         ? document.documentElement.classList.add("dark")
         : document.documentElement.classList.remove("dark");
+
+    // set localStorage
+    localStorage.theme = theme;
 };
 
 export default DarkMode;
