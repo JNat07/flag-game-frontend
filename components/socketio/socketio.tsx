@@ -8,7 +8,7 @@ interface myInfoType {
 
 export interface playReadyType {
     name: string;
-    socketId: string;
+    id: string;
 }
 
 const SocketIO = () => {
@@ -18,7 +18,7 @@ const SocketIO = () => {
         myName: "",
     });
     const [playersReady, setPlayersReady] = React.useState<playReadyType[]>([
-        { name: "", socketId: "" },
+        { name: "", id: "" },
     ]);
 
     const [whoIwantToPlay, setWhoIwantToPlay] = React.useState<string>("");
