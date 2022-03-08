@@ -8,7 +8,7 @@ import DarkMode from "../components/DarkMode/DarkMode";
 // socket info context
 export const SocketInfo = React.createContext({
     myInfo: { myID: "", myName: "" },
-    playersReady: [{ name: "", socketId: "" }],
+    playersReady: [{ name: "", id: "" }],
     setConnect: (value: boolean) => {},
     HandleSetName: (value: string) => {},
     handleSendName: () => {},
