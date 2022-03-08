@@ -31,19 +31,19 @@ const ChoosePlayer: React.FC<Props> = ({ playersReady, myInfo }) => {
                     <div className="grid items-center grid-cols-2 gap-y-2 gap-x-3">
                         {playersReady.length >= 1
                             ? playersReady.map((elem, index) => {
-                                  const { name, socketId } = elem;
+                                  const { name, id } = elem;
 
-                                  if (myInfo.myID !== socketId)
+                                  if (myInfo.myID !== id)
                                       return (
                                           <div
                                               onClick={() =>
                                                   opponentHandler(
-                                                      socketId,
+                                                      id,
                                                       myInfo.myID
                                                   )
                                               }
                                               key={index}
-                                              className="rounded-md ring-1 ring-black dark:ring-gray-400"
+                                              className="rounded-md cursor-pointer ring-1 ring-black dark:ring-gray-400"
                                           >
                                               <motion.div
                                                   whileTap={{
@@ -54,7 +54,7 @@ const ChoosePlayer: React.FC<Props> = ({ playersReady, myInfo }) => {
                                                   <div className="bg-gray-500 rounded-t-md selection:bg-transparent dark:bg-gray-800">
                                                       <AnimatePresence>
                                                           {whoIwantToPlay ===
-                                                              socketId && (
+                                                              id && (
                                                               <motion.div
                                                                   animate={{
                                                                       height: "auto",
@@ -79,7 +79,7 @@ const ChoosePlayer: React.FC<Props> = ({ playersReady, myInfo }) => {
 
                                                       <AnimatePresence>
                                                           {whoRequestMe.includes(
-                                                              socketId
+                                                              id
                                                           ) && (
                                                               <motion.div
                                                                   animate={{
