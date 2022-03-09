@@ -2,8 +2,9 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Header from "../components/header";
 import * as React from "react";
-import SocketIO, { playReadyType } from "../components/socketio/socketio";
+import SocketIO from "../components/socketio/socketio";
 import DarkMode from "../components/DarkMode/DarkMode";
+import { socketIOFunc } from "../components/types";
 
 // socket info context
 export const SocketInfo = React.createContext({
@@ -27,17 +28,6 @@ export const GameContext = React.createContext({
     whoRequestMe: [""],
 });
 
-// props passed down
-interface Props {
-    myInfo: { myID: string; myName: string };
-    playersReady: playReadyType[];
-    setConnect(value: boolean): void;
-    HandleSetName(value: string): void;
-    handleSendName(): void;
-    opponentHandler(value: string, myID: string): void;
-    whoIwantToPlay: string;
-    whoRequestMe: string[];
-}
 function MyApp({ Component, pageProps }: AppProps) {
     const {
         myInfo,
@@ -48,7 +38,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         opponentHandler,
         whoIwantToPlay,
         whoRequestMe,
-    }: Props = SocketIO();
+    }: socketIOFunc = SocketIO();
 
     const { theme, setTheme } = DarkMode();
 
