@@ -1,14 +1,13 @@
 import * as React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { countries } from "../FlagInfo/FlagInfo";
+import { correctNamesType } from "../types";
 
-interface Props {
-    recentWrong: boolean;
-    current: string[];
-    question: string;
-}
-
-const CorrectNames: React.FC<Props> = ({ recentWrong, current, question }) => {
+const CorrectNames: React.FC<correctNamesType> = ({
+    recentWrong,
+    current,
+    question,
+}) => {
     return (
         <AnimatePresence>
             {recentWrong && (
