@@ -2,41 +2,16 @@ import * as React from "react";
 import { createAvatar } from "@dicebear/avatars";
 import * as style from "@dicebear/pixel-art";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
+import { chooseNameType } from "../types";
+import { names } from "../randomInfo";
 
-interface Props {
-    HandleSetName(value: string): void;
-    myInfo: { myID: string; myName: string };
-    setHasChooseName(value: boolean): void;
-    handleSendName(): void;
-}
-
-const ChooseName: React.FC<Props> = ({
+const ChooseName: React.FC<chooseNameType> = ({
     HandleSetName,
     myInfo,
     setHasChooseName,
     handleSendName,
 }) => {
-    const names: string[] = [
-        "Olivia",
-        "Emma",
-        "Ava",
-        "Charlotte",
-        "Sophia",
-        "Liam",
-        "Noah",
-        "Oliver",
-        "Elijah",
-        "Mary",
-        "Dorothy",
-        "Helen",
-        "Margaret",
-        "John",
-        "Robert",
-        "William",
-        "James",
-        "Charles",
-    ];
     const handler = (): void => {
         if (myInfo.myName.length === 0) return;
         handleSendName();
