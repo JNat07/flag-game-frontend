@@ -1,17 +1,15 @@
 import * as React from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
 import { createAvatar } from "@dicebear/avatars";
 import * as style from "@dicebear/pixel-art";
-import { playReadyType } from "../socketio/socketio";
+import { choosePlayerProps } from "../types";
 import { GameContext } from "../../pages/_app";
 
-interface Props {
-    playersReady: playReadyType[];
-    myInfo: { myID: string; myName: string };
-}
-
-const ChoosePlayer: React.FC<Props> = ({ playersReady, myInfo }) => {
+const ChoosePlayer: React.FC<choosePlayerProps> = ({
+    playersReady,
+    myInfo,
+}) => {
     const src = (elem: string) => {
         return createAvatar(style, {
             dataUri: true,
