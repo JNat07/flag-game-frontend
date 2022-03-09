@@ -1,11 +1,7 @@
 import * as React from "react";
+import { darkModeType } from "../types";
 
-interface DMReturnType {
-    theme: string;
-    setTheme(value: string): void;
-}
-
-const DarkMode = (): DMReturnType => {
+const DarkMode = (): darkModeType => {
     // Hold theme state
     const [theme, setTheme] = React.useState<string>("");
 

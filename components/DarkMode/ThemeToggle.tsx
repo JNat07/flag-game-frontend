@@ -2,12 +2,9 @@ import * as React from "react";
 import { motion, Variants } from "framer-motion";
 import { GlobeIcon } from "@heroicons/react/outline";
 import { ThemeContext } from "../../pages/_app";
+import { themeToggleType } from "../types";
 
-interface Props {
-    pageLoaded: boolean;
-}
-
-const ThemeToggle: React.FC<Props> = ({ pageLoaded }) => {
+const ThemeToggle: React.FC<themeToggleType> = ({ pageLoaded }) => {
     const themeToggleVar: Variants = {
         right: {
             x: 28,
