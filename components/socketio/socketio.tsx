@@ -1,15 +1,6 @@
 import * as React from "react";
 import { io, Socket } from "socket.io-client";
-
-interface myInfoType {
-    myID: string;
-    myName: string;
-}
-
-export interface playReadyType {
-    name: string;
-    id: string;
-}
+import { myInfoType, playReadyType, socketClientTypes } from "../types";
 
 const SocketIO = () => {
     const [connect, setConnect] = React.useState<boolean>(false);
@@ -20,22 +11,9 @@ const SocketIO = () => {
     const [playersReady, setPlayersReady] = React.useState<playReadyType[]>([
         { name: "", id: "" },
     ]);
-
     const [whoIwantToPlay, setWhoIwantToPlay] = React.useState<string>("");
-
     const [whoRequestMe, setWhoRequestMe] = React.useState<string[]>([]);
-
-    interface socketTypes {
-        allPlayableUsers: (arg: playReadyType[]) => void;
-        "inform-opponent-ofPlayer": (arg: string[]) => void;
-        requestDisconnect: () => void;
-        sendMyName: (arg: string) => void;
-        "remove-Opponent": ({}) => void;
-        "request-Opponent": ({}) => void;
-        "both-Opponent": ({}) => void;
-    }
-
-    const socket: React.MutableRefObject<Socket<socketTypes> | null> =
+    const socket: React.MutableRefObject<Socket<socketClientTypes> | null> =
         React.useRef(null);
 
     React.useEffect(() => {
