@@ -2,7 +2,6 @@ import * as React from "react";
 import type { NextPage } from "next";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { FlagIcon } from "@heroicons/react/outline";
 import { SocketInfo } from "../../pages/_app";
 import FlagGameText from "../FlagGameText";
 
