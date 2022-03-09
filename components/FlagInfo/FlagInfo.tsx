@@ -1,5 +1,25 @@
+import { flagInfoType } from "../types";
+
+// similar countries
+const equalFlags0 = [
+    "NC",
+    "BL",
+    "RE",
+    "PM",
+    "FR",
+    "GP",
+    "YT",
+    "GF",
+    "MQ",
+    "MF",
+];
+const equalFlags1 = ["ID", "MC"];
+const equalFlags2 = ["NL", "LU"];
+const equalFlags3 = ["RO", "TD"];
+const equalFlags4 = ["US", "UM"];
+
 // country codes and names
-const countries: { [key: string]: string } = {
+const countries: flagInfoType = {
     AF: "Afghanistan",
     AX: "Åland Islands",
     AL: "Albania",
@@ -253,24 +273,6 @@ const countries: { [key: string]: string } = {
 
 const chooseCountry = (): string[] => {
     var countryA, countryB;
-
-    // similar countries
-    const equalFlags0 = [
-        "NC",
-        "BL",
-        "RE",
-        "PM",
-        "FR",
-        "GP",
-        "YT",
-        "GF",
-        "MQ",
-        "MF",
-    ];
-    const equalFlags1 = ["ID", "MC"];
-    const equalFlags2 = ["NL", "LU"];
-    const equalFlags3 = ["RO", "TD"];
-    const equalFlags4 = ["US", "UM"];
 
     // run at least once or as long as countries are same
     do {
