@@ -2,13 +2,13 @@ import * as React from "react";
 import type { NextPage } from "next";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { SocketInfo } from "../../pages/_app";
+import { SocketContext } from "../../pages/_app";
 import FlagGameText from "../FlagGameText";
 
 const Menu: NextPage = () => {
     const [startGame, setStartGame] = React.useState<boolean>(false);
     return (
-        <SocketInfo.Consumer>
+        <SocketContext.Consumer>
             {({ myInfo, playersReady, setConnect, HandleSetName }) => (
                 <main className="flex h-screen">
                     <div className="m-auto">
@@ -55,7 +55,7 @@ const Menu: NextPage = () => {
                     </div>
                 </main>
             )}
-        </SocketInfo.Consumer>
+        </SocketContext.Consumer>
     );
 };
 
