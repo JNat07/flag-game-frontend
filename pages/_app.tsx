@@ -7,7 +7,7 @@ import DarkMode from "../components/DarkMode/DarkMode";
 import { socketIOFunc } from "../components/types";
 
 // socket info context
-export const SocketInfo = React.createContext({
+export const SocketContext = React.createContext({
     myInfo: { myID: "", myName: "" },
     playersReady: [{ name: "", id: "" }],
     setConnect: (value: boolean) => {},
@@ -45,7 +45,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     return (
         // wrap everything inside of contexts to be used later
         <ThemeContext.Provider value={{ theme, setTheme }}>
-            <SocketInfo.Provider
+            <SocketContext.Provider
                 value={{
                     myInfo,
                     playersReady,
@@ -67,7 +67,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                         <Component {...pageProps} />
                     </div>
                 </GameContext.Provider>
-            </SocketInfo.Provider>
+            </SocketContext.Provider>
         </ThemeContext.Provider>
     );
 }
