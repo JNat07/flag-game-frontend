@@ -3,7 +3,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { HomeIcon as HomeOutline } from "@heroicons/react/outline";
 import { useRouter } from "next/router";
-import { SocketInfo } from "../pages/_app";
+import { SocketContext } from "../pages/_app";
 import ThemeToggle from "./DarkMode/ThemeToggle";
 
 const Header: React.FC = () => {
@@ -15,7 +15,7 @@ const Header: React.FC = () => {
     }, []);
 
     return (
-        <SocketInfo.Consumer>
+        <SocketContext.Consumer>
             {({ playersReady, setConnect }) => (
                 <header className="inset-x-0 top-0 grid grid-cols-3 p-2 prose dark:prose-invert prose-h3:m-0 prose-p:m-0 ">
                     <ThemeToggle pageLoaded={pageLoaded} />
@@ -47,7 +47,7 @@ const Header: React.FC = () => {
                     </div>
                 </header>
             )}
-        </SocketInfo.Consumer>
+        </SocketContext.Consumer>
     );
 };
 
