@@ -61,6 +61,10 @@ interface flagInfoType {
     [key: string]: string;
 }
 
+interface GameProps {
+    singlePlayer: boolean;
+}
+
 export type {
     playReadyType,
     myInfoType,
@@ -72,4 +76,5 @@ export type {
     chooseNameType,
     correctNamesType,
     flagInfoType,
+    GameProps,
 };
