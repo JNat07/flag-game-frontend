@@ -18,6 +18,7 @@ interface socketIOFunc {
     opponentHandler(value: string, myID: string): void;
     whoIwantToPlay: string;
     whoRequestMe: string[];
+    inRoom: boolean;
 }
 
 interface socketClientTypes {
@@ -28,6 +29,9 @@ interface socketClientTypes {
     "remove-Opponent": ({}) => void;
     "request-Opponent": ({}) => void;
     "both-Opponent": ({}) => void;
+    "put-in-room": () => void;
+    notInGame: () => void;
+    "opponent-left": () => void;
 }
 
 interface choosePlayerProps {
@@ -65,6 +69,13 @@ interface GameProps {
     singlePlayer: boolean;
 }
 
+interface NotInRoomReturn {
+    playersReady: playReadyType[];
+    myInfo: { myID: string; myName: string };
+    HandleSetName: (value: string) => void;
+    handleSendName: () => void;
+}
+
 export type {
     playReadyType,
     myInfoType,
@@ -77,4 +88,5 @@ export type {
     correctNamesType,
     flagInfoType,
     GameProps,
+    NotInRoomReturn,
 };

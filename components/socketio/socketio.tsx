@@ -13,6 +13,7 @@ const SocketIO = () => {
     ]);
     const [whoIwantToPlay, setWhoIwantToPlay] = React.useState<string>("");
     const [whoRequestMe, setWhoRequestMe] = React.useState<string[]>([]);
+    const [inRoom, setInRoom] = React.useState<boolean>(false);
     const socket: React.MutableRefObject<Socket<socketClientTypes> | null> =
         React.useRef(null);
 
@@ -37,10 +38,20 @@ const SocketIO = () => {
             socket.current.on("inform-opponent-ofPlayer", (arg: string[]) => {
                 setWhoRequestMe(arg);
             });
+
+            socket.current.on("put-in-room", () => {
+                // server tells us we have been put into a room
+                setInRoom(!inRoom);
+            });
+
+            // when in game and other opponent leaves
+            socket.current.on("opponent-left", () => {
+                setInRoom(false);
+            });
         } else {
             // else disconnect as to not use resources
             // protection against being run prior to socket being set
-            if (typeof socket.current !== "undefined" && socket.current)
+            if (socket.current && typeof socket.current !== "undefined")
                 socket.current.emit("requestDisconnect");
         }
     }, [connect]);
@@ -90,6 +101,7 @@ const SocketIO = () => {
         opponentHandler,
         whoIwantToPlay,
         whoRequestMe,
+        inRoom,
     };
 };
 
