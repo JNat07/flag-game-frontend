@@ -1,14 +1,15 @@
 import * as React from "react";
-import { SocketInfo } from "./_app";
+import { SocketContext } from "./_app";
+import type { NextPage } from "next";
 import ChoosePlayer from "../components/Multiplayer/ChoosePlayer";
 import ChooseName from "../components/Multiplayer/chooseName";
 
-const MultiPlayer: React.FC = () => {
+const MultiPlayer: NextPage = () => {
     // state to track what to render
     const [hasChoosenName, setHasChooseName] = React.useState<boolean>(false);
     return (
         // consume socket info passed down
-        <SocketInfo.Consumer>
+        <SocketContext.Consumer>
             {({ myInfo, playersReady, HandleSetName, handleSendName }) => (
                 <>
                     {!hasChoosenName ? (
@@ -28,7 +29,7 @@ const MultiPlayer: React.FC = () => {
                     )}
                 </>
             )}
-        </SocketInfo.Consumer>
+        </SocketContext.Consumer>
     );
 };
 
