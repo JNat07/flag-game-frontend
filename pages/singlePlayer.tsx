@@ -7,7 +7,10 @@ const SinglePlayer: NextPage = () => {
     return (
         <SocketContext.Consumer>
             {({ myInfo, playersReady, setConnect, HandleSetName }) => (
-                <Game singlePlayer={true} />
+                <Game
+                    singlePlayer={true}
+                    multiplayerGameInfo={["temp", "temp", "temp"]}
+                />
             )}
         </SocketContext.Consumer>
     );

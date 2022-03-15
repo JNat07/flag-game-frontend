@@ -6,7 +6,11 @@ import FlagGameText from "./FlagGameText";
 import CorrectNames from "./SinglePlayer/correctNames";
 import { GameProps } from "./types";
 
-const Game: React.FC<GameProps> = ({ singlePlayer }) => {
+const Game: React.FC<GameProps> = ({
+    singlePlayer,
+    handleEvent,
+    multiplayerGameInfo,
+}) => {
     const [score, setScore] = React.useState<number>(0); // score (number correct)
     const [wrongQuestion, setWrongQuestion] = React.useState<string>(""); // most recently wrong question
     const [current, setCurrent] = React.useState<string[]>([""]); // the current countries
@@ -18,13 +22,20 @@ const Game: React.FC<GameProps> = ({ singlePlayer }) => {
         // when next question changes, pick new flags
         React.useEffect(() => {
             const [countryA, countryB] = chooseCountry();
-
             // pick random number between 0 and 1 to determine which flag is the question
             setQuestion(Math.random() > 0.5 ? countryA : countryB);
 
             // the current flags to be shown
             setCurrent([countryA, countryB]);
         }, [nextQuestion]);
+    } else {
+        // if multiplayer
+
+        React.useEffect(() => {
+            const [countryA, countryB, newQuestion] = multiplayerGameInfo;
+            setCurrent([countryA, countryB]);
+            setQuestion(newQuestion);
+        }, [multiplayerGameInfo]);
     }
 
     const scoreHandler = (item: string): void => {
@@ -61,7 +72,7 @@ const Game: React.FC<GameProps> = ({ singlePlayer }) => {
                         <Time />
                     </div>
                     <h3 className="px-2 pt-4 pb-2 text-center break-words">
-                        Which is {countries[question].replace(/['"]+/g, "")}?
+                        Which is {countries[question]}?
                     </h3>
 
                     {/* Flags */}
