@@ -14,8 +14,8 @@ export const SocketContext = React.createContext({
     HandleSetName: (value: string) => {},
     handleSendName: () => {},
     inRoom: false,
-    handleEvent: () => {},
-    multiplayerGameInfo: ["", ""],
+    handleEvent: (value: number) => {},
+    multiplayerGameInfo: [[""]],
 });
 
 // theme context
