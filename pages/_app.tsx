@@ -14,6 +14,8 @@ export const SocketContext = React.createContext({
     HandleSetName: (value: string) => {},
     handleSendName: () => {},
     inRoom: false,
+    handleEvent: () => {},
+    multiplayerGameInfo: ["", ""],
 });
 
 // theme context
@@ -40,6 +42,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         whoIwantToPlay,
         whoRequestMe,
         inRoom,
+        handleEvent,
+        multiplayerGameInfo,
     }: socketIOFunc = SocketIO();
 
     const { theme, setTheme } = DarkMode();
@@ -55,6 +59,8 @@ function MyApp({ Component, pageProps }: AppProps) {
                     HandleSetName,
                     handleSendName,
                     inRoom,
+                    handleEvent,
+                    multiplayerGameInfo,
                 }}
             >
                 <GameContext.Provider
