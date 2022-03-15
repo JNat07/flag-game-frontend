@@ -19,8 +19,8 @@ interface socketIOFunc {
     whoIwantToPlay: string;
     whoRequestMe: string[];
     inRoom: boolean;
-    handleEvent: () => void;
-    multiplayerGameInfo: string[];
+    handleEvent: (value: number) => void;
+    multiplayerGameInfo: Array<string[]>;
 }
 
 interface socketClientTypes {
@@ -34,7 +34,9 @@ interface socketClientTypes {
     "put-in-room": () => void;
     notInGame: () => void;
     "opponent-left": () => void;
-    "first-flag": ([]) => void;
+    "all-flags": (gameCountryList: Array<string[]>) => void;
+    "finished-my-score": (score: number) => void;
+    "opponent-score": (opponentScore: number) => void;
 }
 
 interface choosePlayerProps {
@@ -70,8 +72,9 @@ interface flagInfoType {
 
 interface GameProps {
     singlePlayer: boolean;
-    handleEvent?: () => void;
-    multiplayerGameInfo: string[];
+    handleEvent?: (value: number) => void;
+    multiplayerGameInfo?: Array<string[]>;
+    setMultiplayerGameInfo?: (value: Array<string[]>) => void;
 }
 
 interface NotInRoomReturn {
@@ -81,6 +84,11 @@ interface NotInRoomReturn {
     handleSendName: () => void;
     hasChoosenName: boolean;
     setHasChooseName: (value: boolean) => void;
+}
+
+interface TimeProps {
+    score: number;
+    handleEvent: (value: number) => void;
 }
 
 export type {
@@ -96,4 +104,5 @@ export type {
     flagInfoType,
     GameProps,
     NotInRoomReturn,
+    TimeProps,
 };
