@@ -17,6 +17,16 @@ const Game: React.FC<GameProps> = ({
     const [question, setQuestion] = React.useState<string>("AF"); // current question
     const [recentWrong, setRecentWrong] = React.useState<boolean>(false); // if most recent answer was wrong
     const [nextQuestion, setNextQuestion] = React.useState<number>(0); // the question number
+    const [fired, setFired] = React.useState<boolean>(false);
+
+    const time = Time();
+    const minutes = time.getMinutes();
+    const seconds = time.getSeconds();
+
+    if (time.getMinutes() >= 1 && !fired) {
+        setFired(true);
+        if (handleEvent) handleEvent(score);
+    }
 
     if (singlePlayer) {
         // when next question changes, pick new flags
@@ -30,12 +40,16 @@ const Game: React.FC<GameProps> = ({
         }, [nextQuestion]);
     } else {
         // if multiplayer
+        if (multiplayerGameInfo) {
+            React.useEffect(() => {
+                // get individual arrays that contain the countries and the question
+                const [countryA, countryB, newQuestion] =
+                    multiplayerGameInfo[nextQuestion];
 
-        React.useEffect(() => {
-            const [countryA, countryB, newQuestion] = multiplayerGameInfo;
-            setCurrent([countryA, countryB]);
-            setQuestion(newQuestion);
-        }, [multiplayerGameInfo]);
+                setCurrent([countryA, countryB]);
+                setQuestion(newQuestion);
+            }, [multiplayerGameInfo, nextQuestion]);
+        }
     }
 
     const scoreHandler = (item: string): void => {
@@ -69,7 +83,15 @@ const Game: React.FC<GameProps> = ({
                     <div className="grid grid-cols-3 rounded-t-lg bg-gray-200 py-0.5 px-4 dark:bg-gray-600">
                         <h4>Score: {score}</h4>
                         <div />
-                        <Time />
+
+                        <p className="m-0 font-mono place-self-end dark:text-white ">
+                            {/* time not initialized, then set to 00:00 (page load not complete) */}
+                            {time
+                                ? (minutes < 10 ? "0" + minutes : minutes) +
+                                  ":" +
+                                  (seconds < 10 ? "0" + seconds : seconds)
+                                : "00:00"}
+                        </p>
                     </div>
                     <h3 className="px-2 pt-4 pb-2 text-center break-words">
                         Which is {countries[question]}?

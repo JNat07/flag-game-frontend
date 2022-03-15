@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const Time: React.FC = () => {
+const Time = () => {
     const [time, setTime] = React.useState<string>(""); // current time
     const [start, setStart] = React.useState<Date>(new Date()); // date object of when started
 
@@ -26,12 +26,7 @@ const Time: React.FC = () => {
         }, 1000);
     }, []);
 
-    return (
-        <p className="m-0 font-mono place-self-end dark:text-white ">
-            {/* time not initialized, then set to 00:00 (page load not complete) */}
-            {time ? time : "00:00"}
-        </p>
-    );
+    return new Date(new Date().getTime() - start.getTime());
 };
 
 export default Time;

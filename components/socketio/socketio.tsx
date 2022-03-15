@@ -15,8 +15,8 @@ const SocketIO = () => {
     const [whoRequestMe, setWhoRequestMe] = React.useState<string[]>([]);
     const [inRoom, setInRoom] = React.useState<boolean>(false);
     const [multiplayerGameInfo, setMultiplayerGameInfo] = React.useState<
-        string[]
-    >(["ZZ", "ZZ", "question"]);
+        Array<string[]>
+    >([[]]);
     const socket: React.MutableRefObject<Socket<socketClientTypes> | null> =
         React.useRef(null);
 
@@ -53,11 +53,15 @@ const SocketIO = () => {
             });
 
             socket.current.on(
-                "first-flag",
-                ([countryA, countryB, newQuestion]) => {
-                    setMultiplayerGameInfo([countryA, countryB, newQuestion]);
+                "all-flags",
+                (gameCountryList: Array<string[]>) => {
+                    setMultiplayerGameInfo(gameCountryList);
                 }
             );
+
+            socket.current.on("opponent-score", (opponentScore) => {
+                console.log("opponent socre: ", opponentScore);
+            });
         } else {
             // else disconnect as to not use resources
             // protection against being run prior to socket being set
@@ -71,7 +75,7 @@ const SocketIO = () => {
             myID: myInfo.myID,
             myName: myNewName,
         });
-        // localStorage.setItem("myName", myNewName);
+        localStorage.setItem("myName", myNewName);
     };
 
     const handleSendName = () => {
@@ -102,7 +106,12 @@ const SocketIO = () => {
         }
     };
 
-    const handleEvent = () => {};
+    const handleEvent = (score: number): void => {
+        if (socket.current) {
+            console.log("my score: ", score);
+            socket.current.emit("finished-my-score", score);
+        }
+    };
 
     return {
         myInfo,
@@ -116,6 +125,7 @@ const SocketIO = () => {
         inRoom,
         handleEvent,
         multiplayerGameInfo,
+        setMultiplayerGameInfo,
     };
 };
 
