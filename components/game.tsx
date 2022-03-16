@@ -18,12 +18,9 @@ const Game: React.FC<GameProps> = ({
     const [recentWrong, setRecentWrong] = React.useState<boolean>(false); // if most recent answer was wrong
     const [nextQuestion, setNextQuestion] = React.useState<number>(0); // the question number
     const [fired, setFired] = React.useState<boolean>(false);
+    const [time, minutes, seconds] = Time();
 
-    const time = Time();
-    const minutes = time.getMinutes();
-    const seconds = time.getSeconds();
-
-    if (time.getMinutes() >= 1 && !fired) {
+    if (minutes >= 1 && !fired) {
         setFired(true);
         if (handleEvent) handleEvent(score);
     }

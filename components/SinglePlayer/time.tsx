@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const Time = () => {
+const Time = (): (number | Date)[] => {
     const [time, setTime] = React.useState<string>(""); // current time
     const [start, setStart] = React.useState<Date>(new Date()); // date object of when started
 
@@ -26,7 +26,9 @@ const Time = () => {
         }, 1000);
     }, []);
 
-    return new Date(new Date().getTime() - start.getTime());
+    const currentTime = new Date(new Date().getTime() - start.getTime());
+
+    return [currentTime, currentTime.getMinutes(), currentTime.getSeconds()];
 };
 
 export default Time;
