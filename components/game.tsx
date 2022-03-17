@@ -13,7 +13,7 @@ const Game: React.FC<GameProps> = ({
 }) => {
     const [score, setScore] = React.useState<number>(0); // score (number correct)
     const [wrongQuestion, setWrongQuestion] = React.useState<string>(""); // most recently wrong question
-    const [current, setCurrent] = React.useState<string[]>([""]); // the current countries
+    const [current, setCurrent] = React.useState<string[]>(["", ""]); // the current countries
     const [question, setQuestion] = React.useState<string>("AF"); // current question
     const [recentWrong, setRecentWrong] = React.useState<boolean>(false); // if most recent answer was wrong
     const [nextQuestion, setNextQuestion] = React.useState<number>(0); // the question number
@@ -34,6 +34,7 @@ const Game: React.FC<GameProps> = ({
 
             // the current flags to be shown
             setCurrent([countryA, countryB]);
+            return () => setCurrent([]);
         }, [nextQuestion]);
     } else {
         // if multiplayer
@@ -45,6 +46,8 @@ const Game: React.FC<GameProps> = ({
 
                 setCurrent([countryA, countryB]);
                 setQuestion(newQuestion);
+
+                return () => setCurrent([]);
             }, [multiplayerGameInfo, nextQuestion]);
         }
     }
@@ -97,23 +100,27 @@ const Game: React.FC<GameProps> = ({
                     {/* Flags */}
                     <div className="grid h-fit grid-cols-2 place-items-center gap-x-2  px-1.5">
                         {/* static page, not using next image */}
-                        <motion.img
-                            whileTap={{ scale: 0.96 }}
-                            whileHover={{ scale: 0.96 }}
-                            src={`/flags/${current[0]}.png`}
-                            className="m-0 rounded-lg shadow-md cursor-pointer h-fit max-h-28 hover:shadow-xl"
-                            onClick={() => scoreHandler(current[0])}
-                            alt="Country_Flag_1"
-                        />
+                        {current[1] !== "" && current[2] !== "" && (
+                            <>
+                                <motion.img
+                                    whileTap={{ scale: 0.96 }}
+                                    whileHover={{ scale: 0.96 }}
+                                    src={`/flags/${current[0]}.png`}
+                                    className="m-0 rounded-lg shadow-md cursor-pointer h-fit max-h-28 hover:shadow-xl"
+                                    onClick={() => scoreHandler(current[0])}
+                                    alt="Country_Flag_1"
+                                />
 
-                        <motion.img
-                            whileTap={{ scale: 0.96 }}
-                            whileHover={{ scale: 0.96 }}
-                            className="m-0 rounded-lg shadow-md cursor-pointer h-fit max-h-28 hover:shadow-xl"
-                            src={`/flags/${current[1]}.png`}
-                            onClick={() => scoreHandler(current[1])}
-                            alt="Country_Flag_2"
-                        />
+                                <motion.img
+                                    whileTap={{ scale: 0.96 }}
+                                    whileHover={{ scale: 0.96 }}
+                                    className="m-0 rounded-lg shadow-md cursor-pointer h-fit max-h-28 hover:shadow-xl"
+                                    src={`/flags/${current[1]}.png`}
+                                    onClick={() => scoreHandler(current[1])}
+                                    alt="Country_Flag_2"
+                                />
+                            </>
+                        )}
                     </div>
 
                     <div className="mt-4">
