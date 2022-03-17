@@ -7,16 +7,20 @@ const DarkMode = (): darkModeType => {
 
     // only run when first loaded
     React.useEffect(() => {
-        // if theme is in localStorage, set to theme
-        if ("theme" in localStorage) {
-            setTheme(localStorage.theme);
+        // test when render, if OS dark mode
+        if (
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+        ) {
+            setTheme("dark");
         }
 
-        // add event listener for OS light/dark
+        // add event listener for OS light/dark to change when OS changes
         window
             .matchMedia("(prefers-color-scheme: dark)")
             .addEventListener("change", (event) => {
                 setTheme(event.matches ? "dark" : "light");
+                console.log("something run!");
             });
     }, []);
 
@@ -30,13 +34,9 @@ const DarkMode = (): darkModeType => {
 
 const themeHandler = (theme: string): void => {
     // if theme is set to dark, or there is no theme in local-storage and the OS is dark, add dark. Else, remove dark (light).
-
     theme === "dark"
         ? document.documentElement.classList.add("dark")
         : document.documentElement.classList.remove("dark");
-
-    // set localStorage
-    localStorage.theme = theme;
 };
 
 export default DarkMode;
