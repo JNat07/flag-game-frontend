@@ -78,13 +78,13 @@ const Game: React.FC<GameProps> = ({
             <FlagGameText />
 
             <div className="mt-5">
-                <div className="pb-5 rounded-lg ring-2 ring-gray-800 dark:ring-gray-200">
+                <div className="rounded-lg pb-5 ring-2 ring-gray-800 dark:ring-gray-200">
                     {/* info */}
                     <div className="grid grid-cols-3 rounded-t-lg bg-gray-200 py-0.5 px-4 dark:bg-gray-600">
                         <h4>Score: {score}</h4>
                         <div />
 
-                        <p className="m-0 font-mono place-self-end dark:text-white ">
+                        <p className="m-0 place-self-end font-mono dark:text-white ">
                             {/* time not initialized, then set to 00:00 (page load not complete) */}
                             {time
                                 ? (minutes < 10 ? "0" + minutes : minutes) +
@@ -93,7 +93,7 @@ const Game: React.FC<GameProps> = ({
                                 : "00:00"}
                         </p>
                     </div>
-                    <h3 className="px-2 pt-4 pb-2 text-center break-words">
+                    <h3 className="break-words px-2 pt-4 pb-2 text-center">
                         Which is {countries[question]}?
                     </h3>
 
@@ -106,7 +106,7 @@ const Game: React.FC<GameProps> = ({
                                     whileTap={{ scale: 0.96 }}
                                     whileHover={{ scale: 0.96 }}
                                     src={`/flags/${current[0]}.png`}
-                                    className="m-0 rounded-lg shadow-md cursor-pointer h-fit max-h-28 hover:shadow-xl"
+                                    className="m-0 h-fit max-h-28 cursor-pointer rounded-lg shadow-md hover:shadow-xl"
                                     onClick={() => scoreHandler(current[0])}
                                     alt="Country_Flag_1"
                                 />
@@ -114,7 +114,7 @@ const Game: React.FC<GameProps> = ({
                                 <motion.img
                                     whileTap={{ scale: 0.96 }}
                                     whileHover={{ scale: 0.96 }}
-                                    className="m-0 rounded-lg shadow-md cursor-pointer h-fit max-h-28 hover:shadow-xl"
+                                    className="m-0 h-fit max-h-28 cursor-pointer rounded-lg shadow-md hover:shadow-xl"
                                     src={`/flags/${current[1]}.png`}
                                     onClick={() => scoreHandler(current[1])}
                                     alt="Country_Flag_2"
