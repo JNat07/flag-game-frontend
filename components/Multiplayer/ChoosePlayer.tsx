@@ -1,5 +1,4 @@
 import * as React from "react";
-import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { createAvatar } from "@dicebear/avatars";
 import * as style from "@dicebear/pixel-art";
@@ -20,7 +19,7 @@ const ChoosePlayer: React.FC<choosePlayerProps> = ({
     return (
         <GameContext.Consumer>
             {({ opponentHandler, whoIwantToPlay, whoRequestMe }) => (
-                <div className="px-2 prose dark:prose-invert prose-p:m-0 prose-h3:m-0">
+                <div className="px-2 prose prose-h3:m-0 prose-p:m-0 prose-img:m-0 dark:prose-invert">
                     <h2 className="text-center underline">
                         {playersReady.length >= 1
                             ? `Online Players : ${playersReady.length}`
@@ -103,11 +102,7 @@ const ChoosePlayer: React.FC<choosePlayerProps> = ({
                                                       </AnimatePresence>
 
                                                       <div className="flex justify-center">
-                                                          <Image
-                                                              className=""
-                                                              loader={() =>
-                                                                  src(name)
-                                                              }
+                                                          <img
                                                               src={src(name)}
                                                               width={130}
                                                               height={130}
