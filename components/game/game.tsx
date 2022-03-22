@@ -1,15 +1,22 @@
 import * as React from "react";
 import { motion } from "framer-motion";
-import { chooseCountry, countries } from "./FlagInfo/FlagInfo";
-import Time from "./SinglePlayer/time";
-import FlagGameText from "./FlagGameText";
-import CorrectNames from "./SinglePlayer/correctNames";
-import { GameProps } from "./types";
+import { chooseCountry, countries } from "../FlagInfo/FlagInfo";
+import Time from "../SinglePlayer/time";
+import FlagGameText from "../FlagGameText";
+import CorrectNames from "../SinglePlayer/correctNames";
+import { GameProps } from "../types";
+import CheckOnline from "../OnlineChecker";
+import NotifyPlayer from "./notifyPlayer";
 
 const Game: React.FC<GameProps> = ({
     singlePlayer,
     handleEvent,
     multiplayerGameInfo,
+    opponentInfo = {
+        name: "",
+        score: 0,
+    },
+    myName = "",
 }) => {
     const [score, setScore] = React.useState<number>(0); // score (number correct)
     const [wrongQuestion, setWrongQuestion] = React.useState<string>(""); // most recently wrong question
@@ -18,11 +25,13 @@ const Game: React.FC<GameProps> = ({
     const [recentWrong, setRecentWrong] = React.useState<boolean>(false); // if most recent answer was wrong
     const [nextQuestion, setNextQuestion] = React.useState<number>(0); // the question number
     const [fired, setFired] = React.useState<boolean>(false);
+    const [gameOver, setGameOver] = React.useState<boolean>(false);
     const [time, minutes, seconds] = Time();
 
     if (minutes >= 1 && !fired) {
         setFired(true);
         if (handleEvent) handleEvent(score);
+        setGameOver(true);
     }
 
     if (singlePlayer) {
@@ -37,6 +46,8 @@ const Game: React.FC<GameProps> = ({
             return () => setCurrent([]);
         }, [nextQuestion]);
     } else {
+        // custom offline hook
+        if (!CheckOnline()) alert("offline");
         // if multiplayer
         if (multiplayerGameInfo) {
             React.useEffect(() => {
@@ -73,18 +84,18 @@ const Game: React.FC<GameProps> = ({
         }
     };
 
-    return (
-        <div className="prose dark:prose-invert prose-p:m-0 prose-h3:m-0 prose-h2:m-0 prose-h4:m-0 mx-2 mt-[10vh] rounded-md py-2">
+    return !gameOver ? (
+        <div className="prose mx-2 mt-[10vh] rounded-md py-2 prose-h2:m-0 prose-h3:m-0 prose-h4:m-0 prose-p:m-0 dark:prose-invert">
             <FlagGameText />
 
             <div className="mt-5">
-                <div className="rounded-lg pb-5 ring-2 ring-gray-800 dark:ring-gray-200">
+                <div className="pb-5 rounded-lg ring-2 ring-gray-800 dark:ring-gray-200">
                     {/* info */}
                     <div className="grid grid-cols-3 rounded-t-lg bg-gray-200 py-0.5 px-4 dark:bg-gray-600">
                         <h4>Score: {score}</h4>
                         <div />
 
-                        <p className="m-0 place-self-end font-mono dark:text-white ">
+                        <p className="m-0 font-mono place-self-end dark:text-white ">
                             {/* time not initialized, then set to 00:00 (page load not complete) */}
                             {time
                                 ? (minutes < 10 ? "0" + minutes : minutes) +
@@ -93,7 +104,7 @@ const Game: React.FC<GameProps> = ({
                                 : "00:00"}
                         </p>
                     </div>
-                    <h3 className="break-words px-2 pt-4 pb-2 text-center">
+                    <h3 className="px-2 pt-4 pb-2 text-center break-words">
                         Which is {countries[question]}?
                     </h3>
 
@@ -106,7 +117,7 @@ const Game: React.FC<GameProps> = ({
                                     whileTap={{ scale: 0.96 }}
                                     whileHover={{ scale: 0.96 }}
                                     src={`/flags/${current[0]}.png`}
-                                    className="m-0 h-fit max-h-28 cursor-pointer rounded-lg shadow-md hover:shadow-xl"
+                                    className="m-0 rounded-lg shadow-md cursor-pointer h-fit max-h-28 hover:shadow-xl"
                                     onClick={() => scoreHandler(current[0])}
                                     alt="Country_Flag_1"
                                 />
@@ -114,7 +125,7 @@ const Game: React.FC<GameProps> = ({
                                 <motion.img
                                     whileTap={{ scale: 0.96 }}
                                     whileHover={{ scale: 0.96 }}
-                                    className="m-0 h-fit max-h-28 cursor-pointer rounded-lg shadow-md hover:shadow-xl"
+                                    className="m-0 rounded-lg shadow-md cursor-pointer h-fit max-h-28 hover:shadow-xl"
                                     src={`/flags/${current[1]}.png`}
                                     onClick={() => scoreHandler(current[1])}
                                     alt="Country_Flag_2"
@@ -133,6 +144,13 @@ const Game: React.FC<GameProps> = ({
                 </div>
             </div>
         </div>
+    ) : (
+        <NotifyPlayer
+            myScore={score}
+            theirScore={opponentInfo.score}
+            myName={myName}
+            theirName={opponentInfo.name}
+        />
     );
 };
 
