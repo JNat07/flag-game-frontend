@@ -35,7 +35,6 @@ interface socketIOFunc {
 interface socketClientTypes {
     allPlayableUsers: (arg: playReadyType[]) => void;
     "inform-opponent-ofPlayer": (arg: string[]) => void;
-    requestDisconnect: () => void;
     sendMyName: (arg: string) => void;
     "remove-Opponent": ({}) => void;
     "request-Opponent": ({}) => void;
