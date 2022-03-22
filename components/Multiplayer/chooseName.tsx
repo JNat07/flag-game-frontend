@@ -1,9 +1,8 @@
 import * as React from "react";
-import { createAvatar } from "@dicebear/avatars";
-import * as style from "@dicebear/pixel-art";
 import { motion } from "framer-motion";
 import { chooseNameType } from "../types";
 import { names } from "../randomInfo";
+import avatarGenerator from "../AvatarGenerator";
 
 const ChooseName: React.FC<chooseNameType> = ({
     HandleSetName,
@@ -22,15 +21,8 @@ const ChooseName: React.FC<chooseNameType> = ({
         HandleSetName(newName);
     };
 
-    const src = (elem: string): string => {
-        return createAvatar(style, {
-            dataUri: true,
-            seed: elem,
-        });
-    };
-
     return (
-        <div className="prose prose-img:m-0 dark:prose-invert m-4 mt-[15vh] rounded-lg px-3 shadow-inner">
+        <div className="prose m-4 mt-[15vh] rounded-lg px-3 shadow-inner prose-img:m-0 dark:prose-invert">
             <div className="py-5 space-y-5 ">
                 <div className="mx-2 space-y-1">
                     <h2 className="m-0 text-3xl text-center">
@@ -44,7 +36,7 @@ const ChooseName: React.FC<chooseNameType> = ({
                         <div className="flex space-x-2 ">
                             <img
                                 className="self-end rounded-lg bg-slate-600/80 dark:bg-slate-600 dark:opacity-90"
-                                src={src(myInfo.myName)}
+                                src={avatarGenerator(myInfo.myName)}
                                 width={70}
                                 height={70}
                                 alt="icon"
