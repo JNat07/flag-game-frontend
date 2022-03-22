@@ -16,6 +16,10 @@ export const SocketContext = React.createContext({
     inRoom: false,
     handleEvent: (value: number) => {},
     multiplayerGameInfo: [[""]],
+    opponentInfo: {
+        name: "",
+        score: 0,
+    },
 });
 
 // theme context
@@ -44,6 +48,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         inRoom,
         handleEvent,
         multiplayerGameInfo,
+        opponentInfo,
     }: socketIOFunc = SocketIO();
 
     const { theme, setTheme } = DarkMode();
@@ -61,6 +66,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                     inRoom,
                     handleEvent,
                     multiplayerGameInfo,
+                    opponentInfo,
                 }}
             >
                 <GameContext.Provider

@@ -1,6 +1,11 @@
 import * as React from "react";
 import { io, Socket } from "socket.io-client";
-import { myInfoType, playReadyType, socketClientTypes } from "../types";
+import {
+    myInfoType,
+    playReadyType,
+    socketClientTypes,
+    OpponentInfo,
+} from "../types";
 
 const SocketIO = () => {
     const [connect, setConnect] = React.useState<boolean>(false);
@@ -17,6 +22,10 @@ const SocketIO = () => {
     const [multiplayerGameInfo, setMultiplayerGameInfo] = React.useState<
         Array<string[]>
     >([[]]);
+    const [opponentInfo, setOpponentInfo] = React.useState<OpponentInfo>({
+        name: "",
+        score: 0,
+    });
     const socket: React.MutableRefObject<Socket<socketClientTypes> | null> =
         React.useRef(null);
 
@@ -59,9 +68,12 @@ const SocketIO = () => {
                 }
             );
 
-            socket.current.on("opponent-score", (opponentScore) => {
-                console.log("opponent socre: ", opponentScore);
-            });
+            socket.current.on(
+                "opponent-info",
+                (opponentScore: OpponentInfo) => {
+                    setOpponentInfo(opponentScore);
+                }
+            );
         } else {
             // else disconnect as to not use resources
             // protection against being run prior to socket being set
@@ -108,8 +120,10 @@ const SocketIO = () => {
 
     const handleEvent = (score: number): void => {
         if (socket.current) {
-            console.log("my score: ", score);
-            socket.current.emit("finished-my-score", score);
+            socket.current.emit("finished-my-score", {
+                name: myInfo.myName,
+                score: score,
+            });
         }
     };
 
@@ -126,6 +140,7 @@ const SocketIO = () => {
         handleEvent,
         multiplayerGameInfo,
         setMultiplayerGameInfo,
+        opponentInfo,
     };
 };
 
