@@ -1,7 +1,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { HomeIcon as HomeOutline } from "@heroicons/react/outline";
+import { HomeIcon } from "@heroicons/react/outline";
 import { useRouter } from "next/router";
 import { SocketContext } from "../pages/_app";
 import ThemeToggle from "./DarkMode/ThemeToggle";
@@ -17,7 +17,7 @@ const Header: React.FC = () => {
     return (
         <SocketContext.Consumer>
             {({ playersReady, setConnect }) => (
-                <header className="inset-x-0 top-0 grid grid-cols-3 p-2 prose dark:prose-invert prose-h3:m-0 prose-p:m-0 ">
+                <header className="inset-x-0 top-0 grid grid-cols-3 p-2 prose prose-h3:m-0 prose-p:m-0 dark:prose-invert ">
                     <ThemeToggle pageLoaded={pageLoaded} />
                     <div /> {/* middle col empty */}
                     <div className="flex justify-end">
@@ -27,6 +27,7 @@ const Header: React.FC = () => {
                                 <motion.div
                                     animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
+                                    whileTap={{ scale: 0.95 }}
                                     className="flex space-x-1 text-sm "
                                     onClick={() =>
                                         // if on multiPlayer page, set connect false
@@ -38,7 +39,7 @@ const Header: React.FC = () => {
                                     <p className="pt-1 text-center">Exit</p>
                                     <Link href={"/"} passHref>
                                         <a>
-                                            <HomeOutline className="w-6 h-6" />
+                                            <HomeIcon className="w-6 h-6" />
                                         </a>
                                     </Link>
                                 </motion.div>
