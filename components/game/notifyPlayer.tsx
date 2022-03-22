@@ -9,19 +9,25 @@ const NotifyPlayer: React.FC<NotifyPlayerType> = ({
     theirName,
 }) => {
     return (
-        <div>
-            <p>
-                My ({myName}) Score: {myScore}
-            </p>
+        <div className="prose prose-img:m-0 dark:prose-invert">
+            <h1 className="my-8 text-center underline">
+                {myScore > theirScore ? "Victory!" : "Defeat"}
+            </h1>
 
-            <img
-                src={avatarGenerator(theirName)}
-                width={70}
-                height={70}
-                alt="icon"
-            />
+            <div className="flex justify-center mx-2 rounded-lg ring ring-red-400">
+                <img
+                    src={avatarGenerator(myName)}
+                    alt="icon"
+                    className="h-64"
+                />
+            </div>
 
             <p>
+                <img
+                    src={avatarGenerator(theirName)}
+                    alt="icon"
+                    className="h-32"
+                />
                 Thier {theirName} Score: {theirScore}
             </p>
         </div>
