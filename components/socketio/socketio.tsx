@@ -30,6 +30,10 @@ const SocketIO = () => {
         React.useRef(null);
 
     React.useEffect(() => {
+        socket.current?.disconnect();
+    }, []);
+
+    React.useEffect(() => {
         // if playing multiplayer, connect
         if (connect) {
             // connect to socketio server
@@ -53,7 +57,7 @@ const SocketIO = () => {
 
             socket.current.on("put-in-room", () => {
                 // server tells us we have been put into a room
-                setInRoom(!inRoom);
+                setInRoom(true);
             });
 
             // when in game and other opponent leaves
@@ -80,6 +84,14 @@ const SocketIO = () => {
             if (socket.current && typeof socket.current !== "undefined")
                 socket.current.emit("requestDisconnect");
         }
+
+        return () => {
+            setOpponentInfo({ name: "", score: 0 });
+            setWhoRequestMe([""]);
+            setPlayersReady([{ name: "", id: "" }]);
+            // insure player not playing alone in multiplayer
+            setInRoom(false);
+        };
     }, [connect]);
 
     const HandleSetName = (myNewName: string) => {
