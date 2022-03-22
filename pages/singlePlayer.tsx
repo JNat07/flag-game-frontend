@@ -1,6 +1,6 @@
 import * as React from "react";
 import type { NextPage } from "next";
-import Game from "../components/game";
+import Game from "../components/game/game";
 
 const SinglePlayer: NextPage = () => <Game singlePlayer={true} />;
 

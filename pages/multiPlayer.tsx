@@ -4,7 +4,7 @@ import type { NextPage } from "next";
 import ChoosePlayer from "../components/Multiplayer/ChoosePlayer";
 import ChooseName from "../components/Multiplayer/chooseName";
 import { NotInRoomReturn } from "../components/types";
-import Game from "../components/game";
+import Game from "../components/game/game";
 
 const MultiPlayer: NextPage = () => {
     // state to track what to render
@@ -21,6 +21,7 @@ const MultiPlayer: NextPage = () => {
                 inRoom,
                 handleEvent,
                 multiplayerGameInfo,
+                opponentInfo,
             }) => (
                 <>
                     {inRoom ? (
@@ -29,6 +30,8 @@ const MultiPlayer: NextPage = () => {
                             singlePlayer={false}
                             handleEvent={handleEvent}
                             multiplayerGameInfo={multiplayerGameInfo}
+                            opponentInfo={opponentInfo}
+                            myName={myInfo.myName}
                         />
                     ) : (
                         // render when user needs to choose name
