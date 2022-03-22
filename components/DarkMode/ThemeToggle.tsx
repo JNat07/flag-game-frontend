@@ -44,7 +44,7 @@ const ThemeToggle: React.FC<themeToggleType> = ({ pageLoaded }) => {
                             </motion.div>
                         </div>
 
-                        <p className="text-black dark:text-white">
+                        <p className="text-black cursor-default selection:bg-transparent dark:text-white">
                             {/*  theme initialized, else know OS preference */}
                             {theme ? theme : "System"}
                         </p>
