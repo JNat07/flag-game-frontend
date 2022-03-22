@@ -14,6 +14,15 @@ const ThemeToggle: React.FC<themeToggleType> = ({ pageLoaded }) => {
         },
     };
 
+    const themeLabelVarient: Variants = {
+        dark: {
+            opacity: [1, 0.6, 1],
+        },
+        light: {
+            opacity: [1, 0.6, 1],
+        },
+    };
+
     // return light or dark
     const darkOrLight = (theme: string): string =>
         theme === "dark" ? "left" : "right";
@@ -44,10 +53,15 @@ const ThemeToggle: React.FC<themeToggleType> = ({ pageLoaded }) => {
                             </motion.div>
                         </div>
 
-                        <p className="text-black cursor-default selection:bg-transparent dark:text-white">
+                        <motion.p
+                            className="text-black cursor-default selection:bg-transparent dark:text-white"
+                            variants={themeLabelVarient}
+                            animate={theme === "light" ? "light" : "dark"}
+                            initial={{ opacity: 1 }}
+                        >
                             {/*  theme initialized, else know OS preference */}
                             {theme ? theme : "System"}
-                        </p>
+                        </motion.p>
                     </div>
                 )}
             </ThemeContext.Consumer>
