@@ -8,6 +8,11 @@ interface myInfoType {
     myName: string;
 }
 
+interface OpponentInfo {
+    name: string;
+    score: number;
+}
+
 // socketio custom hook return types
 interface socketIOFunc {
     myInfo: { myID: string; myName: string };
@@ -21,6 +26,10 @@ interface socketIOFunc {
     inRoom: boolean;
     handleEvent: (value: number) => void;
     multiplayerGameInfo: Array<string[]>;
+    opponentInfo: {
+        name: string;
+        score: number;
+    };
 }
 
 interface socketClientTypes {
@@ -35,8 +44,8 @@ interface socketClientTypes {
     notInGame: () => void;
     "opponent-left": () => void;
     "all-flags": (gameCountryList: Array<string[]>) => void;
-    "finished-my-score": (score: number) => void;
-    "opponent-score": (opponentScore: number) => void;
+    "finished-my-score": (score: { name: string; score: number }) => void;
+    "opponent-info": (opponentInfo: OpponentInfo) => void;
 }
 
 interface choosePlayerProps {
@@ -75,6 +84,8 @@ interface GameProps {
     handleEvent?: (value: number) => void;
     multiplayerGameInfo?: Array<string[]>;
     setMultiplayerGameInfo?: (value: Array<string[]>) => void;
+    opponentInfo?: OpponentInfo;
+    myName?: string;
 }
 
 interface NotInRoomReturn {
@@ -91,6 +102,13 @@ interface TimeProps {
     handleEvent: (value: number) => void;
 }
 
+interface NotifyPlayerType {
+    myScore: number;
+    theirScore: number;
+    myName: string;
+    theirName: string;
+}
+
 export type {
     playReadyType,
     myInfoType,
@@ -105,4 +123,6 @@ export type {
     GameProps,
     NotInRoomReturn,
     TimeProps,
+    NotifyPlayerType,
+    OpponentInfo,
 };
