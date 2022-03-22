@@ -30,10 +30,6 @@ const SocketIO = () => {
         React.useRef(null);
 
     React.useEffect(() => {
-        socket.current?.disconnect();
-    }, []);
-
-    React.useEffect(() => {
         // if playing multiplayer, connect
         if (connect) {
             // connect to socketio server
@@ -79,16 +75,14 @@ const SocketIO = () => {
                 }
             );
         } else {
-            // else disconnect as to not use resources
-            // protection against being run prior to socket being set
-            if (socket.current && typeof socket.current !== "undefined")
-                socket.current.emit("requestDisconnect");
+            console.log("run");
+            setWhoRequestMe([]);
+            socket.current?.disconnect();
         }
 
         return () => {
             setOpponentInfo({ name: "", score: 0 });
             setWhoRequestMe([""]);
-            setPlayersReady([{ name: "", id: "" }]);
             // insure player not playing alone in multiplayer
             setInRoom(false);
         };
