@@ -2,8 +2,8 @@ import * as React from "react";
 import { darkModeType } from "../types";
 
 const DarkMode = (): darkModeType => {
-    // Hold theme state
-    const [theme, setTheme] = React.useState<string>("");
+    // Hold theme state and default as light
+    const [theme, setTheme] = React.useState<string>("light");
 
     // only run when first loaded
     React.useEffect(() => {
@@ -20,7 +20,6 @@ const DarkMode = (): darkModeType => {
             .matchMedia("(prefers-color-scheme: dark)")
             .addEventListener("change", (event) => {
                 setTheme(event.matches ? "dark" : "light");
-                console.log("something run!");
             });
     }, []);
 
