@@ -112,7 +112,7 @@ const Background = () => {
                 variants={imageMoveVarient}
                 animate={"animateRight"}
                 src="https://countryflagsapi.com/png/VC"
-                className="h-16 rounded-md w-fit hover:shadow-2xl"
+                className="w-auto h-16 rounded-md hover:shadow-2xl"
                 alt="Country_Flag"
                 transition={{
                     duration: RandomNumber(15, 20),
@@ -125,7 +125,7 @@ const Background = () => {
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
                 src="https://countryflagsapi.com/png/HK"
-                className="h-16 rounded-md w-fit hover:shadow-2xl"
+                className="w-auto h-16 rounded-md hover:shadow-2xl"
                 transition={{
                     duration: RandomNumber(7, 17),
                     ease: [0.5, 0.5, 0.5, 0.5],
@@ -137,7 +137,7 @@ const Background = () => {
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
                 src="https://countryflagsapi.com/png/BD"
-                className="h-16 rounded-md w-fit hover:shadow-2xl"
+                className="w-auto h-16 rounded-md hover:shadow-2xl"
                 transition={{
                     duration: RandomNumber(15, 20),
 
@@ -150,7 +150,7 @@ const Background = () => {
                 variants={imageMoveVarient}
                 animate={"animateRight"}
                 src="https://countryflagsapi.com/png/CL"
-                className="h-16 rounded-md w-fit hover:shadow-2xl"
+                className="w-auto h-16 rounded-md hover:shadow-2xl"
                 alt="Country_Flag"
                 transition={{
                     duration: RandomNumber(15, 20),
@@ -176,7 +176,7 @@ const Background = () => {
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
                 src="https://countryflagsapi.com/png/CC"
-                className="h-16 rounded-md w-fit hover:shadow-2xl"
+                className="w-auto h-16 rounded-md hover:shadow-2xl"
                 transition={{
                     duration: RandomNumber(15, 20),
 
@@ -190,7 +190,7 @@ const Background = () => {
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
                 src="https://countryflagsapi.com/png/HT"
-                className="h-16 rounded-md w-fit hover:shadow-2xl"
+                className="w-auto h-16 rounded-md hover:shadow-2xl"
                 transition={{
                     duration: RandomNumber(15, 20),
 
