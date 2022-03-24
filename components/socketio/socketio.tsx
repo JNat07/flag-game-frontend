@@ -33,7 +33,9 @@ const SocketIO = () => {
         // if playing multiplayer, connect
         if (connect) {
             // connect to socketio server
-            socket.current = io("http://localhost:4000");
+            socket.current = io(
+                "https://flag-game-socketio-server.herokuapp.com/" // socketio server address
+            );
 
             // client-side
             socket.current.on("connect", () => {
