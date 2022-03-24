@@ -34,7 +34,7 @@ const SocketIO = () => {
         if (connect) {
             // connect to socketio server
             socket.current = io(
-                "https://flag-game-socketio-server.herokuapp.com/" // socketio server address
+                "https://flag-game-socketio-server.herokuapp.com/"
             );
 
             // client-side
