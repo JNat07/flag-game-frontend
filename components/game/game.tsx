@@ -1,5 +1,6 @@
 import * as React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { chooseCountry, countries } from "../FlagInfo/FlagInfo";
 import Time from "../SinglePlayer/time";
 import FlagGameText from "../FlagGameText";
@@ -28,7 +29,7 @@ const Game: React.FC<GameProps> = ({
     const [gameOver, setGameOver] = React.useState<boolean>(false);
     const [time, minutes, seconds] = Time();
 
-    if (minutes >= 1 && !fired) {
+    if (minutes >= 1 && !fired && !singlePlayer) {
         setFired(true);
         if (handleEvent) handleEvent(score);
         setGameOver(true);
@@ -104,12 +105,12 @@ const Game: React.FC<GameProps> = ({
                                 : "00:00"}
                         </p>
                     </div>
-                    <h3 className="px-2 pt-4 pb-2 text-center break-words">
+                    <h3 className="px-1 pt-4 text-center break-words">
                         Which is {countries[question]}?
                     </h3>
 
                     {/* Flags */}
-                    <div className="grid h-fit grid-cols-2 place-items-center gap-x-2  px-1.5">
+                    <div className="mt-5 grid h-fit grid-cols-2 place-items-center gap-x-4  px-1.5">
                         {/* static page, not using next image */}
                         {current[1] !== "" && current[2] !== "" && (
                             <>
@@ -117,7 +118,7 @@ const Game: React.FC<GameProps> = ({
                                     whileTap={{ scale: 0.96 }}
                                     whileHover={{ scale: 0.96 }}
                                     src={`https://countryflagsapi.com/png/${current[0]}`}
-                                    className="m-0 rounded-lg shadow-md cursor-pointer h-fit max-h-28 hover:shadow-xl"
+                                    className="m-0 rounded-lg shadow-xl cursor-pointer h-fit max-h-28 hover:shadow-2xl"
                                     onClick={() => scoreHandler(current[0])}
                                     alt="Country_Flag_1"
                                 />
@@ -125,7 +126,7 @@ const Game: React.FC<GameProps> = ({
                                 <motion.img
                                     whileTap={{ scale: 0.96 }}
                                     whileHover={{ scale: 0.96 }}
-                                    className="m-0 rounded-lg shadow-md cursor-pointer h-fit max-h-28 hover:shadow-xl"
+                                    className="m-0 rounded-lg shadow-xl cursor-pointer h-fit max-h-28 hover:shadow-2xl"
                                     src={`https://countryflagsapi.com/png/${current[1]}`}
                                     onClick={() => scoreHandler(current[1])}
                                     alt="Country_Flag_2"

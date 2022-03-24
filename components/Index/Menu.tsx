@@ -1,61 +1,191 @@
 import * as React from "react";
 import type { NextPage } from "next";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import { SocketContext } from "../../pages/_app";
 import FlagGameText from "../FlagGameText";
 
 const Menu: NextPage = () => {
     const [startGame, setStartGame] = React.useState<boolean>(false);
+
     return (
-        <SocketContext.Consumer>
-            {({ myInfo, playersReady, setConnect, HandleSetName }) => (
-                <main className="flex h-screen">
-                    <div className="m-auto">
-                        <div className="p-8 px-16 mb-64 prose rounded-lg shadow-inner prose-h1:m-0 dark:prose-invert h-fit dark:shadow-none ">
+        <div className="overflow-y-hidden">
+            <Background />
+            <SocketContext.Consumer>
+                {({ setConnect }) => (
+                    <main className="relative z-20 flex h-full">
+                        <div className="m-auto">
                             <FlagGameText />
-                            <div className="mt-12 space-y-5">
-                                <div className="flex justify-center">
-                                    <Link
-                                        href={"/singlePlayer"}
-                                        passHref
-                                        as="/singleplayer"
-                                    >
-                                        <motion.a
-                                            whileHover={{ scale: 0.98 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            className="w-full text-center no-underline rounded-md shadow-md ring-2 ring-blue-500/30 hover:ring-blue-500/50 dark:ring-gray-50 dark:hover:ring-white/70"
-                                            onClick={() => setStartGame(true)}
+                            <div className="p-8 px-16 mt-32 prose rounded-lg h-fit prose-h1:m-0 dark:prose-invert dark:shadow-none ">
+                                <div className="mt-12 space-y-5">
+                                    <div className="flex justify-center">
+                                        <Link
+                                            href={"/singlePlayer"}
+                                            passHref
+                                            as="/singleplayer"
                                         >
-                                            Single Payer
-                                        </motion.a>
-                                    </Link>
-                                </div>
-                                <div className="flex justify-center">
-                                    <Link
-                                        href={"/multiPlayer"}
-                                        as="/multiplayer"
-                                        passHref
-                                    >
-                                        <motion.a
-                                            whileHover={{ scale: 0.98 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            className="w-full text-center no-underline rounded-md shadow-md ring-2 ring-blue-500/30 hover:ring-blue-500/50 dark:ring-gray-50 dark:hover:ring-white/70"
-                                            onClick={() => {
-                                                setConnect(true);
-                                                setStartGame(true);
-                                            }}
+                                            <motion.a
+                                                whileHover={{ scale: 0.98 }}
+                                                whileTap={{ scale: 0.95 }}
+                                                className="w-full text-center no-underline rounded-md shadow-sm ring-2 ring-blue-500/30 hover:ring-blue-500/50 dark:ring-gray-50 dark:hover:ring-white/70"
+                                                onClick={() =>
+                                                    setStartGame(true)
+                                                }
+                                            >
+                                                Single Player
+                                            </motion.a>
+                                        </Link>
+                                    </div>
+                                    <div className="flex justify-center">
+                                        <Link
+                                            href={"/multiPlayer"}
+                                            as="/multiplayer"
+                                            passHref
                                         >
-                                            Multi-player
-                                        </motion.a>
-                                    </Link>
+                                            <motion.a
+                                                whileHover={{ scale: 0.98 }}
+                                                whileTap={{ scale: 0.95 }}
+                                                className="w-full text-center no-underline rounded-md shadow-sm ring-2 ring-blue-500/30 hover:ring-blue-500/50 dark:ring-gray-50 dark:hover:ring-white/70"
+                                                onClick={() => {
+                                                    setConnect(true);
+                                                    setStartGame(true);
+                                                }}
+                                            >
+                                                Multi Player
+                                            </motion.a>
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </main>
-            )}
-        </SocketContext.Consumer>
+                    </main>
+                )}
+            </SocketContext.Consumer>
+        </div>
+    );
+};
+
+const Background = () => {
+    // Returns a random integer from 1 to 10:
+    const RandomNumber = (min: number, max: number): number =>
+        Math.floor(Math.random() * max) + min;
+
+    const imageMoveVarient: Variants = {
+        animateRight: {
+            x: [500, -100, 700],
+        },
+
+        animateLeft: {
+            x: [-400, 500, -300],
+        },
+    };
+
+    return (
+        <div className="absolute w-screen space-y-5 overflow-hidden blur-md">
+            <motion.img
+                variants={imageMoveVarient}
+                animate={"animateLeft"}
+                src="https://countryflagsapi.com/png/DE"
+                className="h-16 rounded-md w-fit hover:shadow-2xl"
+                transition={{
+                    duration: RandomNumber(15, 20),
+                    ease: [0.5, 0.5, 0.5, 0.5],
+                    repeat: Infinity,
+                }}
+                alt="Country_Flag"
+            />
+            <motion.img
+                variants={imageMoveVarient}
+                animate={"animateLeft"}
+                src="https://countryflagsapi.com/png/CM"
+                className="h-16 rounded-md w-fit hover:shadow-2xl"
+                transition={{
+                    duration: RandomNumber(15, 20),
+
+                    ease: [0.5, 0.5, 0.5, 0.5],
+                    repeat: Infinity,
+                }}
+                alt="Country_Flag"
+            />
+
+            <motion.img
+                variants={imageMoveVarient}
+                animate={"animateRight"}
+                src="https://countryflagsapi.com/png/VC"
+                className="h-16 rounded-md w-fit hover:shadow-2xl"
+                alt="Country_Flag"
+                transition={{
+                    duration: RandomNumber(15, 20),
+
+                    ease: [0.5, 0.5, 0.5, 0.5],
+                    repeat: Infinity,
+                }}
+            />
+            <motion.img
+                variants={imageMoveVarient}
+                animate={"animateLeft"}
+                src="https://countryflagsapi.com/png/HK"
+                className="h-16 rounded-md w-fit hover:shadow-2xl"
+                transition={{
+                    duration: RandomNumber(7, 17),
+                    ease: [0.5, 0.5, 0.5, 0.5],
+                    repeat: Infinity,
+                }}
+                alt="Country_Flag"
+            />
+            <motion.img
+                variants={imageMoveVarient}
+                animate={"animateLeft"}
+                src="https://countryflagsapi.com/png/BD"
+                className="h-16 rounded-md w-fit hover:shadow-2xl"
+                transition={{
+                    duration: RandomNumber(15, 20),
+
+                    ease: [0.5, 0.5, 0.5, 0.5],
+                    repeat: Infinity,
+                }}
+                alt="Country_Flag"
+            />
+            <motion.img
+                variants={imageMoveVarient}
+                animate={"animateRight"}
+                src="https://countryflagsapi.com/png/CL"
+                className="h-16 rounded-md w-fit hover:shadow-2xl"
+                alt="Country_Flag"
+                transition={{
+                    duration: RandomNumber(15, 20),
+
+                    ease: [0.5, 0.5, 0.5, 0.5],
+                    repeat: Infinity,
+                }}
+            />
+            <motion.img
+                variants={imageMoveVarient}
+                animate={"animateRight"}
+                src="https://countryflagsapi.com/png/US"
+                className="h-16 rounded-md w-fit hover:shadow-2xl"
+                alt="Country_Flag"
+                transition={{
+                    duration: RandomNumber(15, 20),
+
+                    ease: [0.5, 0.5, 0.5, 0.5],
+                    repeat: Infinity,
+                }}
+            />
+            <motion.img
+                variants={imageMoveVarient}
+                animate={"animateLeft"}
+                src="https://countryflagsapi.com/png/CC"
+                className="h-16 rounded-md w-fit hover:shadow-2xl"
+                transition={{
+                    duration: RandomNumber(15, 20),
+
+                    ease: [0.5, 0.5, 0.5, 0.5],
+                    repeat: Infinity,
+                }}
+                alt="Country_Flag"
+            />
+        </div>
     );
 };
 
