@@ -116,7 +116,7 @@ const Game: React.FC<GameProps> = ({
                                 <motion.img
                                     whileTap={{ scale: 0.96 }}
                                     whileHover={{ scale: 0.96 }}
-                                    src={`/flags/${current[0]}.png`}
+                                    src={`/static/flags/${current[0]}.png`}
                                     className="m-0 rounded-lg shadow-md cursor-pointer h-fit max-h-28 hover:shadow-xl"
                                     onClick={() => scoreHandler(current[0])}
                                     alt="Country_Flag_1"
@@ -126,7 +126,7 @@ const Game: React.FC<GameProps> = ({
                                     whileTap={{ scale: 0.96 }}
                                     whileHover={{ scale: 0.96 }}
                                     className="m-0 rounded-lg shadow-md cursor-pointer h-fit max-h-28 hover:shadow-xl"
-                                    src={`/flags/${current[1]}.png`}
+                                    src={`/static/flags/${current[1]}.png`}
                                     onClick={() => scoreHandler(current[1])}
                                     alt="Country_Flag_2"
                                 />
