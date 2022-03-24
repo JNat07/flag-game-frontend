@@ -163,7 +163,7 @@ const Background = () => {
                 variants={imageMoveVarient}
                 animate={"animateRight"}
                 src="https://countryflagsapi.com/png/US"
-                className="h-16 rounded-md w-fit hover:shadow-2xl"
+                className="w-auto h-16 rounded-md hover:shadow-2xl"
                 alt="Country_Flag"
                 transition={{
                     duration: RandomNumber(15, 20),
