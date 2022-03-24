@@ -45,7 +45,7 @@ const Menu: NextPage = () => {
                                             <motion.a
                                                 whileHover={{ scale: 0.98 }}
                                                 whileTap={{ scale: 0.95 }}
-                                                className="w-full px-16 text-3xl text-center no-underline rounded-md shadow-lg ring ring-gray-800 hover:ring-balck dark:ring-gray-50 dark:hover:ring-white/70"
+                                                className="w-full px-16 text-3xl text-center no-underline rounded-md shadow-lg hover:ring-balck ring ring-gray-800 dark:ring-gray-50 dark:hover:ring-white/70"
                                                 onClick={() => {
                                                     setConnect(true);
                                                     setStartGame(true);
@@ -86,7 +86,7 @@ const Background = () => {
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
                 src="https://countryflagsapi.com/png/DE"
-                className="h-16 rounded-md w-fit hover:shadow-2xl"
+                className="w-auto h-16 rounded-md hover:shadow-2xl"
                 transition={{
                     duration: RandomNumber(15, 20),
                     ease: [0.5, 0.5, 0.5, 0.5],
@@ -98,7 +98,7 @@ const Background = () => {
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
                 src="https://countryflagsapi.com/png/CM"
-                className="h-16 rounded-md w-fit hover:shadow-2xl"
+                className="w-auto h-16 rounded-md hover:shadow-2xl"
                 transition={{
                     duration: RandomNumber(15, 20),
 
