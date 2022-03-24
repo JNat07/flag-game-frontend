@@ -16,9 +16,9 @@ const Menu: NextPage = () => {
                     <main className="relative z-20 flex h-full">
                         <div className="m-auto">
                             <FlagGameText />
-                            <div className="p-8 px-16 mt-32 prose rounded-lg h-fit prose-h1:m-0 dark:prose-invert dark:shadow-none ">
-                                <div className="mt-12 space-y-5">
-                                    <div className="flex justify-center">
+                            <div className="prose mt-[35vh] h-fit rounded-lg prose-h1:m-0 dark:prose-invert dark:shadow-none">
+                                <div className="pb-1 mt-12 space-y-7">
+                                    <div className="flex justify-center ">
                                         <Link
                                             href={"/singlePlayer"}
                                             passHref
@@ -27,7 +27,7 @@ const Menu: NextPage = () => {
                                             <motion.a
                                                 whileHover={{ scale: 0.98 }}
                                                 whileTap={{ scale: 0.95 }}
-                                                className="w-full text-center no-underline rounded-md shadow-sm ring-2 ring-blue-500/30 hover:ring-blue-500/50 dark:ring-gray-50 dark:hover:ring-white/70"
+                                                className="w-full px-16 text-3xl text-center no-underline rounded-md shadow-lg ring ring-black dark:ring-gray-50 dark:hover:ring-white/70"
                                                 onClick={() =>
                                                     setStartGame(true)
                                                 }
@@ -45,7 +45,7 @@ const Menu: NextPage = () => {
                                             <motion.a
                                                 whileHover={{ scale: 0.98 }}
                                                 whileTap={{ scale: 0.95 }}
-                                                className="w-full text-center no-underline rounded-md shadow-sm ring-2 ring-blue-500/30 hover:ring-blue-500/50 dark:ring-gray-50 dark:hover:ring-white/70"
+                                                className="w-full px-16 text-3xl text-center no-underline rounded-md shadow-lg ring ring-gray-800 hover:ring-balck dark:ring-gray-50 dark:hover:ring-white/70"
                                                 onClick={() => {
                                                     setConnect(true);
                                                     setStartGame(true);
@@ -81,7 +81,7 @@ const Background = () => {
     };
 
     return (
-        <div className="absolute w-screen space-y-5 overflow-hidden blur-md">
+        <div className="absolute w-screen space-y-5 overflow-hidden blur-[5px]">
             <motion.img
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
@@ -176,6 +176,20 @@ const Background = () => {
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
                 src="https://countryflagsapi.com/png/CC"
+                className="h-16 rounded-md w-fit hover:shadow-2xl"
+                transition={{
+                    duration: RandomNumber(15, 20),
+
+                    ease: [0.5, 0.5, 0.5, 0.5],
+                    repeat: Infinity,
+                }}
+                alt="Country_Flag"
+            />
+
+            <motion.img
+                variants={imageMoveVarient}
+                animate={"animateLeft"}
+                src="https://countryflagsapi.com/png/HT"
                 className="h-16 rounded-md w-fit hover:shadow-2xl"
                 transition={{
                     duration: RandomNumber(15, 20),
