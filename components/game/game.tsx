@@ -1,6 +1,5 @@
 import * as React from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { chooseCountry, countries } from "../FlagInfo/FlagInfo";
 import Time from "../SinglePlayer/time";
 import FlagGameText from "../FlagGameText";
@@ -114,43 +113,23 @@ const Game: React.FC<GameProps> = ({
                         {/* static page, not using next image */}
                         {current[1] !== "" && current[2] !== "" && (
                             <>
-                                <motion.div
+                                <motion.img
                                     whileTap={{ scale: 0.96 }}
                                     whileHover={{ scale: 0.96 }}
-                                    className="px-2 bg-gray-100 rounded-lg ring-1 ring-gray-400"
-                                >
-                                    <div className="relative w-32 h-32 overflow-hidden">
-                                        <Image
-                                            onClick={() =>
-                                                scoreHandler(current[0])
-                                            }
-                                            src={`/flags/${current[0]}.png`}
-                                            alt="Country_Flag_1"
-                                            className="px-2"
-                                            layout="fill"
-                                            objectFit="contain"
-                                        />
-                                    </div>
-                                </motion.div>
+                                    src={`/flags/${current[0]}.png`}
+                                    className="m-0 rounded-lg shadow-md cursor-pointer h-fit max-h-28 hover:shadow-xl"
+                                    onClick={() => scoreHandler(current[0])}
+                                    alt="Country_Flag_1"
+                                />
 
-                                <motion.div
+                                <motion.img
                                     whileTap={{ scale: 0.96 }}
                                     whileHover={{ scale: 0.96 }}
-                                    className="px-2 bg-gray-100 rounded-lg ring-1 ring-gray-400"
-                                >
-                                    <div className="relative w-32 h-32 overflow-hidden">
-                                        <Image
-                                            onClick={() =>
-                                                scoreHandler(current[1])
-                                            }
-                                            src={`/flags/${current[1]}.png`}
-                                            alt="Country_Flag_2"
-                                            className="px-2"
-                                            layout="fill"
-                                            objectFit="contain"
-                                        />
-                                    </div>
-                                </motion.div>
+                                    className="m-0 rounded-lg shadow-md cursor-pointer h-fit max-h-28 hover:shadow-xl"
+                                    src={`/flags/${current[1]}.png`}
+                                    onClick={() => scoreHandler(current[1])}
+                                    alt="Country_Flag_2"
+                                />
                             </>
                         )}
                     </div>
