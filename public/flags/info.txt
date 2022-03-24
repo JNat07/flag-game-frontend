@@ -1,1 +1,0 @@
-The flags refrenced in the code are from https://github.com/hampusborgos/country-flags.
