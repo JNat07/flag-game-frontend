@@ -72,11 +72,11 @@ const Background = () => {
 
     const imageMoveVarient: Variants = {
         animateRight: {
-            x: [500, -100, 700],
+            x: ["110vw", "-10vw", "110vw"],
         },
 
         animateLeft: {
-            x: [-400, 500, -300],
+            x: ["-10vw", "110vw", "-10vw"],
         },
     };
 
