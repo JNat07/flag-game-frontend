@@ -16,15 +16,24 @@ const Header: React.FC = () => {
 
     return (
         <SocketContext.Consumer>
-            {({ playersReady, setConnect }) => (
-                <header className="inset-x-0 top-0 grid grid-cols-3 p-2 prose prose-h3:m-0 prose-p:m-0 dark:prose-invert ">
+            {({ setConnect }) => (
+                <header className="inset-x-0 top-0 grid grid-cols-3 p-2 prose prose-h3:m-0 prose-p:m-0 prose-img:m-0 dark:prose-invert ">
                     <ThemeToggle pageLoaded={pageLoaded} />
                     <div /> {/* middle col empty */}
                     <div className="flex justify-end">
                         <AnimatePresence>
                             {/* only show home button when not on menu */}
                             {router.pathname === "/" ? (
-                                <img src="./GitHubLogo.png" />
+                                <motion.a
+                                    href="https://github.com/JNat07"
+                                    whileHover={{ scale: 0.95 }}
+                                    whileTap={{ scale: 0.95 }}
+                                >
+                                    <img
+                                        src="./GitHubLogo.png"
+                                        className="w-10 h-10 dark:invert"
+                                    />
+                                </motion.a>
                             ) : (
                                 <motion.div
                                     animate={{ opacity: 1 }}

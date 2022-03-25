@@ -13,7 +13,7 @@ const Background: React.FC = () => {
         },
 
         animateLeft: {
-            x: ["-20vw", "110vw", "-20vw"],
+            x: ["-40vw", "110vw", "-40vw"],
         },
     };
 
@@ -22,10 +22,10 @@ const Background: React.FC = () => {
             <motion.img
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
-                src="https://countryflagsapi.com/png/DE"
+                src="./MenuFlags/de.png"
                 className="w-auto h-16 rounded-md hover:shadow-2xl"
                 transition={{
-                    duration: RandomNumber(15, 20),
+                    duration: RandomNumber(16, 20),
                     ease: [0.5, 0.5, 0.5, 0.5],
                     repeat: Infinity,
                 }}
@@ -34,11 +34,10 @@ const Background: React.FC = () => {
             <motion.img
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
-                src="https://countryflagsapi.com/png/CM"
+                src="./MenuFlags/cm.png"
                 className="w-auto h-16 rounded-md hover:shadow-2xl"
                 transition={{
-                    duration: RandomNumber(15, 20),
-
+                    duration: RandomNumber(16, 20),
                     ease: [0.5, 0.5, 0.5, 0.5],
                     repeat: Infinity,
                 }}
@@ -48,12 +47,11 @@ const Background: React.FC = () => {
             <motion.img
                 variants={imageMoveVarient}
                 animate={"animateRight"}
-                src="https://countryflagsapi.com/png/VC"
+                src="./MenuFlags/vc.png"
                 className="w-auto h-16 rounded-md hover:shadow-2xl"
                 alt="Country_Flag"
                 transition={{
-                    duration: RandomNumber(15, 20),
-
+                    duration: RandomNumber(16, 20),
                     ease: [0.5, 0.5, 0.5, 0.5],
                     repeat: Infinity,
                 }}
@@ -61,7 +59,7 @@ const Background: React.FC = () => {
             <motion.img
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
-                src="https://countryflagsapi.com/png/HK"
+                src="./MenuFlags/hk.png"
                 className="w-auto h-16 rounded-md hover:shadow-2xl"
                 transition={{
                     duration: RandomNumber(7, 17),
@@ -73,10 +71,10 @@ const Background: React.FC = () => {
             <motion.img
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
-                src="https://countryflagsapi.com/png/BD"
+                src="./MenuFlags/bd.png"
                 className="w-auto h-16 rounded-md hover:shadow-2xl"
                 transition={{
-                    duration: RandomNumber(15, 20),
+                    duration: RandomNumber(16, 20),
 
                     ease: [0.5, 0.5, 0.5, 0.5],
                     repeat: Infinity,
@@ -86,12 +84,11 @@ const Background: React.FC = () => {
             <motion.img
                 variants={imageMoveVarient}
                 animate={"animateRight"}
-                src="https://countryflagsapi.com/png/CL"
+                src="./MenuFlags/cl.png"
                 className="w-auto h-16 rounded-md hover:shadow-2xl"
                 alt="Country_Flag"
                 transition={{
-                    duration: RandomNumber(15, 20),
-
+                    duration: RandomNumber(16, 20),
                     ease: [0.5, 0.5, 0.5, 0.5],
                     repeat: Infinity,
                 }}
@@ -99,12 +96,11 @@ const Background: React.FC = () => {
             <motion.img
                 variants={imageMoveVarient}
                 animate={"animateRight"}
-                src="https://countryflagsapi.com/png/US"
+                src="./MenuFlags/us.png"
                 className="w-auto h-16 rounded-md hover:shadow-2xl"
                 alt="Country_Flag"
                 transition={{
-                    duration: RandomNumber(15, 20),
-
+                    duration: RandomNumber(16, 20),
                     ease: [0.5, 0.5, 0.5, 0.5],
                     repeat: Infinity,
                 }}
@@ -112,11 +108,10 @@ const Background: React.FC = () => {
             <motion.img
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
-                src="https://countryflagsapi.com/png/CC"
+                src="./MenuFlags/cc.png"
                 className="w-auto h-16 rounded-md hover:shadow-2xl"
                 transition={{
-                    duration: RandomNumber(15, 20),
-
+                    duration: RandomNumber(16, 20),
                     ease: [0.5, 0.5, 0.5, 0.5],
                     repeat: Infinity,
                 }}
@@ -126,11 +121,10 @@ const Background: React.FC = () => {
             <motion.img
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
-                src="https://countryflagsapi.com/png/HT"
+                src="./MenuFlags/ht.png"
                 className="w-auto h-16 rounded-md hover:shadow-2xl"
                 transition={{
-                    duration: RandomNumber(15, 20),
-
+                    duration: RandomNumber(16, 20),
                     ease: [0.5, 0.5, 0.5, 0.5],
                     repeat: Infinity,
                 }}
