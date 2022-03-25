@@ -5,6 +5,7 @@ import { HomeIcon } from "@heroicons/react/outline";
 import { useRouter } from "next/router";
 import { SocketContext } from "../../pages/_app";
 import ThemeToggle from "../DarkMode/ThemeToggle";
+import FlagGameText from "../FlagGameText";
 
 const Header: React.FC = () => {
     const [pageLoaded, setPageLoaded] = React.useState<boolean>(false);
@@ -57,6 +58,7 @@ const Header: React.FC = () => {
                             )}
                         </AnimatePresence>
                     </div>
+                    <FlagGameText />
                 </header>
             )}
         </SocketContext.Consumer>

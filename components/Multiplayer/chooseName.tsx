@@ -22,7 +22,7 @@ const ChooseName: React.FC<chooseNameType> = ({
     };
 
     return (
-        <div className="prose m-4 mt-[15vh] rounded-lg px-3 shadow-inner prose-img:m-0 dark:prose-invert">
+        <div className="prose m-4 mt-[7vh] rounded-lg px-3 shadow-inner prose-img:m-0 dark:prose-invert">
             <div className="py-5 space-y-5 ">
                 <div className="mx-2 space-y-1">
                     <h2 className="m-0 text-3xl text-center">

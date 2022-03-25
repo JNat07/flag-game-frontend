@@ -80,7 +80,6 @@ const SocketIO = () => {
         } else {
             setWhoRequestMe([]);
             socket.current?.disconnect();
-            socket.current = null;
         }
 
         return () => {

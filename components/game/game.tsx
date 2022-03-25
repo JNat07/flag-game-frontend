@@ -86,10 +86,8 @@ const Game: React.FC<GameProps> = ({
     };
 
     return !gameOver ? (
-        <div className="prose mx-2 mt-[10vh] rounded-md py-2 prose-h2:m-0 prose-h3:m-0 prose-h4:m-0 prose-p:m-0 dark:prose-invert">
-            <FlagGameText />
-
-            <div className="mt-5">
+        <div className="prose relative mx-2 mt-[7vh] rounded-md py-2 prose-h2:m-0 prose-h3:m-0 prose-h4:m-0 prose-p:m-0 dark:prose-invert">
+            <div>
                 <div className="pb-5 rounded-lg ring-2 ring-gray-800 dark:ring-gray-200">
                     {/* info */}
                     <div className="grid grid-cols-3 rounded-t-lg bg-gray-200 py-0.5 px-4 dark:bg-gray-600">

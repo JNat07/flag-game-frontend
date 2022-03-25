@@ -3,7 +3,6 @@ import type { NextPage } from "next";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { SocketContext } from "../../pages/_app";
-import FlagGameText from "../FlagGameText";
 import Background from "./background";
 
 const Menu: NextPage = () => {
@@ -16,8 +15,7 @@ const Menu: NextPage = () => {
                 {({ setConnect }) => (
                     <main className="relative z-20 flex h-full">
                         <div className="m-auto">
-                            <FlagGameText />
-                            <div className="prose mt-[35vh] h-fit rounded-lg prose-h1:m-0 dark:prose-invert dark:shadow-none">
+                            <div className="prose mt-[17vh] h-fit rounded-lg prose-h1:m-0 dark:prose-invert dark:shadow-none">
                                 <div className="pb-1 mt-12 space-y-7">
                                     <div className="flex justify-center ">
                                         <Link

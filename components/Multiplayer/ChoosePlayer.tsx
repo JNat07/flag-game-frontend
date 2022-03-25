@@ -19,7 +19,7 @@ const ChoosePlayer: React.FC<choosePlayerProps> = ({
     return (
         <GameContext.Consumer>
             {({ opponentHandler, whoIwantToPlay, whoRequestMe }) => (
-                <div className="px-2 prose prose-h3:m-0 prose-p:m-0 prose-img:m-0 dark:prose-invert">
+                <div className="prose mt-[5vh] px-2 prose-h3:m-0 prose-p:m-0 prose-img:m-0 dark:prose-invert">
                     <h2 className="text-center underline">
                         {playersReady.length >= 1
                             ? `Online Players : ${playersReady.length}`
