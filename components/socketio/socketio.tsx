@@ -78,9 +78,9 @@ const SocketIO = () => {
                 }
             );
         } else {
-            console.log("run");
             setWhoRequestMe([]);
             socket.current?.disconnect();
+            socket.current = null;
         }
 
         return () => {
