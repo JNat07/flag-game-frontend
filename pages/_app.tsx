@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import Header from "../components/header";
+import Header from "../components/Header/header";
 import * as React from "react";
 import SocketIO from "../components/socketio/socketio";
 import DarkMode from "../components/DarkMode/DarkMode";

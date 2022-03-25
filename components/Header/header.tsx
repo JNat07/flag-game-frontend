@@ -3,8 +3,8 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { HomeIcon } from "@heroicons/react/outline";
 import { useRouter } from "next/router";
-import { SocketContext } from "../pages/_app";
-import ThemeToggle from "./DarkMode/ThemeToggle";
+import { SocketContext } from "../../pages/_app";
+import ThemeToggle from "../DarkMode/ThemeToggle";
 
 const Header: React.FC = () => {
     const [pageLoaded, setPageLoaded] = React.useState<boolean>(false);
@@ -23,7 +23,9 @@ const Header: React.FC = () => {
                     <div className="flex justify-end">
                         <AnimatePresence>
                             {/* only show home button when not on menu */}
-                            {router.pathname !== "/" && (
+                            {router.pathname === "/" ? (
+                                <img src="./GitHubLogo.png" />
+                            ) : (
                                 <motion.div
                                     animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
