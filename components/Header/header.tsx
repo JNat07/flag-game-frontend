@@ -18,7 +18,7 @@ const Header: React.FC = () => {
     return (
         <SocketContext.Consumer>
             {({ setConnect }) => (
-                <header className="inset-x-0 top-0 grid grid-cols-3 p-2 prose prose-h3:m-0 prose-p:m-0 prose-img:m-0 dark:prose-invert ">
+                <header className="relative inset-x-0 top-0 z-20 grid grid-cols-3 p-2 prose prose-h3:m-0 prose-p:m-0 prose-img:m-0 dark:prose-invert ">
                     <ThemeToggle pageLoaded={pageLoaded} />
                     <div /> {/* middle col empty */}
                     <div className="flex justify-end">
