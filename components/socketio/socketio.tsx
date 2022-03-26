@@ -95,7 +95,7 @@ const SocketIO = () => {
             myID: myInfo.myID,
             myName: myNewName,
         });
-        localStorage.setItem("myName", myNewName);
+        
     };
 
     const handleSendName = () => {

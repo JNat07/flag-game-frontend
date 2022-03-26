@@ -46,11 +46,7 @@ const ChooseName: React.FC<chooseNameType> = ({
                                 onChange={(e) => HandleSetName(e.target.value)}
                                 placeholder="Username"
                                 className="w-full self-end rounded-md border-transparent bg-gray-200 px-2 py-1.5 text-xl outline-0 dark:bg-gray-300 dark:text-black dark:ring-gray-100"
-                                value={
-                                    myInfo.myName !== ""
-                                        ? localStorage.myName
-                                        : myInfo.myName
-                                }
+                                value={myInfo.myName}
                             />
                         </div>
 
