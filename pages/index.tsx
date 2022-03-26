@@ -5,7 +5,7 @@ import Menu from "../components/Index/Menu";
 
 const Home: NextPage = () => {
     return (
-        <main className="bg-white dark:bg-black">
+        <main>
             {/* inject elem to head of page */}
             <Head>
                 <title>The Flag Game</title>
