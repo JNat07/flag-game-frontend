@@ -13,7 +13,7 @@ const Menu: NextPage = () => {
             <Background />
             <SocketContext.Consumer>
                 {({ setConnect }) => (
-                    <main className="relative z-20 flex h-full">
+                    <main className="relative z-20 flex">
                         <div className="m-auto">
                             <div className="prose mt-[17vh] h-fit rounded-lg prose-h1:m-0 dark:prose-invert dark:shadow-none">
                                 <div className="pb-1 mt-12 space-y-7">
@@ -44,7 +44,7 @@ const Menu: NextPage = () => {
                                             <motion.a
                                                 whileHover={{ scale: 0.98 }}
                                                 whileTap={{ scale: 0.95 }}
-                                                className="w-full px-16 text-3xl text-center no-underline rounded-md shadow-lg hover:ring-balck ring ring-gray-800 dark:ring-gray-50 dark:hover:ring-white/70"
+                                                className="w-full px-16 text-3xl text-center no-underline rounded-md shadow-lg ring ring-gray-800 hover:ring-black dark:ring-gray-50 dark:hover:ring-white/70"
                                                 onClick={() => {
                                                     setConnect(true);
                                                     setStartGame(true);
