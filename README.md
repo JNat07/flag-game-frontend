@@ -4,7 +4,7 @@
 
 The flag game is a single or multiplayer game in which the player attempts to correctly match the displayed flag to the prompt that's given. This repository holds the front-end ReactJS code. The backend code can be found [here](https://github.com/JNat07/flag-game-backend) and you can try the game out for yourself [here](https://flaggame.vercel.app/).
 
-### Webstack
+### Webstack &ensp; 📦
 
 -   ReactJS (NextJS)
 -   Typescript
@@ -12,7 +12,7 @@ The flag game is a single or multiplayer game in which the player attempts to co
 -   TailwindCSS
 -   Framer Motion
 
-### To run locally :computer:
+### To run locally &ensp; :computer:
 
 1. Clone repo
 2. Install dependencies
@@ -24,7 +24,7 @@ The flag game is a single or multiplayer game in which the player attempts to co
     yarn dev
     ```
 
-### Build Project :construction:
+### Build Project &ensp; :construction:
 
 1. Clone repo
 2. Build the project
