@@ -1,11 +1,45 @@
 # The Flag Game (Frontend)
 
-## Info
+### Info
 
-This is the repo of the frontend for the flag game. Find the backend [here](https://github.com/Nat-07/flag-game-backend).
+The flag game is a single or multiplayer game in which the player attempts to correctly match the displayed flag to the prompt that's given. This repository holds the front-end ReactJS code. The backend code can be found [here](https://github.com/JNat07/flag-game-backend) and you can try the game out for yourself [here](https://flaggame.vercel.app/).
 
-## Setup:
+### Webstack
+
+-   ReactJS (NextJS)
+-   Typescript
+-   Socket.IO
+-   TailwindCSS
+-   Framer Motion
+
+### To run locally :computer:
 
 1. Clone repo
-2. &nbsp;`yarn install`
-3. &nbsp;`yarn dev`
+2. Install dependencies
+    ```
+    yarn install
+    ```
+3. Run the dev server
+    ```
+    yarn dev
+    ```
+
+### Build Project :construction:
+
+1. Clone repo
+2. Build the project
+    ```
+    yarn build
+    ```
+3. Run the build
+    ```
+    yarn start
+    ```
+4. Export the project (optional)
+    ```
+    yarn export
+    ```
+5. Run exported files on server. Or serve with:
+    ```
+    serve out/
+    ```
