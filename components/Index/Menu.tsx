@@ -8,7 +8,7 @@ import { UserIcon, UsersIcon } from "@heroicons/react/solid";
 
 const Menu: NextPage = () => {
     return (
-        <div className="">
+        <div>
             <Background />
             {/* testing */}
             <SocketContext.Consumer>
