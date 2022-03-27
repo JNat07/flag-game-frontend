@@ -23,7 +23,7 @@ const ChooseName: React.FC<chooseNameType> = ({
 
     return (
         <div className="prose m-4 mt-[7vh] rounded-lg px-3 shadow-inner prose-img:m-0 dark:prose-invert">
-            <div className="py-5 space-y-5 ">
+            <div className="space-y-5">
                 <div className="mx-2 space-y-1">
                     <h2 className="m-0 text-3xl text-center">
                         Choose Your Name
@@ -60,13 +60,15 @@ const ChooseName: React.FC<chooseNameType> = ({
                             className={
                                 myInfo.myName !== ""
                                     ? "w-full rounded-md bg-blue-400 px-1.5 py-1 text-white shadow-md dark:bg-blue-500/90"
-                                    : "w-full rounded-md bg-blue-500 py-1 px-1.5 text-white opacity-60 shadow-md  "
+                                    : "w-full rounded-md bg-blue-500 py-1 px-1.5 text-white opacity-60 shadow-md"
                             }
                         >
                             Choose Name
                         </motion.button>
 
-                        <p onClick={() => randomName()}>Random Name</p>
+                        <div className="">
+                            <p onClick={() => randomName()}>Random Name</p>
+                        </div>
                     </div>
                 </div>
             </div>
