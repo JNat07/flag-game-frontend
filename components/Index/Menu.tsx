@@ -1,12 +1,11 @@
 import * as React from "react";
-import type { NextPage } from "next";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { SocketContext } from "../../pages/_app";
 import Background from "./background";
 import { UserIcon, UsersIcon } from "@heroicons/react/solid";
 
-const Menu: NextPage = () => {
+const Menu: React.FC = () => {
     return (
         <div className="overflow-y-hidden">
             <Background />
