@@ -19,13 +19,16 @@ const Background: React.FC = () => {
         },
     };
 
+    const thing: string =
+        "h-16 w-auto rounded-md hover:shadow-lg selection:bg-transparent";
+
     return (
         <div className="fixed top-6 left-0 w-screen space-y-7 overflow-hidden blur-[5px]">
             <motion.img
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
                 src="./MenuFlags/de.png"
-                className="h-16 w-auto rounded-md hover:shadow-md"
+                className={thing}
                 transition={{
                     x: {
                         duration: RandomNumber(16, 20),
@@ -40,7 +43,7 @@ const Background: React.FC = () => {
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
                 src="./MenuFlags/cm.png"
-                className="h-16 w-auto rounded-md hover:shadow-md"
+                className={thing}
                 transition={{
                     x: {
                         duration: RandomNumber(16, 20),
@@ -56,7 +59,7 @@ const Background: React.FC = () => {
                 variants={imageMoveVarient}
                 animate={"animateRight"}
                 src="./MenuFlags/vc.png"
-                className="h-16 w-auto rounded-md hover:shadow-md"
+                className={thing}
                 transition={{
                     x: {
                         duration: RandomNumber(16, 20),
@@ -71,7 +74,7 @@ const Background: React.FC = () => {
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
                 src="./MenuFlags/hk.png"
-                className="h-16 w-auto rounded-md hover:shadow-md"
+                className={thing}
                 transition={{
                     x: {
                         duration: RandomNumber(16, 20),
@@ -86,7 +89,7 @@ const Background: React.FC = () => {
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
                 src="./MenuFlags/bd.png"
-                className="h-16 w-auto rounded-md hover:shadow-md"
+                className={thing}
                 transition={{
                     x: {
                         duration: RandomNumber(16, 20),
@@ -101,7 +104,7 @@ const Background: React.FC = () => {
                 variants={imageMoveVarient}
                 animate={"animateRight"}
                 src="./MenuFlags/cl.png"
-                className="h-16 w-auto rounded-md hover:shadow-md"
+                className={thing}
                 transition={{
                     x: {
                         duration: RandomNumber(16, 20),
@@ -112,59 +115,62 @@ const Background: React.FC = () => {
                 initial={{ opacity: 0 }}
                 alt="Chile_Flag"
             />
-            <motion.img
-                variants={imageMoveVarient}
-                animate={"animateRight"}
-                src="./MenuFlags/us.png"
-                className="h-16 w-auto rounded-md hover:shadow-md"
-                transition={{
-                    x: {
-                        duration: RandomNumber(16, 20),
-                        ease: [0.5, 0.5, 0.5, 0.5],
-                        repeat: Infinity,
-                    },
-                }}
-                initial={{ opacity: 0 }}
-                alt="United_States_Of_America_Flag"
-            />
-            <motion.img
-                variants={imageMoveVarient}
-                animate={"animateLeft"}
-                src="./MenuFlags/eg.png"
-                className="h-16 w-auto rounded-md hover:shadow-md"
-                transition={{
-                    x: {
-                        duration: RandomNumber(16, 20),
-                        ease: [0.5, 0.5, 0.5, 0.5],
-                        repeat: Infinity,
-                    },
-                }}
-                initial={{ opacity: 0 }}
-                alt="Egypt_Flag"
-            />
 
-            <motion.img
-                variants={imageMoveVarient}
-                animate={"animateRight"}
-                src="./MenuFlags/il.png"
-                className="h-16 w-auto rounded-md hover:shadow-md"
-                transition={{
-                    x: {
-                        duration: RandomNumber(16, 20),
-                        ease: [0.5, 0.5, 0.5, 0.5],
-                        repeat: Infinity,
-                    },
-                }}
-                initial={{ opacity: 0 }}
-                alt="Israel_Flag"
-            />
+            <div className="lg:hidden">
+                <motion.img
+                    variants={imageMoveVarient}
+                    animate={"animateRight"}
+                    src="./MenuFlags/us.png"
+                    className={thing}
+                    transition={{
+                        x: {
+                            duration: RandomNumber(16, 20),
+                            ease: [0.5, 0.5, 0.5, 0.5],
+                            repeat: Infinity,
+                        },
+                    }}
+                    initial={{ opacity: 0 }}
+                    alt="United_States_Of_America_Flag"
+                />
+                <motion.img
+                    variants={imageMoveVarient}
+                    animate={"animateLeft"}
+                    src="./MenuFlags/eg.png"
+                    className={thing}
+                    transition={{
+                        x: {
+                            duration: RandomNumber(16, 20),
+                            ease: [0.5, 0.5, 0.5, 0.5],
+                            repeat: Infinity,
+                        },
+                    }}
+                    initial={{ opacity: 0 }}
+                    alt="Egypt_Flag"
+                />
 
-            <div className="hidden md:inline">
+                <motion.img
+                    variants={imageMoveVarient}
+                    animate={"animateRight"}
+                    src="./MenuFlags/il.png"
+                    className={thing}
+                    transition={{
+                        x: {
+                            duration: RandomNumber(16, 20),
+                            ease: [0.5, 0.5, 0.5, 0.5],
+                            repeat: Infinity,
+                        },
+                    }}
+                    initial={{ opacity: 0 }}
+                    alt="Israel_Flag"
+                />
+            </div>
+
+            <div className="hidden md:inline lg:hidden">
                 <motion.img
                     variants={imageMoveVarient}
                     animate={"animateLeft"}
                     src="./MenuFlags/cc.png"
-                    className="h-16 w-auto rounded-md hover:shadow-md"
+                    className={thing}
                     transition={{
                         x: {
                             duration: RandomNumber(16, 20),
@@ -180,7 +186,7 @@ const Background: React.FC = () => {
                     variants={imageMoveVarient}
                     animate={"animateRight"}
                     src="./MenuFlags/ht.png"
-                    className="h-16 w-auto rounded-md hover:shadow-md"
+                    className={thing}
                     transition={{
                         x: {
                             duration: RandomNumber(16, 20),
