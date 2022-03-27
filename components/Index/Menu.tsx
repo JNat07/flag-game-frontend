@@ -26,7 +26,7 @@ const Menu: NextPage = () => {
                                             <motion.a
                                                 whileHover={{ scale: 0.98 }}
                                                 whileTap={{ scale: 0.95 }}
-                                                className="flex w-full items-center space-x-3 rounded-md px-16 pl-12 text-center text-3xl no-underline shadow-lg ring ring-gray-800 hover:ring-black dark:ring-gray-50 dark:hover:ring-white/70"
+                                                className="flex w-full select-none items-center space-x-3 rounded-md px-16 pl-12 text-center text-3xl no-underline shadow-md ring ring-gray-800 hover:shadow-lg hover:ring-black dark:ring-gray-50 dark:hover:ring-white/70"
                                             >
                                                 <UserIcon className="h-8 w-8" />
                                                 <h4> Single Player</h4>
@@ -42,7 +42,7 @@ const Menu: NextPage = () => {
                                             <motion.a
                                                 whileHover={{ scale: 0.98 }}
                                                 whileTap={{ scale: 0.95 }}
-                                                className="flex w-full items-center space-x-3 rounded-md px-16 pl-12 text-center text-3xl no-underline shadow-lg ring ring-gray-800 hover:ring-black dark:ring-gray-50 dark:hover:ring-white/70"
+                                                className="flex w-full select-none items-center space-x-3 rounded-md px-16 pl-12 text-center text-3xl no-underline shadow-md ring ring-gray-800 hover:shadow-lg hover:ring-black dark:ring-gray-50 dark:hover:ring-white/70"
                                                 onClick={() => setConnect(true)}
                                             >
                                                 <UsersIcon className="h-8 w-8" />
