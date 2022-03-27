@@ -7,6 +7,10 @@ const Background: React.FC = () => {
 
     React.useEffect(() => {
         setDimensions([window.innerHeight, window.innerWidth]);
+
+        window.addEventListener("resize", function (event) {
+            setDimensions([window.innerHeight, window.innerWidth]);
+        });
     }, []);
 
     // Returns a random integer from 1 to 10:
