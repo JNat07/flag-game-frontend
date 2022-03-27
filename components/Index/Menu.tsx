@@ -10,6 +10,7 @@ const Menu: NextPage = () => {
     return (
         <div className="overflow-y-hidden">
             <Background />
+            {/* testing */}
             <SocketContext.Consumer>
                 {({ setConnect }) => (
                     <main className="relative z-20 flex">
