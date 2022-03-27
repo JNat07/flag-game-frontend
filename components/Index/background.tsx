@@ -25,7 +25,7 @@ const Background: React.FC = () => {
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
                 src="./MenuFlags/de.png"
-                className="w-auto h-16 rounded-md hover:shadow-md"
+                className="h-16 w-auto rounded-md hover:shadow-md"
                 transition={{
                     x: {
                         duration: RandomNumber(16, 20),
@@ -40,7 +40,7 @@ const Background: React.FC = () => {
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
                 src="./MenuFlags/cm.png"
-                className="w-auto h-16 rounded-md hover:shadow-md"
+                className="h-16 w-auto rounded-md hover:shadow-md"
                 transition={{
                     x: {
                         duration: RandomNumber(16, 20),
@@ -56,7 +56,7 @@ const Background: React.FC = () => {
                 variants={imageMoveVarient}
                 animate={"animateRight"}
                 src="./MenuFlags/vc.png"
-                className="w-auto h-16 rounded-md hover:shadow-md"
+                className="h-16 w-auto rounded-md hover:shadow-md"
                 transition={{
                     x: {
                         duration: RandomNumber(16, 20),
@@ -71,7 +71,7 @@ const Background: React.FC = () => {
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
                 src="./MenuFlags/hk.png"
-                className="w-auto h-16 rounded-md hover:shadow-md"
+                className="h-16 w-auto rounded-md hover:shadow-md"
                 transition={{
                     x: {
                         duration: RandomNumber(16, 20),
@@ -86,7 +86,7 @@ const Background: React.FC = () => {
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
                 src="./MenuFlags/bd.png"
-                className="w-auto h-16 rounded-md hover:shadow-md"
+                className="h-16 w-auto rounded-md hover:shadow-md"
                 transition={{
                     x: {
                         duration: RandomNumber(16, 20),
@@ -101,7 +101,7 @@ const Background: React.FC = () => {
                 variants={imageMoveVarient}
                 animate={"animateRight"}
                 src="./MenuFlags/cl.png"
-                className="w-auto h-16 rounded-md hover:shadow-md"
+                className="h-16 w-auto rounded-md hover:shadow-md"
                 transition={{
                     x: {
                         duration: RandomNumber(16, 20),
@@ -116,7 +116,7 @@ const Background: React.FC = () => {
                 variants={imageMoveVarient}
                 animate={"animateRight"}
                 src="./MenuFlags/us.png"
-                className="w-auto h-16 rounded-md hover:shadow-md"
+                className="h-16 w-auto rounded-md hover:shadow-md"
                 transition={{
                     x: {
                         duration: RandomNumber(16, 20),
@@ -131,7 +131,7 @@ const Background: React.FC = () => {
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
                 src="./MenuFlags/eg.png"
-                className="w-auto h-16 rounded-md hover:shadow-md"
+                className="h-16 w-auto rounded-md hover:shadow-md"
                 transition={{
                     x: {
                         duration: RandomNumber(16, 20),
@@ -147,7 +147,7 @@ const Background: React.FC = () => {
                 variants={imageMoveVarient}
                 animate={"animateRight"}
                 src="./MenuFlags/il.png"
-                className="w-auto h-16 rounded-md hover:shadow-md"
+                className="h-16 w-auto rounded-md hover:shadow-md"
                 transition={{
                     x: {
                         duration: RandomNumber(16, 20),
@@ -164,7 +164,7 @@ const Background: React.FC = () => {
                     variants={imageMoveVarient}
                     animate={"animateLeft"}
                     src="./MenuFlags/cc.png"
-                    className="w-auto h-16 rounded-md hover:shadow-md"
+                    className="h-16 w-auto rounded-md hover:shadow-md"
                     transition={{
                         x: {
                             duration: RandomNumber(16, 20),
@@ -180,7 +180,7 @@ const Background: React.FC = () => {
                     variants={imageMoveVarient}
                     animate={"animateRight"}
                     src="./MenuFlags/ht.png"
-                    className="w-auto h-16 rounded-md hover:shadow-md"
+                    className="h-16 w-auto rounded-md hover:shadow-md"
                     transition={{
                         x: {
                             duration: RandomNumber(16, 20),
