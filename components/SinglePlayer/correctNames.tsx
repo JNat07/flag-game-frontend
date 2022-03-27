@@ -12,7 +12,6 @@ const CorrectNames: React.FC<correctNamesType> = ({
         <AnimatePresence>
             {recentWrong && (
                 <motion.div
-                    className="overflow-hidden"
                     exit={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     initial={{ height: 0, opacity: 0 }}

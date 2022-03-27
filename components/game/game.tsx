@@ -87,14 +87,14 @@ const Game: React.FC<GameProps> = ({
 
     return !gameOver ? (
         <div className="prose relative mx-2 mt-[7vh] rounded-md py-2 prose-h2:m-0 prose-h3:m-0 prose-h4:m-0 prose-p:m-0 dark:prose-invert">
-            <div>
-                <div className="pb-5 rounded-lg ring-2 ring-gray-800 dark:ring-gray-200">
+            <div className="lg:flex lg:w-screen lg:justify-center">
+                <div className="rounded-lg pb-5 ring-2 ring-gray-800 dark:ring-gray-200 lg:w-[40vw]">
                     {/* info */}
                     <div className="grid grid-cols-3 rounded-t-lg bg-gray-200 py-0.5 px-4 dark:bg-gray-600">
                         <h4>Score: {score}</h4>
                         <div />
 
-                        <p className="m-0 font-mono place-self-end dark:text-white ">
+                        <p className="m-0 place-self-end font-mono dark:text-white ">
                             {/* time not initialized, then set to 00:00 (page load not complete) */}
                             {time
                                 ? (minutes < 10 ? "0" + minutes : minutes) +
@@ -103,7 +103,7 @@ const Game: React.FC<GameProps> = ({
                                 : "00:00"}
                         </p>
                     </div>
-                    <h3 className="px-1 pt-4 text-center break-words">
+                    <h3 className="break-words px-1 pt-4 text-center">
                         Which is {countries[question]}?
                     </h3>
 
@@ -114,17 +114,17 @@ const Game: React.FC<GameProps> = ({
                             <>
                                 <motion.img
                                     whileTap={{ scale: 0.96 }}
-                                    whileHover={{ scale: 0.96 }}
+                                    whileHover={{ scale: 0.98 }}
                                     src={`https://countryflagsapi.com/png/${current[0]}`}
-                                    className="m-0 rounded-lg shadow-xl cursor-pointer h-fit max-h-28 hover:shadow-2xl"
+                                    className="m-0  cursor-pointer rounded-lg shadow-md hover:shadow-lg"
                                     onClick={() => scoreHandler(current[0])}
                                     alt="Country_Flag_1"
                                 />
 
                                 <motion.img
                                     whileTap={{ scale: 0.96 }}
-                                    whileHover={{ scale: 0.96 }}
-                                    className="m-0 rounded-lg shadow-xl cursor-pointer h-fit max-h-28 hover:shadow-2xl"
+                                    whileHover={{ scale: 0.98 }}
+                                    className="m-0  cursor-pointer rounded-lg shadow-md hover:shadow-lg"
                                     src={`https://countryflagsapi.com/png/${current[1]}`}
                                     onClick={() => scoreHandler(current[1])}
                                     alt="Country_Flag_2"

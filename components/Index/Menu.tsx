@@ -8,7 +8,7 @@ import { UserIcon, UsersIcon } from "@heroicons/react/solid";
 
 const Menu: NextPage = () => {
     return (
-        <div className="overflow-y-hidden">
+        <div className="">
             <Background />
             {/* testing */}
             <SocketContext.Consumer>
