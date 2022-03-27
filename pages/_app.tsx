@@ -76,7 +76,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                         whoRequestMe,
                     }}
                 >
-                    <div className="h-screen bg-white dark:bg-black">
+                    <div className="h-screen overflow-hidden bg-white dark:bg-black">
                         {/* render header component and all other components */}
                         <Header />
                         <Component {...pageProps} />
