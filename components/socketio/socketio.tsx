@@ -88,6 +88,7 @@ const SocketIO = () => {
             // insure player not playing alone in multiplayer
             setInRoom(false);
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [connect]);
 
     const HandleSetName = (myNewName: string) => {
@@ -95,7 +96,6 @@ const SocketIO = () => {
             myID: myInfo.myID,
             myName: myNewName,
         });
-        
     };
 
     const handleSendName = () => {

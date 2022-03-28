@@ -35,9 +35,8 @@ const Game: React.FC<GameProps> = ({
         setGameOver(true);
     }
 
-    if (singlePlayer) {
-        // when next question changes, pick new flags
-        React.useEffect(() => {
+    React.useEffect(() => {
+        if (singlePlayer) {
             const [countryA, countryB] = chooseCountry();
             // pick random number between 0 and 1 to determine which flag is the question
             setQuestion(Math.random() > 0.5 ? countryA : countryB);
@@ -45,24 +44,23 @@ const Game: React.FC<GameProps> = ({
             // the current flags to be shown
             setCurrent([countryA, countryB]);
             return () => setCurrent([]);
-        }, [nextQuestion]);
-    } else {
-        // custom offline hook
-        if (!CheckOnline()) alert("offline");
-        // if multiplayer
-        if (multiplayerGameInfo) {
-            React.useEffect(() => {
-                // get individual arrays that contain the countries and the question
-                const [countryA, countryB, newQuestion] =
-                    multiplayerGameInfo[nextQuestion];
-
-                setCurrent([countryA, countryB]);
-                setQuestion(newQuestion);
-
-                return () => setCurrent([]);
-            }, [multiplayerGameInfo, nextQuestion]);
         }
-    }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [nextQuestion]);
+
+    React.useEffect(() => {
+        if (!singlePlayer && multiplayerGameInfo) {
+            // get individual arrays that contain the countries and the question
+            const [countryA, countryB, newQuestion] =
+                multiplayerGameInfo[nextQuestion];
+
+            setCurrent([countryA, countryB]);
+            setQuestion(newQuestion);
+
+            return () => setCurrent([]);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [multiplayerGameInfo, nextQuestion]);
 
     const scoreHandler = (item: string): void => {
         // if flag clicked is correct
@@ -116,7 +114,7 @@ const Game: React.FC<GameProps> = ({
                                     whileTap={{ scale: 0.96 }}
                                     whileHover={{ scale: 0.98 }}
                                     src={`https://countryflagsapi.com/png/${current[0]}`}
-                                    className="m-0  cursor-pointer rounded-lg shadow-md hover:shadow-lg"
+                                    className="m-0 cursor-pointer rounded-lg shadow-md hover:shadow-lg"
                                     onClick={() => scoreHandler(current[0])}
                                     alt="Country_Flag_1"
                                 />
@@ -124,7 +122,7 @@ const Game: React.FC<GameProps> = ({
                                 <motion.img
                                     whileTap={{ scale: 0.96 }}
                                     whileHover={{ scale: 0.98 }}
-                                    className="m-0  cursor-pointer rounded-lg shadow-md hover:shadow-lg"
+                                    className="m-0 cursor-pointer rounded-lg shadow-md hover:shadow-lg"
                                     src={`https://countryflagsapi.com/png/${current[1]}`}
                                     onClick={() => scoreHandler(current[1])}
                                     alt="Country_Flag_2"

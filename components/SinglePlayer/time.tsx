@@ -24,6 +24,7 @@ const Time = (): (number | Date)[] => {
                     (second < 10 ? "0" + second : second)
             );
         }, 1000);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const currentTime = new Date(new Date().getTime() - start.getTime());
