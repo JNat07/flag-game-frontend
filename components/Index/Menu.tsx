@@ -6,7 +6,6 @@ import { SocketContext } from "../../pages/_app";
 import { UserIcon, UsersIcon } from "@heroicons/react/solid";
 import dynamic from "next/dynamic";
 const Background = dynamic(() => import("./background"), {
-    loading: () => <p>...</p>,
     ssr: false,
 });
 

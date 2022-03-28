@@ -1,10 +1,21 @@
 import * as React from "react";
 import { SocketContext } from "./_app";
+import dynamic from "next/dynamic";
 import type { NextPage } from "next";
-import ChoosePlayer from "../components/Multiplayer/ChoosePlayer";
-import ChooseName from "../components/Multiplayer/chooseName";
+const ChoosePlayer = dynamic(
+    () => import("../components/Multiplayer/ChoosePlayer"),
+    {
+        ssr: false,
+    }
+);
+const ChooseName = dynamic(
+    () => import("../components/Multiplayer/chooseName"),
+    {
+        ssr: false,
+    }
+);
+const Game = dynamic(() => import("../components/game/game"), { ssr: false });
 import { NotInRoomReturn } from "../components/types";
-import Game from "../components/game/game";
 
 const MultiPlayer: NextPage = () => {
     // state to track what to render
