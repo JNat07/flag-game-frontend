@@ -1,13 +1,12 @@
 import * as React from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { chooseCountry, countries } from "../FlagInfo/FlagInfo";
 import Time from "../SinglePlayer/time";
-import FlagGameText from "../FlagGameText";
 import CorrectNames from "../SinglePlayer/correctNames";
 import { GameProps } from "../types";
-import CheckOnline from "../OnlineChecker";
-import NotifyPlayer from "./notifyPlayer";
+const NotifyPlayer = React.lazy(() => import("./notifyPlayer"));
+
+const renderLoader = () => <p>Loading</p>;
 
 const Game: React.FC<GameProps> = ({
     singlePlayer,
@@ -142,12 +141,14 @@ const Game: React.FC<GameProps> = ({
             </div>
         </div>
     ) : (
-        <NotifyPlayer
-            myScore={score}
-            theirScore={opponentInfo.score}
-            myName={myName}
-            theirName={opponentInfo.name}
-        />
+        <React.Suspense fallback={renderLoader()}>
+            <NotifyPlayer
+                myScore={score}
+                theirScore={opponentInfo.score}
+                myName={myName}
+                theirName={opponentInfo.name}
+            />
+        </React.Suspense>
     );
 };
 
