@@ -12,7 +12,7 @@ const Background = dynamic(() => import("./background"), {
 const Menu: NextPage = () => {
     return (
         <div>
-            <Background />
+            {/* <Background /> */}
             {/* testing */}
             <SocketContext.Consumer>
                 {({ setConnect }) => (
