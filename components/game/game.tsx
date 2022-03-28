@@ -4,9 +4,7 @@ import { chooseCountry, countries } from "../FlagInfo/FlagInfo";
 import Time from "../SinglePlayer/time";
 import CorrectNames from "../SinglePlayer/correctNames";
 import { GameProps } from "../types";
-const NotifyPlayer = React.lazy(() => import("./notifyPlayer"));
-
-const renderLoader = () => <p>Loading</p>;
+import NotifyPlayer from "./notifyPlayer";
 
 const Game: React.FC<GameProps> = ({
     singlePlayer,
@@ -141,14 +139,12 @@ const Game: React.FC<GameProps> = ({
             </div>
         </div>
     ) : (
-        <React.Suspense fallback={renderLoader()}>
-            <NotifyPlayer
-                myScore={score}
-                theirScore={opponentInfo.score}
-                myName={myName}
-                theirName={opponentInfo.name}
-            />
-        </React.Suspense>
+        <NotifyPlayer
+            myScore={score}
+            theirScore={opponentInfo.score}
+            myName={myName}
+            theirName={opponentInfo.name}
+        />
     );
 };
 

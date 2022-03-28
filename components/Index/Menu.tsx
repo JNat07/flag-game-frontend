@@ -3,8 +3,12 @@ import type { NextPage } from "next";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { SocketContext } from "../../pages/_app";
-import Background from "./background";
 import { UserIcon, UsersIcon } from "@heroicons/react/solid";
+import dynamic from "next/dynamic";
+const Background = dynamic(() => import("./background"), {
+    loading: () => <p>...</p>,
+    ssr: false,
+});
 
 const Menu: NextPage = () => {
     return (
