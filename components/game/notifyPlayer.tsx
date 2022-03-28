@@ -1,6 +1,7 @@
 import * as React from "react";
 import avatarGenerator from "../AvatarGenerator";
 import { NotifyPlayerType } from "../types";
+import Image from "next/image";
 
 const NotifyPlayer: React.FC<NotifyPlayerType> = ({
     myScore,
@@ -14,8 +15,8 @@ const NotifyPlayer: React.FC<NotifyPlayerType> = ({
                 {myScore > theirScore ? "Victory!" : "Defeat"}
             </h1>
 
-            <div className="flex justify-center mx-2 rounded-lg ring ring-red-400">
-                <img
+            <div className="mx-2 flex justify-center rounded-lg ring ring-red-400">
+                <Image
                     src={avatarGenerator(myName)}
                     alt="icon"
                     className="h-64"
@@ -23,7 +24,8 @@ const NotifyPlayer: React.FC<NotifyPlayerType> = ({
             </div>
 
             <p>
-                <img
+                <Image
+                    placeholder="blur"
                     src={avatarGenerator(theirName)}
                     alt="icon"
                     className="h-32"

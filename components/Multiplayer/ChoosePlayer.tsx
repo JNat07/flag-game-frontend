@@ -4,6 +4,7 @@ import { createAvatar } from "@dicebear/avatars";
 import * as style from "@dicebear/pixel-art";
 import { choosePlayerProps } from "../types";
 import { GameContext } from "../../pages/_app";
+import Image from "next/image";
 
 const ChoosePlayer: React.FC<choosePlayerProps> = ({
     playersReady,
@@ -25,7 +26,7 @@ const ChoosePlayer: React.FC<choosePlayerProps> = ({
                             ? `Online Players : ${playersReady.length}`
                             : "Online Players"}
                     </h2>
-                    <div className="grid items-center grid-cols-2 gap-y-2 gap-x-3">
+                    <div className="grid grid-cols-2 items-center gap-y-2 gap-x-3">
                         {playersReady.length >= 1
                             ? playersReady.map((elem, index) => {
                                   const { name, id } = elem;
@@ -40,7 +41,7 @@ const ChoosePlayer: React.FC<choosePlayerProps> = ({
                                                   )
                                               }
                                               key={index}
-                                              className="rounded-md cursor-pointer ring-1 ring-black dark:ring-gray-400"
+                                              className="cursor-pointer rounded-md ring-1 ring-black dark:ring-gray-400"
                                           >
                                               <motion.div
                                                   whileTap={{
@@ -48,7 +49,7 @@ const ChoosePlayer: React.FC<choosePlayerProps> = ({
                                                   }}
                                                   className="w-full shadow-sm"
                                               >
-                                                  <div className="bg-gray-500 rounded-t-md selection:bg-transparent dark:bg-gray-800">
+                                                  <div className="rounded-t-md bg-gray-500 selection:bg-transparent dark:bg-gray-800">
                                                       <AnimatePresence>
                                                           {whoIwantToPlay ===
                                                               id && (
@@ -65,9 +66,9 @@ const ChoosePlayer: React.FC<choosePlayerProps> = ({
                                                                       height: 0,
                                                                       opacity: 0,
                                                                   }}
-                                                                  className="pl-1 overflow-hidden bg-orange-600 rounded-t-md "
+                                                                  className="overflow-hidden rounded-t-md bg-orange-600 pl-1 "
                                                               >
-                                                                  <p className="text-base text-center text-white">
+                                                                  <p className="text-center text-base text-white">
                                                                       Requested
                                                                   </p>
                                                               </motion.div>
@@ -91,9 +92,9 @@ const ChoosePlayer: React.FC<choosePlayerProps> = ({
                                                                       height: 0,
                                                                       opacity: 0,
                                                                   }}
-                                                                  className="pl-1 overflow-hidden bg-green-600 rounded-t-md "
+                                                                  className="overflow-hidden rounded-t-md bg-green-600 pl-1 "
                                                               >
-                                                                  <p className="text-base text-center text-white">
+                                                                  <p className="text-center text-base text-white">
                                                                       Requesting
                                                                       You
                                                                   </p>
@@ -102,17 +103,17 @@ const ChoosePlayer: React.FC<choosePlayerProps> = ({
                                                       </AnimatePresence>
 
                                                       <div className="flex justify-center">
-                                                          <img
+                                                          <Image
                                                               src={src(name)}
-                                                              width={130}
-                                                              height={130}
+                                                              width={120}
+                                                              height={120}
                                                               alt="icon"
                                                           />
                                                       </div>
                                                   </div>
 
                                                   <div>
-                                                      <h3 className="text-center break-all bg-gray-300 rounded-b-md selection:bg-transparent dark:bg-slate-700/90">
+                                                      <h3 className="break-all rounded-b-md bg-gray-300 text-center selection:bg-transparent dark:bg-slate-700/90">
                                                           {name}
                                                       </h3>
                                                   </div>

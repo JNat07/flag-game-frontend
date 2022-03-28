@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { SocketContext } from "../../pages/_app";
 import ThemeToggle from "../DarkMode/ThemeToggle";
 import FlagGameText from "../FlagGameText";
+import Image from "next/image";
 
 const Header: React.FC = () => {
     const [pageLoaded, setPageLoaded] = React.useState<boolean>(false);
@@ -20,7 +21,7 @@ const Header: React.FC = () => {
             {({ setConnect }) => (
                 <div className="m-0">
                     <header className="prose relative inset-x-0 top-0 z-20 prose-h3:m-0 prose-p:m-0 prose-img:m-0 dark:prose-invert">
-                        <div className="grid w-screen  grid-cols-3 px-2 py-2 lg:py-4 lg:px-5">
+                        <div className="grid w-screen grid-cols-3 px-2 py-2 lg:py-4 lg:px-5">
                             <ThemeToggle pageLoaded={pageLoaded} />
                             <div /> {/* middle col empty */}
                             <div className="flex justify-end">
@@ -32,9 +33,12 @@ const Header: React.FC = () => {
                                             whileHover={{ scale: 0.95 }}
                                             whileTap={{ scale: 0.95 }}
                                         >
-                                            <img
-                                                src="./GitHubLogo.png"
-                                                className="h-10 w-10 dark:invert"
+                                            <Image
+                                                src="/GitHubLogo.png"
+                                                width={40}
+                                                height={40}
+                                                className="dark:invert"
+                                                alt="someInfo"
                                             />
                                         </motion.a>
                                     ) : (

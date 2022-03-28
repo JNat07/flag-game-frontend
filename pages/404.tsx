@@ -2,7 +2,7 @@ import * as React from "react";
 import Router from "next/router";
 import { motion, Variants } from "framer-motion";
 
-const fourOFour = () => {
+const FourOFour: React.FC = () => {
     React.useEffect(() => {
         Router.push("/");
     }, []);
@@ -51,4 +51,4 @@ const fourOFour = () => {
     );
 };
 
-export default fourOFour;
+export default FourOFour;

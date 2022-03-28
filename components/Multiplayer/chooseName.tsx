@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { chooseNameType } from "../types";
 import { names } from "../randomInfo";
 import avatarGenerator from "../AvatarGenerator";
+import Image from "next/image";
 
 const ChooseName: React.FC<chooseNameType> = ({
     HandleSetName,
@@ -23,9 +24,9 @@ const ChooseName: React.FC<chooseNameType> = ({
 
     return (
         <div className="relative  m-4 mt-[7vh]">
-            <div className=" flex justify-center lg:w-screen ">
-                <div className="prose rounded-lg p-4  shadow-inner prose-img:m-0 dark:prose-invert lg:px-10">
-                    <div className=" space-y-5">
+            <div className="flex justify-center  lg:w-screen">
+                <div className="prose rounded-lg p-4 shadow-inner prose-img:m-0 dark:prose-invert lg:px-10">
+                    <div className="space-y-5 ">
                         <div className="mx-2 space-y-1">
                             <h2 className="m-0 text-center text-3xl">
                                 Choose Your Name
@@ -36,7 +37,7 @@ const ChooseName: React.FC<chooseNameType> = ({
                         <div className="flex justify-center ">
                             <div className="space-y-4">
                                 <div className="flex space-x-2 ">
-                                    <img
+                                    <Image
                                         className="self-end rounded-lg bg-slate-600/80 dark:bg-slate-600 dark:opacity-90"
                                         src={avatarGenerator(myInfo.myName)}
                                         width={70}
