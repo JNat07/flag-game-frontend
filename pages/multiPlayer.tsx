@@ -1,22 +1,18 @@
 import * as React from "react";
-import { socketIOFunc } from "../components/types";
+import type { NextPage } from "next";
+import { socketIOFunc, NotInRoomProps } from "../components/types";
 import SocketIO from "../components/socketio/socketio";
 import dynamic from "next/dynamic";
-import type { NextPage } from "next";
+import ChooseName from "../components/Multiplayer/chooseName";
+
 const ChoosePlayer = dynamic(
     () => import("../components/Multiplayer/ChoosePlayer"),
     {
         ssr: false,
     }
 );
-const ChooseName = dynamic(
-    () => import("../components/Multiplayer/chooseName"),
-    {
-        ssr: false,
-    }
-);
+
 const Game = dynamic(() => import("../components/game/game"), { ssr: false });
-import { NotInRoomProps } from "../components/types";
 
 const MultiPlayer: NextPage = () => {
     const {

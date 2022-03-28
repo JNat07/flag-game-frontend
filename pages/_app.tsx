@@ -1,26 +1,8 @@
 import "../styles/globals.css";
+import * as React from "react";
 import type { AppProps } from "next/app";
 import Header from "../components/Header/header";
-import * as React from "react";
-import SocketIO from "../components/socketio/socketio";
 import DarkMode from "../components/DarkMode/DarkMode";
-import { socketIOFunc } from "../components/types";
-
-// socket info context
-export const SocketContext = React.createContext({
-    myInfo: { myID: "", myName: "" },
-    playersReady: [{ name: "", id: "" }],
-    setConnect: (value: boolean) => {},
-    HandleSetName: (value: string) => {},
-    handleSendName: () => {},
-    inRoom: false,
-    handleEvent: (value: number) => {},
-    multiplayerGameInfo: [[""]],
-    opponentInfo: {
-        name: "",
-        score: 0,
-    },
-});
 
 // theme context
 export const ThemeContext = React.createContext({
