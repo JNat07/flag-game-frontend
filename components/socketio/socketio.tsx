@@ -78,18 +78,34 @@ const SocketIO = () => {
                 }
             );
         } else {
-            setWhoRequestMe([]);
-            socket.current?.disconnect();
+            // prior to joining, cleanup leftover values
+            cleanupMultiplayer();
         }
 
-        return () => {
-            setOpponentInfo({ name: "", score: 0 });
-            setWhoRequestMe([""]);
-            // insure player not playing alone in multiplayer
-            setInRoom(false);
-        };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [connect]);
+
+    // when unmount, preform a cleanup
+    React.useEffect(
+        () => () => {
+            cleanupMultiplayer();
+        },
+        []
+    );
+
+    // cleanup multiplayer values
+    const cleanupMultiplayer = (): void => {
+        setConnect(false);
+        setMyInfo({ myID: "", myName: "" });
+        setOpponentInfo({ name: "", score: 0 });
+        setWhoRequestMe([""]);
+        setPlayersReady([{ name: "", id: "" }]);
+        // insure player not playing alone in multiplayer
+        setInRoom(false);
+        setWhoIwantToPlay("");
+        setMultiplayerGameInfo([[]]);
+        socket.current?.disconnect();
+    };
 
     const HandleSetName = (myNewName: string) => {
         setMyInfo({

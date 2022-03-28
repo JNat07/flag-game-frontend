@@ -1,5 +1,6 @@
 import * as React from "react";
-import { SocketContext } from "./_app";
+import { socketIOFunc } from "../components/types";
+import SocketIO from "../components/socketio/socketio";
 import dynamic from "next/dynamic";
 import type { NextPage } from "next";
 const ChoosePlayer = dynamic(
@@ -15,63 +16,78 @@ const ChooseName = dynamic(
     }
 );
 const Game = dynamic(() => import("../components/game/game"), { ssr: false });
-import { NotInRoomReturn } from "../components/types";
+import { NotInRoomProps } from "../components/types";
 
 const MultiPlayer: NextPage = () => {
+    const {
+        myInfo,
+        playersReady,
+        setConnect,
+        HandleSetName,
+        handleSendName,
+        opponentHandler,
+        whoIwantToPlay,
+        whoRequestMe,
+        inRoom,
+        handleEvent,
+        multiplayerGameInfo,
+        opponentInfo,
+    }: socketIOFunc = SocketIO();
+
     // state to track what to render
     const [hasChoosenName, setHasChooseName] = React.useState<boolean>(false);
 
-    return (
-        // consume socket info passed down
-        <SocketContext.Consumer>
-            {({
-                myInfo,
-                playersReady,
-                HandleSetName,
-                handleSendName,
-                inRoom,
-                handleEvent,
-                multiplayerGameInfo,
-                opponentInfo,
-            }) => (
-                <>
-                    {inRoom ? (
-                        // render when user has choosen their name
-                        <Game
-                            singlePlayer={false}
-                            handleEvent={handleEvent}
-                            multiplayerGameInfo={multiplayerGameInfo}
-                            opponentInfo={opponentInfo}
-                            myName={myInfo.myName}
-                        />
-                    ) : (
-                        // render when user needs to choose name
-                        <NotInRoom
-                            hasChoosenName={hasChoosenName}
-                            setHasChooseName={setHasChooseName}
-                            playersReady={playersReady}
-                            myInfo={myInfo}
-                            HandleSetName={HandleSetName}
-                            handleSendName={handleSendName}
-                        />
-                    )}
-                </>
-            )}
-        </SocketContext.Consumer>
+    React.useEffect(
+        () => setConnect(true),
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        []
+    );
+
+    return inRoom ? (
+        // render when user has choosen their name
+        <Game
+            singlePlayer={false}
+            handleEvent={handleEvent}
+            multiplayerGameInfo={multiplayerGameInfo}
+            opponentInfo={opponentInfo}
+            myName={myInfo.myName}
+        />
+    ) : (
+        // render when user needs to choose name
+        <NotInRoom
+            hasChoosenName={hasChoosenName}
+            setHasChooseName={setHasChooseName}
+            playersReady={playersReady}
+            myInfo={myInfo}
+            HandleSetName={HandleSetName}
+            handleSendName={handleSendName}
+            whoIwantToPlay={whoIwantToPlay}
+            opponentHandler={opponentHandler}
+            whoRequestMe={whoRequestMe}
+        />
     );
 };
 
 // have to make separate function to not unloose focus of input
-const NotInRoom: React.FC<NotInRoomReturn> = ({
+const NotInRoom: React.FC<NotInRoomProps> = ({
     playersReady,
     myInfo,
     HandleSetName,
     handleSendName,
     hasChoosenName,
+    opponentHandler,
     setHasChooseName,
+    whoIwantToPlay,
+    whoRequestMe,
 }) => {
     return hasChoosenName ? (
-        <ChoosePlayer playersReady={playersReady} myInfo={myInfo} />
+        <ChoosePlayer
+            playersReady={playersReady}
+            myInfo={myInfo}
+            opponentHandler={opponentHandler}
+            whoIwantToPlay={whoIwantToPlay}
+            whoRequestMe={whoRequestMe}
+        />
     ) : (
         <ChooseName
             HandleSetName={HandleSetName}

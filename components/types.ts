@@ -50,6 +50,9 @@ interface socketClientTypes {
 interface choosePlayerProps {
     playersReady: playReadyType[];
     myInfo: { myID: string; myName: string };
+    opponentHandler: (id: string, myID: string) => void;
+    whoRequestMe: string[];
+    whoIwantToPlay: string;
 }
 
 interface darkModeType {
@@ -87,13 +90,16 @@ interface GameProps {
     myName?: string;
 }
 
-interface NotInRoomReturn {
+interface NotInRoomProps {
     playersReady: playReadyType[];
     myInfo: { myID: string; myName: string };
     HandleSetName: (value: string) => void;
     handleSendName: () => void;
     hasChoosenName: boolean;
     setHasChooseName: (value: boolean) => void;
+    opponentHandler: (id: string, myID: string) => void;
+    whoIwantToPlay: string;
+    whoRequestMe: string[];
 }
 
 interface TimeProps {
@@ -120,7 +126,7 @@ export type {
     correctNamesType,
     flagInfoType,
     GameProps,
-    NotInRoomReturn,
+    NotInRoomProps,
     TimeProps,
     NotifyPlayerType,
     OpponentInfo,

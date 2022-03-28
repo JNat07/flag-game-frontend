@@ -36,53 +36,16 @@ export const GameContext = React.createContext({
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
-    const {
-        myInfo,
-        playersReady,
-        setConnect,
-        HandleSetName,
-        handleSendName,
-        opponentHandler,
-        whoIwantToPlay,
-        whoRequestMe,
-        inRoom,
-        handleEvent,
-        multiplayerGameInfo,
-        opponentInfo,
-    }: socketIOFunc = SocketIO();
-
     const { theme, setTheme } = DarkMode();
 
     return (
         // wrap everything inside of contexts to be used later
         <ThemeContext.Provider value={{ theme, setTheme }}>
-            <SocketContext.Provider
-                value={{
-                    myInfo,
-                    playersReady,
-                    setConnect,
-                    HandleSetName,
-                    handleSendName,
-                    inRoom,
-                    handleEvent,
-                    multiplayerGameInfo,
-                    opponentInfo,
-                }}
-            >
-                <GameContext.Provider
-                    value={{
-                        opponentHandler,
-                        whoIwantToPlay,
-                        whoRequestMe,
-                    }}
-                >
-                    <div className="h-screen overflow-hidden bg-white dark:bg-black">
-                        {/* render header component and all other components */}
-                        <Header />
-                        <Component {...pageProps} />
-                    </div>
-                </GameContext.Provider>
-            </SocketContext.Provider>
+            <div className="h-screen overflow-hidden bg-white dark:bg-black">
+                {/* render header component and all other components */}
+                <Header />
+                <Component {...pageProps} />
+            </div>
         </ThemeContext.Provider>
     );
 }
