@@ -5,8 +5,6 @@ import { HomeIcon } from "@heroicons/react/outline";
 import { useRouter } from "next/router";
 import ThemeToggle from "../DarkMode/ThemeToggle";
 import FlagGameText from "../FlagGameText";
-import Image from "next/image";
-import ReactMorph from "react-morph";
 
 const Header: React.FC = () => {
     const [pageLoaded, setPageLoaded] = React.useState<boolean>(false);
