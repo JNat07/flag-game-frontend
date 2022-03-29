@@ -34,9 +34,10 @@ const SocketIO = () => {
         if (connect) {
             // connect to socketio server
             socket.current = io(
-                "https://flag-game-socketio-server.herokuapp.com/" // prod
-                // "localhost:4000" // for testing
+                "https://flag-game-socketio-server.herokuapp.com/"
             );
+
+            socket.current.emit("sendMyName", myInfo.myName);
 
             // client-side
             socket.current.on("connect", () => {
@@ -114,12 +115,6 @@ const SocketIO = () => {
         });
     };
 
-    const handleSendName = () => {
-        if (socket.current) {
-            socket.current.emit("sendMyName", myInfo.myName);
-        }
-    };
-
     const opponentHandler = (opponentID: string, myID: string) => {
         if (socket.current) {
             if (whoIwantToPlay === "") {
@@ -156,7 +151,6 @@ const SocketIO = () => {
         playersReady,
         setConnect,
         HandleSetName,
-        handleSendName,
         opponentHandler,
         whoIwantToPlay,
         whoRequestMe,

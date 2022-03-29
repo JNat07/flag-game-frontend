@@ -20,7 +20,6 @@ const MultiPlayer: NextPage = () => {
         playersReady,
         setConnect,
         HandleSetName,
-        handleSendName,
         opponentHandler,
         whoIwantToPlay,
         whoRequestMe,
@@ -32,12 +31,6 @@ const MultiPlayer: NextPage = () => {
 
     // state to track what to render
     const [hasChoosenName, setHasChooseName] = React.useState<boolean>(false);
-
-    React.useEffect(
-        () => setConnect(true),
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        []
-    );
 
     return inRoom ? (
         // render when user has choosen their name
@@ -56,8 +49,8 @@ const MultiPlayer: NextPage = () => {
             playersReady={playersReady}
             myInfo={myInfo}
             HandleSetName={HandleSetName}
-            handleSendName={handleSendName}
             whoIwantToPlay={whoIwantToPlay}
+            setConnect={setConnect}
             opponentHandler={opponentHandler}
             whoRequestMe={whoRequestMe}
         />
@@ -69,12 +62,12 @@ const NotInRoom: React.FC<NotInRoomProps> = ({
     playersReady,
     myInfo,
     HandleSetName,
-    handleSendName,
     hasChoosenName,
     opponentHandler,
     setHasChooseName,
     whoIwantToPlay,
     whoRequestMe,
+    setConnect,
 }) => {
     return hasChoosenName ? (
         <ChoosePlayer
@@ -89,7 +82,7 @@ const NotInRoom: React.FC<NotInRoomProps> = ({
             HandleSetName={HandleSetName}
             myInfo={myInfo}
             setHasChooseName={setHasChooseName}
-            handleSendName={handleSendName}
+            setConnect={setConnect}
         />
     );
 };

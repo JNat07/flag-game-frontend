@@ -19,7 +19,6 @@ interface socketIOFunc {
     playersReady: playReadyType[];
     setConnect(value: boolean): void;
     HandleSetName(value: string): void;
-    handleSendName(): void;
     opponentHandler(value: string, myID: string): void;
     whoIwantToPlay: string;
     whoRequestMe: string[];
@@ -64,11 +63,11 @@ interface themeToggleType {
     pageLoaded: boolean;
 }
 
-interface chooseNameType {
+interface chooseNameProps {
     HandleSetName(value: string): void;
     myInfo: { myID: string; myName: string };
     setHasChooseName(value: boolean): void;
-    handleSendName(): void;
+    setConnect: (value: boolean) => void;
 }
 
 interface correctNamesType {
@@ -94,12 +93,12 @@ interface NotInRoomProps {
     playersReady: playReadyType[];
     myInfo: { myID: string; myName: string };
     HandleSetName: (value: string) => void;
-    handleSendName: () => void;
     hasChoosenName: boolean;
     setHasChooseName: (value: boolean) => void;
     opponentHandler: (id: string, myID: string) => void;
     whoIwantToPlay: string;
     whoRequestMe: string[];
+    setConnect: (value: boolean) => void;
 }
 
 interface TimeProps {
@@ -122,7 +121,7 @@ export type {
     choosePlayerProps,
     darkModeType,
     themeToggleType,
-    chooseNameType,
+    chooseNameProps,
     correctNamesType,
     flagInfoType,
     GameProps,
