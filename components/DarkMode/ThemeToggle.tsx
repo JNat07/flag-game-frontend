@@ -6,10 +6,10 @@ import DarkMode from "./DarkMode";
 
 const ThemeToggle: React.FC<themeToggleType> = ({ pageLoaded }) => {
     const themeToggleVar: Variants = {
-        right: {
+        dark: {
             x: 28,
         },
-        left: {
+        light: {
             x: 0,
         },
     };
@@ -22,10 +22,6 @@ const ThemeToggle: React.FC<themeToggleType> = ({ pageLoaded }) => {
             opacity: [1, 0.6, 1],
         },
     };
-
-    // return light or dark
-    const darkOrLight = (theme: string): string =>
-        theme === "dark" ? "left" : "right";
 
     const { theme, setTheme } = DarkMode();
 
@@ -45,8 +41,8 @@ const ThemeToggle: React.FC<themeToggleType> = ({ pageLoaded }) => {
                     {/* animate the globe icon moving */}
                     <motion.div
                         variants={themeToggleVar}
-                        animate={darkOrLight(theme)}
-                        initial={darkOrLight(theme)}
+                        animate={theme}
+                        initial={theme}
                         transition={{
                             ease: [0.25, 0.5, 0.75, 1],
                         }}
