@@ -11,7 +11,7 @@ const Background = dynamic(() => import("./background"), {
 const Menu: NextPage = () => {
     return (
         <div>
-            <Background />
+            {/* <Background /> */}
             <main className="relative z-20 flex">
                 <div className="m-auto">
                     <div className="prose mt-[17vh] h-fit rounded-lg prose-h1:m-0 prose-h4:m-0 dark:prose-invert dark:shadow-none">

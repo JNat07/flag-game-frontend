@@ -34,8 +34,8 @@ const Background: React.FC = () => {
             <motion.img
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
-                src="./MenuFlags/de.png"
-                className="h-16 w-auto rounded-md selection:bg-transparent hover:shadow-lg"
+                src="./png250px/de.png"
+                className="w-auto h-16 rounded-md selection:bg-transparent hover:shadow-lg"
                 transition={{
                     x: {
                         duration: RandomNumber(
@@ -52,8 +52,8 @@ const Background: React.FC = () => {
             <motion.img
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
-                src="./MenuFlags/cm.png"
-                className="h-16 w-auto rounded-md selection:bg-transparent hover:shadow-lg"
+                src="./png250px/cm.png"
+                className="w-auto h-16 rounded-md selection:bg-transparent hover:shadow-lg"
                 transition={{
                     x: {
                         duration: RandomNumber(
@@ -70,8 +70,8 @@ const Background: React.FC = () => {
             <motion.img
                 variants={imageMoveVarient}
                 animate={"animateRight"}
-                src="./MenuFlags/vc.png"
-                className="h-16 w-auto rounded-md selection:bg-transparent hover:shadow-lg"
+                src="./png250px/vc.png"
+                className="w-auto h-16 rounded-md selection:bg-transparent hover:shadow-lg"
                 transition={{
                     x: {
                         duration: RandomNumber(
@@ -88,8 +88,8 @@ const Background: React.FC = () => {
             <motion.img
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
-                src="./MenuFlags/hk.png"
-                className="h-16 w-auto rounded-md selection:bg-transparent hover:shadow-lg"
+                src="./png250px/hk.png"
+                className="w-auto h-16 rounded-md selection:bg-transparent hover:shadow-lg"
                 transition={{
                     x: {
                         duration: RandomNumber(
@@ -106,8 +106,8 @@ const Background: React.FC = () => {
             <motion.img
                 variants={imageMoveVarient}
                 animate={"animateLeft"}
-                src="./MenuFlags/bd.png"
-                className="h-16 w-auto rounded-md selection:bg-transparent hover:shadow-lg"
+                src="./png250px/bd.png"
+                className="w-auto h-16 rounded-md selection:bg-transparent hover:shadow-lg"
                 transition={{
                     x: {
                         duration: RandomNumber(
@@ -124,8 +124,8 @@ const Background: React.FC = () => {
             <motion.img
                 variants={imageMoveVarient}
                 animate={"animateRight"}
-                src="./MenuFlags/cl.png"
-                className="h-16 w-auto rounded-md selection:bg-transparent hover:shadow-lg"
+                src="./png250px/cl.png"
+                className="w-auto h-16 rounded-md selection:bg-transparent hover:shadow-lg"
                 transition={{
                     x: {
                         duration: RandomNumber(
@@ -142,8 +142,8 @@ const Background: React.FC = () => {
             <motion.img
                 variants={imageMoveVarient}
                 animate={"animateRight"}
-                src="./MenuFlags/us.png"
-                className="h-16 w-auto rounded-md selection:bg-transparent hover:shadow-lg"
+                src="./png250px/us.png"
+                className="w-auto h-16 rounded-md selection:bg-transparent hover:shadow-lg"
                 transition={{
                     x: {
                         duration: RandomNumber(
@@ -162,8 +162,8 @@ const Background: React.FC = () => {
                     <motion.img
                         variants={imageMoveVarient}
                         animate={"animateLeft"}
-                        src="./MenuFlags/eg.png"
-                        className="h-16 w-auto rounded-md selection:bg-transparent hover:shadow-lg "
+                        src="./png250px/eg.png"
+                        className="w-auto h-16 rounded-md selection:bg-transparent hover:shadow-lg "
                         transition={{
                             x: {
                                 duration: RandomNumber(
@@ -180,8 +180,8 @@ const Background: React.FC = () => {
                     <motion.img
                         variants={imageMoveVarient}
                         animate={"animateRight"}
-                        src="./MenuFlags/il.png"
-                        className="h-16 w-auto rounded-md selection:bg-transparent hover:shadow-lg "
+                        src="./png250px/il.png"
+                        className="w-auto h-16 rounded-md selection:bg-transparent hover:shadow-lg "
                         transition={{
                             x: {
                                 duration: RandomNumber(
@@ -201,8 +201,8 @@ const Background: React.FC = () => {
                             <motion.img
                                 variants={imageMoveVarient}
                                 animate={"animateLeft"}
-                                src="./MenuFlags/cc.png"
-                                className="h-16 w-auto rounded-md selection:bg-transparent hover:shadow-lg "
+                                src="./png250px/cc.png"
+                                className="w-auto h-16 rounded-md selection:bg-transparent hover:shadow-lg "
                                 transition={{
                                     x: {
                                         duration: RandomNumber(
@@ -221,8 +221,8 @@ const Background: React.FC = () => {
                                 <motion.img
                                     variants={imageMoveVarient}
                                     animate={"animateRight"}
-                                    src="./MenuFlags/ht.png"
-                                    className="h-16 w-auto rounded-md selection:bg-transparent hover:shadow-lg "
+                                    src="./png250px/ht.png"
+                                    className="w-auto h-16 rounded-md selection:bg-transparent hover:shadow-lg "
                                     transition={{
                                         x: {
                                             duration: RandomNumber(

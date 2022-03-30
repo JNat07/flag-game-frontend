@@ -89,7 +89,7 @@ const Game: React.FC<GameProps> = ({
                         <h4>Score: {score}</h4>
                         <div />
 
-                        <p className="m-0 place-self-end font-mono dark:text-white ">
+                        <p className="m-0 font-mono place-self-end dark:text-white ">
                             {/* time not initialized, then set to 00:00 (page load not complete) */}
                             {time
                                 ? (minutes < 10 ? "0" + minutes : minutes) +
@@ -98,20 +98,19 @@ const Game: React.FC<GameProps> = ({
                                 : "00:00"}
                         </p>
                     </div>
-                    <h3 className="break-words px-1 pt-4 text-center">
+                    <h3 className="px-1 pt-4 text-center break-words">
                         Which is {countries[question]}?
                     </h3>
 
                     {/* Flags */}
                     <div className="mt-5 grid h-fit grid-cols-2 place-items-center gap-x-4  px-1.5">
-                        {/* static page, not using next image */}
-                        {current[1] !== "" && current[2] !== "" && (
+                        {current[0] !== "" && current[1] !== "" && (
                             <>
                                 <motion.img
                                     whileTap={{ scale: 0.96 }}
                                     whileHover={{ scale: 0.98 }}
-                                    src={`https://countryflagsapi.com/png/${current[0]}`}
-                                    className="m-0 cursor-pointer rounded-lg shadow-md hover:shadow-lg"
+                                    src={`./png250px/${current[0]}.png`}
+                                    className="m-0 rounded-lg shadow-md cursor-pointer hover:shadow-lg"
                                     onClick={() => scoreHandler(current[0])}
                                     alt="Country_Flag_1"
                                 />
@@ -119,8 +118,8 @@ const Game: React.FC<GameProps> = ({
                                 <motion.img
                                     whileTap={{ scale: 0.96 }}
                                     whileHover={{ scale: 0.98 }}
-                                    className="m-0 cursor-pointer rounded-lg shadow-md hover:shadow-lg"
-                                    src={`https://countryflagsapi.com/png/${current[1]}`}
+                                    className="m-0 rounded-lg shadow-md cursor-pointer hover:shadow-lg"
+                                    src={`./png250px/${current[1]}.png`}
                                     onClick={() => scoreHandler(current[1])}
                                     alt="Country_Flag_2"
                                 />
