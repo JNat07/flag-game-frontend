@@ -37,11 +37,9 @@ const ChooseName: React.FC<chooseNameProps> = ({
                         <div className="flex justify-center ">
                             <div className="space-y-4">
                                 <div className="flex space-x-2">
-                                    <Image
-                                        className="self-end rounded-lg bg-slate-600/80 selection:bg-transparent dark:bg-slate-600 dark:opacity-90"
+                                    <img
+                                        className="self-end w-16 h-16 rounded-lg bg-slate-600/80 selection:bg-transparent dark:bg-slate-600 dark:opacity-90"
                                         src={avatarGenerator(myInfo.myName)}
-                                        width={100}
-                                        height={100}
                                         alt="name_icon"
                                     />
 
