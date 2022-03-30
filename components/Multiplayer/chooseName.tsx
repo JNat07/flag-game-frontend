@@ -50,7 +50,7 @@ const ChooseName: React.FC<chooseNameProps> = ({
                                             onClick={() => randomName()}
                                             xmlns="http://www.w3.org/2000/svg"
                                             fill="currentColor"
-                                            className="self-center w-8 h-8 section:bg-transparent"
+                                            className="self-center w-8 h-8 section:bg-transparent dark:invert"
                                             whileTap={{ scale: 0.9 }}
                                             viewBox="0 0 16 16"
                                         >
