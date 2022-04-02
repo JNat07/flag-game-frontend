@@ -2,34 +2,39 @@ import * as React from "react";
 import type { NextPage } from "next";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { UserIcon, UsersIcon } from "@heroicons/react/solid";
-import dynamic from "next/dynamic";
-const Background = dynamic(() => import("./background"), {
-    ssr: false,
-});
+import { UserIcon, UsersIcon } from "@heroicons/react/outline";
+import Background from "./background";
 
 const Menu: NextPage = () => {
     return (
-        <div>
-            {/* <Background /> */}
+        <div className="fixed left-0 w-screen h-screen bg-center top-1 ">
+            <Background />
             <main className="relative z-20 flex">
                 <div className="m-auto">
-                    <div className="prose mt-[17vh] h-fit rounded-lg prose-h1:m-0 prose-h4:m-0 dark:prose-invert dark:shadow-none">
-                        <div className="pb-1 mt-12 space-y-7">
-                            <div className="flex justify-center ">
+                    <div className=" prose mt-[34vh]  rotate-[-2deg] rounded-sm bg-gradient-to-b from-[#FFFF88] to-[#c0c066] px-2 pb-4 pt-2 shadow-2xl ring-1 ring-gray-800 prose-h1:m-0 prose-h4:m-0 lg:h-[28vh] lg:w-[28vw] ">
+                        <div className="p-3 space-y-7">
+                            <div className="flex justify-center">
                                 <Link
                                     href={"/singlePlayer"}
                                     passHref
                                     as="/singleplayer"
                                 >
-                                    <motion.a
-                                        whileHover={{ scale: 0.98 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        className="flex items-center w-full px-16 pl-12 space-x-3 text-3xl text-center no-underline rounded-md shadow-md select-none ring ring-gray-800 hover:shadow-lg hover:ring-black dark:ring-gray-50 dark:hover:ring-white/70"
+                                    <a
+                                        className="no-underline rounded-md select-none"
+                                        style={{
+                                            fontFamily: "Reenie Beanie",
+                                        }}
                                     >
-                                        <UserIcon className="w-8 h-8" />
-                                        <h4> Single Player</h4>
-                                    </motion.a>
+                                        <motion.div
+                                            whileTap={{ scale: 0.97 }}
+                                            className="flex items-center justify-center space-x-1 lg:space-x-2"
+                                        >
+                                            <UserIcon className="mb-1.5 h-8 w-8 lg:h-14 lg:w-14" />
+                                            <h4 className="text-3xl ine hover:underline lg:text-7xl">
+                                                Singleplayer
+                                            </h4>
+                                        </motion.div>
+                                    </a>
                                 </Link>
                             </div>
                             <div className="flex justify-center">
@@ -38,14 +43,24 @@ const Menu: NextPage = () => {
                                     as="/multiplayer"
                                     passHref
                                 >
-                                    <motion.a
-                                        whileHover={{ scale: 0.98 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        className="flex items-center w-full px-16 pl-12 space-x-3 text-3xl text-center no-underline rounded-md shadow-md select-none ring ring-gray-800 hover:shadow-lg hover:ring-black dark:ring-gray-50 dark:hover:ring-white/70"
+                                    <a
+                                        className="no-underline rounded-md select-none"
+                                        style={{
+                                            fontFamily: "Reenie Beanie",
+                                        }}
                                     >
-                                        <UsersIcon className="w-8 h-8" />
-                                        <h4>Multi Player</h4>
-                                    </motion.a>
+                                        <motion.div
+                                            whileTap={{
+                                                scale: 0.97,
+                                            }}
+                                            className="flex items-center justify-center space-x-2 lg:space-x-4"
+                                        >
+                                            <UsersIcon className="mb-1.5 h-8 w-8 lg:h-14 lg:w-14" />
+                                            <h4 className="text-3xl hover:underline lg:text-7xl">
+                                                Multiplayer
+                                            </h4>
+                                        </motion.div>
+                                    </a>
                                 </Link>
                             </div>
                         </div>

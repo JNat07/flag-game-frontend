@@ -7,10 +7,10 @@ import DarkMode from "./DarkMode";
 const ThemeToggle: React.FC<themeToggleType> = ({ pageLoaded }) => {
     const themeToggleVar: Variants = {
         dark: {
-            x: 28,
+            x: "55%",
         },
         light: {
-            x: 0,
+            x: "0%",
         },
     };
 
@@ -36,7 +36,7 @@ const ThemeToggle: React.FC<themeToggleType> = ({ pageLoaded }) => {
                     onClick={() =>
                         setTheme(theme === "light" ? "dark" : "light")
                     }
-                    className="flex w-12 h-5 rounded-full justify-self-start ring-2 ring-black dark:ring-white "
+                    className="w-12 h-5 bg-white bg-opacity-50 rounded-full ring-2 ring-black dark:ring-white lg:h-7 lg:w-16"
                 >
                     {/* animate the globe icon moving */}
                     <motion.div
@@ -47,12 +47,12 @@ const ThemeToggle: React.FC<themeToggleType> = ({ pageLoaded }) => {
                             ease: [0.25, 0.5, 0.75, 1],
                         }}
                     >
-                        <GlobeIcon className="w-5 h-5 cursor-pointer stroke-black dark:stroke-white" />
+                        <GlobeIcon className="absolute w-5 h-5 cursor-pointer stroke-black lg:h-7 lg:w-7" />
                     </motion.div>
                 </div>
 
                 <motion.p
-                    className="text-black cursor-default selection:bg-transparent dark:text-white"
+                    className="text-gray-200 cursor-default selection:bg-transparent lg:text-xl"
                     variants={themeLabelVarient}
                     animate={theme === "light" ? "light" : "dark"}
                     initial={{ opacity: 1 }}
