@@ -26,6 +26,10 @@ const DarkMode = (): darkModeType => {
     // whenever theme changes, alter DOM
     React.useEffect(() => {
         themeHandler(theme);
+
+        () => {
+            setTheme(theme);
+        };
     }, [theme]);
 
     return { theme, setTheme };
