@@ -3,7 +3,6 @@ import type { NextPage } from "next";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { UserIcon, UsersIcon } from "@heroicons/react/outline";
-import Background from "./background";
 
 const Menu: NextPage = () => {
     return (

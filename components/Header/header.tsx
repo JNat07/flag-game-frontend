@@ -36,7 +36,6 @@ const Header: React.FC = () => {
                             <AnimatePresence>
                                 <Link href={"/"} passHref>
                                     <motion.a
-                                        className="top-0 origin-center"
                                         whileTap={{ scale: 0.8 }}
                                         transition={{ duration: 0.5 }}
                                         exit={{ opacity: 0 }}
