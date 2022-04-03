@@ -3,15 +3,15 @@ import { motion } from "framer-motion";
 
 const Footer: React.FC = () => {
     return (
-        <footer className="absolute inset-x-0 bottom-0 z-20 prose prose-h4:m-0 prose-p:m-0 prose-img:m-0 ">
-            <div className="grid w-screen grid-cols-2 rounded-t-[0.3rem] py-0.5 dark:rounded-t-md ">
+        <footer className="absolute inset-x-0 bottom-0 z-20 prose prose-h4:m-0 prose-p:m-0 prose-img:m-0 dark:prose-invert ">
+            <div className="grid w-screen grid-cols-2 rounded-t-[0.3rem] py-0.5 px-2 dark:rounded-t-md">
                 <motion.a
                     href="https://github.com/JNat07"
                     className="flex no-underline justify-self-start"
                 >
                     <motion.img
                         src="../GitHubLogo.png"
-                        className="h-8 w-fit invert lg:h-14"
+                        className="h-8 w-fit dark:invert lg:h-14"
                         alt="someInfo"
                         whileHover={{ scale: 0.95 }}
                         whileTap={{ scale: 0.95 }}
@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                     />
-                    <p className="self-end pb-1 text-xs text-white lg:pb-2 ">
+                    <p className="self-end pb-1 text-xs lg:pb-2 ">
                         JNat07 {new Date().getFullYear()}
                     </p>
                 </motion.a>
