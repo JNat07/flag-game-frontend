@@ -5,12 +5,7 @@ module.exports = {
     ],
     darkMode: "class",
     theme: {
-        extend: {
-            backgroundImage: {
-                blueprint: "url('../public/blueprint.png')",
-                blueprintDark: "url('../public/darkBackground.png')",
-            },
-        },
+        extend: {},
     },
     plugins: [
         require("@tailwindcss/typography"),

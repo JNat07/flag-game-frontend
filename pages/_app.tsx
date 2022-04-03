@@ -7,7 +7,7 @@ import Footer from "../components/Footer/Footer";
 function MyApp({ Component, pageProps }: AppProps) {
     return (
         // wrap everything inside of contexts to be used later
-        <main className="h-screen overflow-hidden bg-center bg-blueprint dark:bg-blueprintDark">
+        <main className="h-screen overflow-hidden bg-white dark:bg-black">
             {/* render header component and all other components */}
             <Header />
             <Component {...pageProps} />
