@@ -30,13 +30,13 @@ const ThemeToggle: React.FC<themeToggleType> = ({ pageLoaded }) => {
         pageLoaded ? (
             // consume theme and settheme
 
-            <div>
+            <>
                 <div
                     id="globe"
                     onClick={() =>
                         setTheme(theme === "light" ? "dark" : "light")
                     }
-                    className="w-12 h-5 bg-white bg-opacity-50 rounded-full ring-2 ring-black dark:ring-white lg:h-7 lg:w-16"
+                    className="w-12 h-5 rounded-full ring-2 ring-black dark:ring-white lg:h-7 lg:w-16"
                 >
                     {/* animate the globe icon moving */}
                     <motion.div
@@ -47,20 +47,20 @@ const ThemeToggle: React.FC<themeToggleType> = ({ pageLoaded }) => {
                             ease: [0.25, 0.5, 0.75, 1],
                         }}
                     >
-                        <GlobeIcon className="absolute w-5 h-5 cursor-pointer stroke-black lg:h-7 lg:w-7" />
+                        <GlobeIcon className="absolute w-5 h-5 cursor-pointer stroke-black dark:stroke-white lg:h-7 lg:w-7" />
                     </motion.div>
                 </div>
 
                 <motion.p
-                    className="text-gray-200 cursor-default selection:bg-transparent lg:text-xl"
+                    className="text-black cursor-default selection:bg-transparent dark:text-gray-200 lg:text-xl"
                     variants={themeLabelVarient}
-                    animate={theme === "light" ? "light" : "dark"}
+                    animate={theme}
                     initial={{ opacity: 1 }}
                 >
                     {/*  theme initialized, else know OS preference */}
                     {theme ? theme : "System"}
                 </motion.p>
-            </div>
+            </>
         ) : null
     );
 };
