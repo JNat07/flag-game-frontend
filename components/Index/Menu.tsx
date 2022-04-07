@@ -94,7 +94,7 @@ const Menu: NextPage = () => {
                                         setClick({
                                             runAnimation: true,
                                             endAnimation: false,
-                                            whereToSend: "/multiplayer",
+                                            whereToSend: "/multiPlayer",
                                         })
                                     }
                                 >
