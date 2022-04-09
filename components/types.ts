@@ -1,9 +1,9 @@
-interface playReadyType {
+interface PlayReadyType {
     name: string;
     id: string;
 }
 
-interface myInfoType {
+interface MyInfoType {
     myID: string;
     myName: string;
 }
@@ -14,9 +14,9 @@ interface OpponentInfo {
 }
 
 // socketio custom hook return types
-interface socketIOFunc {
+interface SocketIOFunc {
     myInfo: { myID: string; myName: string };
-    playersReady: playReadyType[];
+    playersReady: PlayReadyType[];
     setConnect(value: boolean): void;
     HandleSetName(value: string): void;
     opponentHandler(value: string, myID: string): void;
@@ -31,8 +31,8 @@ interface socketIOFunc {
     };
 }
 
-interface socketClientTypes {
-    allPlayableUsers: (arg: playReadyType[]) => void;
+interface SocketClientTypes {
+    allPlayableUsers: (arg: PlayReadyType[]) => void;
     "inform-opponent-ofPlayer": (arg: string[]) => void;
     sendMyName: (arg: string) => void;
     "remove-Opponent": ({}) => void;
@@ -46,31 +46,31 @@ interface socketClientTypes {
     "opponent-info": (opponentInfo: OpponentInfo) => void;
 }
 
-interface choosePlayerProps {
-    playersReady: playReadyType[];
+interface ChoosePlayerProps {
+    playersReady: PlayReadyType[];
     myInfo: { myID: string; myName: string };
     opponentHandler: (id: string, myID: string) => void;
     whoRequestMe: string[];
     whoIwantToPlay: string;
 }
 
-interface darkModeType {
+interface DarkModeType {
     theme: string;
     setTheme(value: string): void;
 }
 
-interface themeToggleType {
+interface ThemeToggleType {
     pageLoaded: boolean;
 }
 
-interface chooseNameProps {
+interface ChooseNameProps {
     HandleSetName(value: string): void;
     myInfo: { myID: string; myName: string };
     setHasChooseName(value: boolean): void;
     setConnect: (value: boolean) => void;
 }
 
-interface correctNamesType {
+interface CorrectNamesType {
     recentWrong: boolean;
     current: string[];
     question: string;
@@ -80,8 +80,37 @@ interface flagInfoType {
     [key: string]: string;
 }
 
+interface GameDataProps {
+    score: number;
+    wrongQuestion: string;
+    current: string[];
+    question: string;
+    recentWrong: boolean;
+    nextQuestion: number;
+    sentMyScore: boolean;
+    gameOver: boolean;
+}
+
+interface FlagGameProps {
+    gameData: GameDataProps | { [key: string]: any };
+    countries: flagInfoType;
+    handleChoose(item: string): void;
+    seGameDataFunc(
+        key: string,
+        value: any,
+        key2?: string,
+        value2?: any,
+        key3?: string,
+        value3?: any
+    ): void;
+    timeObj: {
+        time: Date | number;
+        seconds: Date | number;
+        minutes: Date | number;
+    };
+}
+
 interface GameProps {
-    singlePlayer: boolean;
     handleEvent?: (value: number) => void;
     multiplayerGameInfo?: Array<string[]>;
     setMultiplayerGameInfo?: (value: Array<string[]>) => void;
@@ -90,7 +119,7 @@ interface GameProps {
 }
 
 interface NotInRoomProps {
-    playersReady: playReadyType[];
+    playersReady: PlayReadyType[];
     myInfo: { myID: string; myName: string };
     HandleSetName: (value: string) => void;
     hasChoosenName: boolean;
@@ -106,7 +135,7 @@ interface TimeProps {
     handleEvent: (value: number) => void;
 }
 
-interface NotifyPlayerType {
+interface GameResultsType {
     myScore: number;
     theirScore: number;
     myName: string;
@@ -114,19 +143,21 @@ interface NotifyPlayerType {
 }
 
 export type {
-    playReadyType,
-    myInfoType,
-    socketIOFunc,
-    socketClientTypes,
-    choosePlayerProps,
-    darkModeType,
-    themeToggleType,
-    chooseNameProps,
-    correctNamesType,
+    PlayReadyType,
+    MyInfoType,
+    SocketIOFunc,
+    SocketClientTypes,
+    ChoosePlayerProps,
+    DarkModeType,
+    ThemeToggleType,
+    ChooseNameProps,
+    CorrectNamesType,
     flagInfoType,
     GameProps,
     NotInRoomProps,
     TimeProps,
-    NotifyPlayerType,
+    GameResultsType,
+    GameDataProps,
     OpponentInfo,
+    FlagGameProps,
 };
