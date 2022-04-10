@@ -16,7 +16,7 @@ const Header: React.FC = () => {
 
     return (
         <header className="relative inset-x-0 top-0 z-20 prose prose-h3:m-0 prose-p:m-0 prose-img:m-0 dark:prose-invert">
-            <div className="grid w-screen grid-cols-3 px-2 pt-3">
+            <div className="grid w-screen grid-cols-3 pt-3 pl-2.5 pr-2">
                 {/* only show home button when not on menu */}
                 {router.pathname === "/" ? (
                     <FlagGameText />

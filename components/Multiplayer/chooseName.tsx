@@ -1,11 +1,11 @@
 import * as React from "react";
 import { motion } from "framer-motion";
-import { chooseNameProps } from "../types";
+import { ChooseNameProps } from "../types";
 import { names } from "../randomInfo";
 import avatarGenerator from "../AvatarGenerator";
 import Image from "next/image";
 
-const ChooseName: React.FC<chooseNameProps> = ({
+const ChooseName: React.FC<ChooseNameProps> = ({
     HandleSetName,
     myInfo,
     setHasChooseName,
@@ -25,10 +25,10 @@ const ChooseName: React.FC<chooseNameProps> = ({
     return (
         <div className="relative  m-4 mt-[7vh]">
             <div className="flex justify-center lg:w-screen">
-                <div className="p-4 prose rounded-lg shadow-inner prose-img:m-0 dark:prose-invert lg:px-10">
+                <div className="prose rounded-lg p-4 shadow-inner prose-img:m-0 dark:prose-invert lg:px-10">
                     <div className="space-y-5 ">
                         <div className="mx-2 space-y-1">
-                            <h2 className="m-0 text-3xl text-center">
+                            <h2 className="m-0 text-center text-3xl">
                                 Choose Your Name
                             </h2>
                             <hr className="dark:opacity-0" />
@@ -38,7 +38,7 @@ const ChooseName: React.FC<chooseNameProps> = ({
                             <div className="space-y-4">
                                 <div className="flex space-x-2">
                                     <img
-                                        className="self-end w-16 h-16 rounded-lg bg-slate-600/80 selection:bg-transparent dark:bg-slate-600 dark:opacity-90"
+                                        className="h-16 w-16 self-end rounded-lg bg-slate-600/80 selection:bg-transparent dark:bg-slate-600 dark:opacity-90"
                                         src={avatarGenerator(myInfo.myName)}
                                         alt="name_icon"
                                     />
@@ -48,7 +48,7 @@ const ChooseName: React.FC<chooseNameProps> = ({
                                             onClick={() => randomName()}
                                             xmlns="http://www.w3.org/2000/svg"
                                             fill="currentColor"
-                                            className="self-center w-8 h-8 section:bg-transparent dark:invert"
+                                            className="section:bg-transparent h-8 w-8 self-center dark:invert"
                                             whileTap={{ scale: 0.9 }}
                                             viewBox="0 0 16 16"
                                         >

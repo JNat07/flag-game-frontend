@@ -2,10 +2,10 @@ import * as React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { createAvatar } from "@dicebear/avatars";
 import * as style from "@dicebear/pixel-art";
-import { choosePlayerProps } from "../types";
+import { ChoosePlayerProps } from "../types";
 import Image from "next/image";
 
-const ChoosePlayer: React.FC<choosePlayerProps> = ({
+const ChoosePlayer: React.FC<ChoosePlayerProps> = ({
     playersReady,
     myInfo,
     opponentHandler,
