@@ -1,9 +1,9 @@
 import * as React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { countries } from "../FlagInfo/FlagInfo";
-import { correctNamesType } from "../types";
+import { CorrectNamesType } from "../types";
 
-const CorrectNames: React.FC<correctNamesType> = ({
+const CorrectNames: React.FC<CorrectNamesType> = ({
     recentWrong,
     current,
     question,

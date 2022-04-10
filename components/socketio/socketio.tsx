@@ -1,19 +1,19 @@
 import * as React from "react";
 import { io, Socket } from "socket.io-client";
 import {
-    myInfoType,
-    playReadyType,
-    socketClientTypes,
+    MyInfoType,
+    PlayReadyType,
+    SocketClientTypes,
     OpponentInfo,
 } from "../types";
 
 const SocketIO = () => {
     const [connect, setConnect] = React.useState<boolean>(false);
-    const [myInfo, setMyInfo] = React.useState<myInfoType>({
+    const [myInfo, setMyInfo] = React.useState<MyInfoType>({
         myID: "",
         myName: "",
     });
-    const [playersReady, setPlayersReady] = React.useState<playReadyType[]>([
+    const [playersReady, setPlayersReady] = React.useState<PlayReadyType[]>([
         { name: "", id: "" },
     ]);
     const [whoIwantToPlay, setWhoIwantToPlay] = React.useState<string>("");
@@ -26,7 +26,7 @@ const SocketIO = () => {
         name: "",
         score: 0,
     });
-    const socket: React.MutableRefObject<Socket<socketClientTypes> | null> =
+    const socket: React.MutableRefObject<Socket<SocketClientTypes> | null> =
         React.useRef(null);
 
     React.useEffect(() => {
@@ -47,7 +47,7 @@ const SocketIO = () => {
                 });
             });
 
-            socket.current.on("allPlayableUsers", (arg: playReadyType[]) => {
+            socket.current.on("allPlayableUsers", (arg: PlayReadyType[]) => {
                 setPlayersReady(arg);
             });
 
@@ -115,7 +115,7 @@ const SocketIO = () => {
         });
     };
 
-    const opponentHandler = (opponentID: string, myID: string) => {
+    const opponentHandler = (opponentID: string, myID: string): void => {
         if (socket.current) {
             if (whoIwantToPlay === "") {
                 //no selection
@@ -137,7 +137,7 @@ const SocketIO = () => {
         }
     };
 
-    const handleEvent = (score: number): void => {
+    const handleSendScore = (score: number): void => {
         if (socket.current) {
             socket.current.emit("finished-my-score", {
                 name: myInfo.myName,
@@ -155,7 +155,7 @@ const SocketIO = () => {
         whoIwantToPlay,
         whoRequestMe,
         inRoom,
-        handleEvent,
+        handleSendScore,
         multiplayerGameInfo,
         setMultiplayerGameInfo,
         opponentInfo,

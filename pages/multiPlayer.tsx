@@ -1,6 +1,6 @@
 import * as React from "react";
 import type { NextPage } from "next";
-import { socketIOFunc, NotInRoomProps } from "../components/types";
+import { SocketIOFunc, NotInRoomProps } from "../components/types";
 import SocketIO from "../components/socketio/socketio";
 import dynamic from "next/dynamic";
 import ChooseName from "../components/Multiplayer/chooseName";
@@ -9,10 +9,14 @@ const ChoosePlayer = dynamic(
     () => import("../components/Multiplayer/ChoosePlayer"),
     {
         ssr: false,
+        loading: () => <p>Loading...</p>,
     }
 );
 
-const Game = dynamic(() => import("../components/game/game"), { ssr: false });
+const GameLogic = dynamic(() => import("../components/Game/GameLogic"), {
+    ssr: false,
+    loading: () => <p>Loading in Game...</p>,
+});
 
 const MultiPlayer: NextPage = () => {
     const {
@@ -24,19 +28,18 @@ const MultiPlayer: NextPage = () => {
         whoIwantToPlay,
         whoRequestMe,
         inRoom,
-        handleEvent,
+        handleSendScore,
         multiplayerGameInfo,
         opponentInfo,
-    }: socketIOFunc = SocketIO();
+    }: SocketIOFunc = SocketIO();
 
     // state to track what to render
     const [hasChoosenName, setHasChooseName] = React.useState<boolean>(false);
 
     return inRoom ? (
         // render when user has choosen their name
-        <Game
-            singlePlayer={false}
-            handleEvent={handleEvent}
+        <GameLogic
+            handleSendScore={handleSendScore}
             multiplayerGameInfo={multiplayerGameInfo}
             opponentInfo={opponentInfo}
             myName={myInfo.myName}

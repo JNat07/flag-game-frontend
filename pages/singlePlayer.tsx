@@ -1,8 +1,7 @@
 import * as React from "react";
 import type { NextPage } from "next";
-import dynamic from "next/dynamic";
-const Game = dynamic(() => import("../components/game/game"), { ssr: false });
+import GameLogic from "../components/Game/GameLogic";
 
-const SinglePlayer: NextPage = () => <Game singlePlayer={true} />;
+const SinglePlayer: NextPage = () => <GameLogic />;
 
 export default SinglePlayer;

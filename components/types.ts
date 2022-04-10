@@ -23,7 +23,7 @@ interface SocketIOFunc {
     whoIwantToPlay: string;
     whoRequestMe: string[];
     inRoom: boolean;
-    handleEvent: (value: number) => void;
+    handleSendScore: (value: number) => void;
     multiplayerGameInfo: Array<string[]>;
     opponentInfo: {
         name: string;
@@ -111,7 +111,7 @@ interface FlagGameProps {
 }
 
 interface GameProps {
-    handleEvent?: (value: number) => void;
+    handleSendScore?: (value: number) => void;
     multiplayerGameInfo?: Array<string[]>;
     setMultiplayerGameInfo?: (value: Array<string[]>) => void;
     opponentInfo?: OpponentInfo;
@@ -132,7 +132,7 @@ interface NotInRoomProps {
 
 interface TimeProps {
     score: number;
-    handleEvent: (value: number) => void;
+    handleSendScore: (value: number) => void;
 }
 
 interface GameResultsType {
