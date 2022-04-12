@@ -75,7 +75,7 @@ const GameLogic: React.FC<GameProps> = ({
     React.useEffect(() => {
         // if playing single player, then just send to results page
         if (router.pathname === "/singlePlayer" && seconds >= 10) {
-            router.push(`/results?s1=${gameData.score}`);
+            router.push(`/results?s1=${gameData.score}&n1=You`);
             // send score to opponent (triggers above useEffect for opponent)
         } else if (router.pathname === "/multiPlayer" && seconds >= 10) {
             if (handleSendScore) {
