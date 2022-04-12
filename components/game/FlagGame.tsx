@@ -2,8 +2,10 @@ import * as React from "react";
 import { motion } from "framer-motion";
 import { FlagGameProps } from "../types";
 import dynamic from "next/dynamic";
+import Loading from "../Loading";
 const CorrectNames = dynamic(() => import("./correctNames"), {
     ssr: false,
+    loading: () => <Loading />,
 });
 
 const FlagGame: React.FC<FlagGameProps> = ({
@@ -22,7 +24,7 @@ const FlagGame: React.FC<FlagGameProps> = ({
                         <h4>Score: {gameData.score}</h4>
                         <div />
 
-                        <p className="m-0 place-self-end font-mono dark:text-white ">
+                        <p className="m-0 font-mono place-self-end dark:text-white ">
                             {/* time not initialized, then set to 00:00 (page load not complete) */}
                             {timeObj.time
                                 ? (timeObj.minutes < 10
@@ -35,7 +37,7 @@ const FlagGame: React.FC<FlagGameProps> = ({
                                 : "00:00"}
                         </p>
                     </div>
-                    <h3 className="break-words px-1 pt-4 text-center">
+                    <h3 className="px-1 pt-4 text-center break-words">
                         Which is {countries[gameData.question]}?
                     </h3>
                     {/* Flags */}
@@ -47,7 +49,7 @@ const FlagGame: React.FC<FlagGameProps> = ({
                                         whileTap={{ scale: 0.96 }}
                                         whileHover={{ scale: 0.98 }}
                                         src={`./png250px/${gameData.current[0]}.png`}
-                                        className="m-0 cursor-pointer rounded-lg shadow-md hover:shadow-lg"
+                                        className="m-0 rounded-lg shadow-md cursor-pointer hover:shadow-lg"
                                         onClick={() =>
                                             handleChoose(gameData.current[0])
                                         }
@@ -57,7 +59,7 @@ const FlagGame: React.FC<FlagGameProps> = ({
                                     <motion.img
                                         whileTap={{ scale: 0.96 }}
                                         whileHover={{ scale: 0.98 }}
-                                        className="m-0 cursor-pointer rounded-lg shadow-md hover:shadow-lg"
+                                        className="m-0 rounded-lg shadow-md cursor-pointer hover:shadow-lg"
                                         src={`./png250px/${gameData.current[1]}.png`}
                                         onClick={() =>
                                             handleChoose(gameData.current[1])
