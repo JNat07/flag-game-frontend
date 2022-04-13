@@ -14,10 +14,7 @@ const ChoosePlayer = dynamic(
     }
 );
 
-const LogicForGame = dynamic(() => import("../components/Game/GameLogic"), {
-    ssr: false,
-    loading: () => <Loading />,
-});
+const GameLogic = dynamic(() => import("../components/Game/GameLogic"));
 
 const MultiPlayer: NextPage = () => {
     const {
@@ -39,7 +36,7 @@ const MultiPlayer: NextPage = () => {
 
     return inRoom ? (
         // render when user has choosen their name
-        <LogicForGame
+        <GameLogic
             handleSendScore={handleSendScore}
             multiplayerGameInfo={multiplayerGameInfo}
             opponentInfo={opponentInfo}
