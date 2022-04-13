@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ChooseNameProps } from "../types";
 import { names } from "../randomInfo";
 import Head from "next/head";
-import avatarGenerator from "../AvatarGenerator";
+import avatarGenerator from "../avatarGenerator";
 
 const ChooseName: React.FC<ChooseNameProps> = ({
     HandleSetName,

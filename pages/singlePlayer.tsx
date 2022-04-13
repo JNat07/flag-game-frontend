@@ -1,6 +1,6 @@
 import * as React from "react";
 import type { NextPage } from "next";
-import GameLogic from "../components/game/GameLogic";
+import GameLogic from "../components/game/gameLogic";
 
 const SinglePlayer: NextPage = () => <GameLogic />;
 

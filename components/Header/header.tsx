@@ -3,8 +3,8 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeftIcon } from "@heroicons/react/outline";
 import { useRouter } from "next/router";
-import ThemeToggle from "../DarkMode/ThemeToggle";
-import FlagGameText from "../FlagGameText";
+import ThemeToggle from "../darkmode/themeToggle";
+import FlagGameText from "../flagGameText";
 
 const Header: React.FC = () => {
     const [pageLoaded, setPageLoaded] = React.useState<boolean>(false);

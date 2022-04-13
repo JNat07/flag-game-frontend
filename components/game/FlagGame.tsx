@@ -2,7 +2,7 @@ import * as React from "react";
 import { motion } from "framer-motion";
 import { FlagGameProps } from "../types";
 import dynamic from "next/dynamic";
-import Loading from "../Loading";
+import Loading from "../loading";
 import Head from "next/head";
 const CorrectNames = dynamic(() => import("./correctNames"), {
     ssr: false,
