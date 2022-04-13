@@ -22,7 +22,7 @@ const Home: NextPage = () => {
                         <div className="prose mt-[34vh] px-2 pb-4 pt-2 prose-h1:m-0 prose-h4:m-0">
                             <div className="z-40 p-3 space-y-7">
                                 <div className="flex justify-center">
-                                    <Link href={"/singlePlayer"} passHref>
+                                    <Link href={"/singleplayer"} passHref>
                                         <motion.a
                                             whileTap={{ scale: 0.97 }}
                                             className="flex items-center justify-center space-x-1 no-underline lg:space-x-2"
@@ -36,7 +36,7 @@ const Home: NextPage = () => {
                                     </Link>
                                 </div>
                                 <div className="flex justify-center">
-                                    <Link href={"/multiPlayer"} passHref>
+                                    <Link href={"/multiplayer"} passHref>
                                         <motion.a
                                             whileTap={{
                                                 scale: 0.97,

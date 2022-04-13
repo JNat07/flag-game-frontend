@@ -64,7 +64,7 @@ const GameLogic: React.FC<GameProps> = ({
     // run when opponentInfo updates
     React.useEffect(() => {
         // if user playing multiplayer and time has elapsed, send to results screen
-        if (router.pathname === "/multiPlayer" && seconds >= 10) {
+        if (router.pathname === "/multiplayer" && seconds >= 10) {
             router.push(
                 `/results?s1=${gameData.score}&s2=${opponentInfo.score}&n1=${myName}&n2=${opponentInfo.name}`
             );
@@ -74,10 +74,10 @@ const GameLogic: React.FC<GameProps> = ({
     // run every time seconds value updates
     React.useEffect(() => {
         // if playing single player, then just send to results page
-        if (router.pathname === "/singlePlayer" && seconds >= 10) {
+        if (router.pathname === "/singleplayer" && seconds >= 10) {
             router.push(`/results?s1=${gameData.score}&n1=You`);
             // send score to opponent (triggers above useEffect for opponent)
-        } else if (router.pathname === "/multiPlayer" && seconds >= 10) {
+        } else if (router.pathname === "/multiplayer" && seconds >= 10) {
             if (handleSendScore) {
                 handleSendScore(gameData.score);
                 seGameDataFunc("sentMyScore", true);
@@ -101,7 +101,7 @@ const GameLogic: React.FC<GameProps> = ({
 
     // if single player, choose country
     React.useEffect(() => {
-        if (router.pathname === "/singlePlayer") {
+        if (router.pathname === "/singleplayer") {
             const [countryA, countryB] = chooseCountry();
 
             // pick random number between 0 and 1 to determine which flag is the question
@@ -121,7 +121,7 @@ const GameLogic: React.FC<GameProps> = ({
 
     // if multiplayer, then show those flags
     React.useEffect(() => {
-        if (router.pathname === "/multiPlayer" && multiplayerGameInfo) {
+        if (router.pathname === "/multiplayer" && multiplayerGameInfo) {
             // get individual values (countries, and question)
             const [countryA, countryB, newQuestion] =
                 multiplayerGameInfo[gameData.nextQuestion];
