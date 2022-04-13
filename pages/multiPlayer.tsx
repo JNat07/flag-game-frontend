@@ -4,10 +4,10 @@ import { SocketIOFunc, NotInRoomProps } from "../components/types";
 import SocketIO from "../components/Socketio/Socketio";
 import dynamic from "next/dynamic";
 import Loading from "../components/Loading";
-import ChooseName from "../components/multiplayer/ChooseName";
+import ChooseName from "../components/Multiplayer/ChooseName";
 
 const ChoosePlayer = dynamic(
-    () => import("../components/multiplayer/ChoosePlayer"),
+    () => import("../components/Multiplayer/ChoosePlayer"),
     {
         ssr: false,
         loading: () => <Loading />,
