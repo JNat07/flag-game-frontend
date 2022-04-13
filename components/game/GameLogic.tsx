@@ -5,7 +5,7 @@ import { GameProps, GameDataProps } from "../types";
 import FlagGame from "./FlagGame";
 import Time from "./time";
 
-const GameLogic: React.FC<GameProps> = ({
+const LogicForGame: React.FC<GameProps> = ({
     handleSendScore,
     multiplayerGameInfo,
     opponentInfo = {
@@ -191,4 +191,4 @@ const GameLogic: React.FC<GameProps> = ({
     );
 };
 
-export default GameLogic;
+export default LogicForGame;

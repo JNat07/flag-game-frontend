@@ -14,7 +14,10 @@ const ChoosePlayer = dynamic(
     }
 );
 
-import GameLogic from "../components/Game/GameLogic";
+const GameLogic = dynamic(() => import("../components/Game/GameLogic"), {
+    ssr: false,
+    loading: () => <Loading />,
+});
 
 const MultiPlayer: NextPage = () => {
     const {
