@@ -2,7 +2,7 @@ import * as React from "react";
 import { motion, Variants } from "framer-motion";
 import { GlobeIcon } from "@heroicons/react/outline";
 import { ThemeToggleType } from "../types";
-import DarkMode from "./darkMode";
+import DarkMode from "./DarkMode";
 
 const ThemeToggle: React.FC<ThemeToggleType> = ({ pageLoaded }) => {
     const themeToggleVar: Variants = {
