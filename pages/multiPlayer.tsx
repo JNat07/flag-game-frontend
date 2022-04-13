@@ -14,7 +14,7 @@ const ChoosePlayer = dynamic(
     }
 );
 
-const GameLogic = dynamic(() => import("../components/game/GameLogic"), {
+const GameLogic = dynamic(() => import("../components/Game/GameLogic"), {
     ssr: false,
     loading: () => <Loading />,
 });
