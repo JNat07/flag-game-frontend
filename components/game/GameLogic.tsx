@@ -6,8 +6,8 @@ import FlagGame from "./FlagGame";
 import Time from "./time";
 
 const GameLogic: React.FC<GameProps> = ({
-    handleSendScore = (value: number) => null,
-    multiplayerGameInfo = [""],
+    handleSendScore,
+    multiplayerGameInfo,
     opponentInfo = {
         name: "",
         score: 0,
