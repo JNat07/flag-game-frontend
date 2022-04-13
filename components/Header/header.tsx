@@ -22,11 +22,16 @@ const Header: React.FC = () => {
                     <FlagGameText />
                 ) : (
                     <AnimatePresence>
-                        <Link href={"/"} passHref>
-                            <motion.a whileTap={{ scale: 0.8 }}>
-                                <ChevronLeftIcon className="w-6 h-6 lg:h-8 lg:w-8 " />
-                            </motion.a>
-                        </Link>
+                        <div>
+                            <Link href={"/"} passHref>
+                                <motion.a
+                                    whileTap={{ scale: 0.8 }}
+                                    className="absolute origin-center"
+                                >
+                                    <ChevronLeftIcon className="w-6 h-6 lg:h-8 lg:w-8" />
+                                </motion.a>
+                            </Link>
+                        </div>
                     </AnimatePresence>
                 )}
                 <div /> {/* middle col empty */}
