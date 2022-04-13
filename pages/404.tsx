@@ -1,6 +1,6 @@
 import * as React from "react";
 import Router from "next/router";
-import Loading from "../components/Loading";
+import Loading from "../components/loading";
 
 const FourOFour: React.FC = () => {
     React.useEffect(() => {
