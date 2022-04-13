@@ -1,6 +1,6 @@
 import * as React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { countries } from "../FlagInfo/flaginfo";
+import { countries } from "../FlagInfo/Flaginfo";
 import { CorrectNamesType } from "../types";
 
 const CorrectNames: React.FC<CorrectNamesType> = ({
