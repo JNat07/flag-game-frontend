@@ -4,7 +4,7 @@ import { FlagGameProps } from "../types";
 import dynamic from "next/dynamic";
 import Loading from "../Loading";
 import Head from "next/head";
-const CorrectNames = dynamic(() => import("./CorrectNames"), {
+const CorrectNames = dynamic(() => import("./correctNames"), {
     ssr: false,
     loading: () => <Loading />,
 });
