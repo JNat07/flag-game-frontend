@@ -1,7 +1,7 @@
 import * as React from "react";
 import type { NextPage } from "next";
 import { SocketIOFunc, NotInRoomProps } from "../components/types";
-import SocketIO from "../components/socketio/Socketio";
+import SocketIO from "../components/Socketio/Socketio";
 import dynamic from "next/dynamic";
 import Loading from "../components/Loading";
 import ChooseName from "../components/multiplayer/ChooseName";
