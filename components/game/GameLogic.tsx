@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useRouter } from "next/router";
-import { chooseCountry, countries } from "../FlagInfo/flagInfo";
+import { chooseCountry, countries } from "../flagInfo/flagInfo";
 import { GameProps, GameDataProps } from "../types";
 import FlagGame from "./FlagGame";
 import Time from "./Time";
