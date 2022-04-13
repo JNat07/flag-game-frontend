@@ -13,6 +13,7 @@ const equalFlags0 = [
     "mq",
     "mf",
 ];
+
 const equalFlags1 = ["id", "mc"];
 const equalFlags2 = ["nl", "lu"];
 const equalFlags3 = ["ro", "td"];
