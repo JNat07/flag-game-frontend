@@ -2,7 +2,7 @@ import * as React from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { motion, Variants } from "framer-motion";
-import avatarGenerator from "../components/avatarGenerator";
+import avatarGenerator from "../components/AvatarGenerator";
 import Head from "next/head";
 
 const Results: NextPage = () => {

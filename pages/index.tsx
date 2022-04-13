@@ -1,7 +1,7 @@
 import * as React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Menu from "../components/index/menu";
+import Menu from "../components/index/Menu";
 
 const Home: NextPage = () => {
     return (

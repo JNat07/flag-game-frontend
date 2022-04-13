@@ -1,10 +1,10 @@
 import * as React from "react";
 import { motion } from "framer-motion";
-import { FlagGameProps } from "../types";
+import { FlagGameProps } from "../Types";
 import dynamic from "next/dynamic";
-import Loading from "../loading";
+import Loading from "../Loading";
 import Head from "next/head";
-const CorrectNames = dynamic(() => import("./correctNames"), {
+const CorrectNames = dynamic(() => import("./CorrectNames"), {
     ssr: false,
     loading: () => <Loading />,
 });

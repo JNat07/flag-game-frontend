@@ -1,4 +1,4 @@
-import { flagInfoType } from "../types";
+import { flagInfoType } from "../Types";
 
 // similar countries
 const equalFlags0 = [

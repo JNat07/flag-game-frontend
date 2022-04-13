@@ -1,9 +1,9 @@
 import * as React from "react";
 import { useRouter } from "next/router";
-import { chooseCountry, countries } from "../flagInfo/flagInfo";
-import { GameProps, GameDataProps } from "../types";
-import FlagGame from "./flagGame";
-import Time from "./time";
+import { chooseCountry, countries } from "../flagInfo/FlagInfo";
+import { GameProps, GameDataProps } from "../Types";
+import FlagGame from "./FlagGame";
+import Time from "./Time";
 
 const GameLogic: React.FC<GameProps> = ({
     handleSendScore,

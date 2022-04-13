@@ -1,5 +1,5 @@
 import * as React from "react";
-import { DarkModeType } from "../types";
+import { DarkModeType } from "../Types";
 
 const DarkMode = (): DarkModeType => {
     // Hold theme state and default as light

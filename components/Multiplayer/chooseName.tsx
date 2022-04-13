@@ -1,9 +1,9 @@
 import * as React from "react";
 import { motion } from "framer-motion";
-import { ChooseNameProps } from "../types";
-import { names } from "../randomInfo";
+import { ChooseNameProps } from "../Types";
+import { names } from "../RandomInfo";
 import Head from "next/head";
-import avatarGenerator from "../avatarGenerator";
+import avatarGenerator from "../AvatarGenerator";
 
 const ChooseName: React.FC<ChooseNameProps> = ({
     HandleSetName,

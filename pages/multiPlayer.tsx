@@ -1,20 +1,20 @@
 import * as React from "react";
 import type { NextPage } from "next";
-import { SocketIOFunc, NotInRoomProps } from "../components/types";
-import SocketIO from "../components/socketio/socketio";
+import { SocketIOFunc, NotInRoomProps } from "../components/Types";
+import SocketIO from "../components/socketio/Socketio";
 import dynamic from "next/dynamic";
-import Loading from "../components/loading";
-import ChooseName from "../components/multiplayer/chooseName";
+import Loading from "../components/Loading";
+import ChooseName from "../components/multiplayer/ChooseName";
 
 const ChoosePlayer = dynamic(
-    () => import("../components/multiplayer/choosePlayer"),
+    () => import("../components/multiplayer/ChoosePlayer"),
     {
         ssr: false,
         loading: () => <Loading />,
     }
 );
 
-const GameLogic = dynamic(() => import("../components/game/gameLogic"), {
+const GameLogic = dynamic(() => import("../components/game/GameLogic"), {
     ssr: false,
     loading: () => <Loading />,
 });
