@@ -6,7 +6,7 @@ import Menu from "../components/index/Menu";
 const Home: NextPage = () => {
     return (
         <main>
-            {/* inject elem to head of page */}
+            {/* inject elem into page **/}
             <Head>
                 <title>The Flag Game</title>
                 <meta name="The flag game" content="Built using NextJS" />
