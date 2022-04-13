@@ -2,7 +2,7 @@ import * as React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { createAvatar } from "@dicebear/avatars";
 import * as style from "@dicebear/pixel-art";
-import { ChoosePlayerProps } from "../Types";
+import { ChoosePlayerProps } from "../types";
 import Image from "next/image";
 import Head from "next/head";
 

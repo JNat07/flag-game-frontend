@@ -1,6 +1,6 @@
 import * as React from "react";
 import { motion } from "framer-motion";
-import { ChooseNameProps } from "../Types";
+import { ChooseNameProps } from "../types";
 import { names } from "../RandomInfo";
 import Head from "next/head";
 import avatarGenerator from "../AvatarGenerator";

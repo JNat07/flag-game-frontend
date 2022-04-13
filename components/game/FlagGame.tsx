@@ -1,6 +1,6 @@
 import * as React from "react";
 import { motion } from "framer-motion";
-import { FlagGameProps } from "../Types";
+import { FlagGameProps } from "../types";
 import dynamic from "next/dynamic";
 import Loading from "../Loading";
 import Head from "next/head";

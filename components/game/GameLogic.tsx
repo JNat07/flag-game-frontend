@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useRouter } from "next/router";
 import { chooseCountry, countries } from "../flagInfo/FlagInfo";
-import { GameProps, GameDataProps } from "../Types";
+import { GameProps, GameDataProps } from "../types";
 import FlagGame from "./FlagGame";
 import Time from "./Time";
 

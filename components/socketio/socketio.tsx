@@ -5,7 +5,7 @@ import {
     PlayReadyType,
     SocketClientTypes,
     OpponentInfo,
-} from "../Types";
+} from "../types";
 
 const SocketIO = () => {
     const [connect, setConnect] = React.useState<boolean>(false);
